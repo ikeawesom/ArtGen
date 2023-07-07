@@ -1,52 +1,37 @@
 "use client";
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
-import { useState } from "react";
-import app from "../../firebase/config";
+import { getAuth, Auth } from "firebase/auth";
+import { use, useState } from "react";
+import Alert from "../components/Alert";
+import SignUp from "@/firebase/auth/SignUp";
+import app from "@/firebase/config";
+import AuthCheck from "@/firebase/auth/AuthCheck";
 
 export default function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [verify, setVerify] = useState(false);
+  const [status, setStatus] = useState(false);
 
   const auth = getAuth(app);
 
-  function handleSignUp(email: string, password: string) {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        window.location.href = "/dashboard";
-
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(`ERROR ${errorCode}: ${errorMessage}`);
-        // ..
-      });
+  function checkAuth(auth: Auth) {
+    const logged = AuthCheck(auth);
+    if (logged) window.location.href = "/dashboard";
   }
 
-  const handleForm = () => {
-    handleSignUp(email, password);
+  const handleSignUp = (email: string, password: string, auth: Auth) => {
+    setStatus(true);
+    setTimeout(() => {
+      checkAuth(auth);
+    }, 4000);
   };
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
-      window.location.href = "/dashboard";
-      // ...
-    }
-  });
+  checkAuth(auth);
 
   return (
     <div className="grid place-items-center h-screen w-full px-10 md:px-32">
-      <div className="px-3 py-3 rounded-lg ring-1 ring-slate-900/10 shadow-sm">
+      <div className="p-4 md:p-10 rounded-lg ring-1 ring-slate-900/10 shadow-lg md:w-96">
         <form>
           <label htmlFor="email">
             <p className="text-slate-500 mb-3 text-sm">Email</p>
@@ -72,12 +57,24 @@ export default function Page() {
               placeholder="Enter a password"
             />
           </label>
+          {verify && (
+            <Alert
+              text={"An email verification has been sent to " + email}
+              type="success"
+            />
+          )}
+          {status && <SignUp email={email} password={password} auth={auth} />}
           <button
-            className="mt-5 w-full bg-indigo-950 text-blue-50 px-7 py-3 rounded-lg hover:bg-indigo-800 focus:bg-indigo-800"
-            onClick={handleForm}
+            disabled={verify}
+            className={
+              verify
+                ? "mt-5 w-full px-7 py-3 rounded-lg bg-gray-500 text-gray-100"
+                : "mt-5 w-full px-7 py-3 rounded-lg bg-indigo-950 text-blue-50 hover:bg-indigo-800 focus:bg-indigo-800"
+            }
+            onClick={() => handleSignUp(email, password, auth)}
             type="button"
           >
-            Sign up
+            {verify ? <>Redirecting...</> : <>Sign Up</>}
           </button>
         </form>
       </div>
