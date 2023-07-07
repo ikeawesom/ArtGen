@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+"use client";
+
 import Heading from "./Heading";
 import Button from "./Button";
-import Input from "./Input";
 
 export default function LandingPage() {
   return (
@@ -9,7 +9,6 @@ export default function LandingPage() {
       <div className="flex flex-col items-center justify-center">
         <Heading />
         <div className="flex gap-5 flex-wrap align-middle justify-center">
-          <Input placeholder="Enter email address" width={true} />
           <Button text="Get Started" link="/account" tab={false} />
         </div>
       </div>

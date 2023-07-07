@@ -1,15 +1,16 @@
-import Heading from "./components/Heading"
-import PageWrapper from "./components/PageWrapper"
-import LandingPage from "./components/LandingPage"
+"use client";
+
+import PageWrapper from "./components/PageWrapper";
+import LandingPage from "./components/LandingPage";
+import { useState } from "react";
 
 export default function Home() {
   return (
     <main>
-      <LandingPage/>
+      <LandingPage />
       <PageWrapper>
-        
-
+        <h1>hello world</h1>
       </PageWrapper>
     </main>
-  )
+  );
 }
