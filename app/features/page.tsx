@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Features | ArtGen",
+};
+
 export default function Page() {
   return (
     <div>

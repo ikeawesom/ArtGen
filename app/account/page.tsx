@@ -6,6 +6,11 @@ import Alert from "../components/Alert";
 import SignUp from "@/firebase/auth/SignUp";
 import app from "@/firebase/config";
 import AuthCheck from "@/firebase/auth/AuthCheck";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Account | ArtGen",
+};
 
 export default function Page() {
   const [email, setEmail] = useState("");
@@ -31,7 +36,7 @@ export default function Page() {
 
   return (
     <div className="grid place-items-center h-screen w-full px-10 md:px-32">
-      <div className="p-4 md:p-10 rounded-lg ring-1 ring-slate-900/10 shadow-lg md:w-96">
+      <div className="p-4 md:p-10 rounded-lg ring-1 ring-slate-900/10 shadow-lg md:w-96 bg-white">
         <form>
           <label htmlFor="email">
             <p className="text-slate-500 mb-3 text-sm">Email</p>
