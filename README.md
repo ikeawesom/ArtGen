@@ -6,13 +6,14 @@
 ### Get what you need for your digital creatives, all in one place.
 ArtGen is a collection of all your digital tools to design and build stunning softwares. Building an open source platform like this allows developers from around the world come to share their stories and ideas, while having an efficient workflow via ArtGen.
 
-## Features
+## Features*
 - Colour Palette
 - Gradients
 - Page Dividers
 - CSS Generator
-- Font Pairijg
-<i> Note that you can play a part into building this non-exhaustive list of features!</i>
+- Font Pairing
+
+<i>*Note that you can play a part into building this non-exhaustive list of features!</i>
 
 ## Technologies Used
 - ReactJS
