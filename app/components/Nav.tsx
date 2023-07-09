@@ -14,7 +14,7 @@ export default function Nav() {
     <div className="flex w-full justify-center items-center sticky top-0 left-0 z-20 bg-[#f9f2ffa2] shadow-md backdrop-blur-md">
       <div className="flex items-center justify-between px-4 py-2 max-w-[1800px] w-full">
         <a href="/" className="flex gap-2 items-center">
-          <img src="../favicon.png" alt="icon" className="h-8 aspect-square" />
+          <img src="/favicon.svg" alt="icon" className="h-8" />
           <h1 className="text-xl font-bold text-violet-700">{APP_NAME}</h1>
         </a>
 
