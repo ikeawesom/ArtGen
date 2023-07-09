@@ -7,7 +7,9 @@ export default function Nav() {
   const [currentUrl, setCurrentUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    setCurrentUrl(window.location.pathname);
+    if (typeof window != "undefined") {
+      setCurrentUrl(window.location.pathname);
+    }
   }, []);
 
   return (
