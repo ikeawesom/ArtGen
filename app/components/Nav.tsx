@@ -18,9 +18,9 @@ export default function Nav() {
           <li>
             <a href="/features/gradients">Gradients</a>
           </li>
-          <a href="/features/page_dividers">
-            <li>Page Dividers</li>
-          </a>
+          <li>
+            <a href="/features/page_dividers">Page Dividers</a>
+          </li>
           <li>
             <a href="/features/font_pairing">Font Pairs</a>
           </li>
@@ -35,27 +35,23 @@ export default function Nav() {
         {/* Account Buttons */}
         <ul className="flex gap-2 justify-center items-center">
           <li>
-            <a href="/account">
-              <Button
-                text="Sign Up"
-                link="/"
-                tab={false}
-                color="bg-violet-700"
-                textcolor="text-blue-50"
-                hovercolor="hover:bg-violet-500"
-              />
-            </a>
+            <Button
+              text="Sign Up"
+              link="/account"
+              tab={false}
+              color="bg-violet-700"
+              textcolor="text-blue-50"
+              hovercolor="hover:bg-violet-500"
+            />
           </li>
           <li>
-            <a href="/account">
-              <Button
-                textcolor="text-violet-700"
-                text="Login"
-                link="/"
-                tab={false}
-                color="transparent"
-              />
-            </a>
+            <Button
+              textcolor="text-violet-700"
+              text="Login"
+              link="/account"
+              tab={false}
+              color="transparent"
+            />
           </li>
         </ul>
       </div>

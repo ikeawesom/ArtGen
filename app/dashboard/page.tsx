@@ -17,5 +17,15 @@ export default function Page() {
       });
   };
 
-  return <Button text="Sign Out" tab={false} link="" onClick={handleSignOut} />;
+  return (
+    <Button
+      color="bg-violet-700"
+      textcolor="text-blue-50"
+      hovercolor="hover:bg-violet-500"
+      text="Sign Out"
+      tab={false}
+      link=""
+      onClick={handleSignOut}
+    />
+  );
 }
