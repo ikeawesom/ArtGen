@@ -12,7 +12,7 @@ ArtGen is a collection of all your digital tools to design and build stunning so
 - Page Dividers
 - CSS Generator
 - Font Pairijg
-<i> Note that you can play a part into building this non-exhaustive list of features!<i>
+<i> Note that you can play a part into building this non-exhaustive list of features!</i>
 
 ## Technologies Used
 - ReactJS
