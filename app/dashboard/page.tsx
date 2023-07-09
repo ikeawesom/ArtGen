@@ -4,7 +4,7 @@ import app from "../../firebase/config";
 import Button from "../components/Button";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Dashboard | ArtGen",
 };
 

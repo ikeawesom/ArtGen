@@ -8,7 +8,7 @@ import app from "@/firebase/config";
 import AuthCheck from "@/firebase/auth/AuthCheck";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Account | ArtGen",
 };
 
