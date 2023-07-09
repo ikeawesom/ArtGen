@@ -1,9 +1,14 @@
 "use client";
+import { useState, useEffect } from "react";
 import { APP_NAME } from "../globals";
 import Button from "./Button";
 
 export default function Nav() {
-  var cur_page = window.location.pathname;
+  const [currentUrl, setCurrentUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    setCurrentUrl(window.location.pathname);
+  }, []);
 
   return (
     <div className="flex w-full justify-center items-center  sticky top-0 left-0 z-20 bg-[#f9f2ffa2] shadow-md backdrop-blur-md">
@@ -14,19 +19,20 @@ export default function Nav() {
         </a>
 
         {/* Account Buttons */}
+
         <div className="flex items-center justify-end gap-8">
           {/* Utility Buttons */}
           <ul className="flex gap-7 justify-center items-center text-violet-700 nav-items font-semibold">
-            <li className={cur_page === "/features" ? "font-bold" : ""}>
+            <li className={currentUrl === "/features" ? "font-bold" : ""}>
               <a href="/features">Features</a>
             </li>
-            <li className={cur_page === "/docs" ? "font-bold" : ""}>
+            <li className={currentUrl === "/docs" ? "font-bold" : ""}>
               <a href="/docs">Docs</a>
             </li>
-            <li className={cur_page === "/inspirations" ? "font-bold" : ""}>
+            <li className={currentUrl === "/inspirations" ? "font-bold" : ""}>
               <a href="/inspirations">Inspirations</a>
             </li>
-            <li className={cur_page === "/community" ? "font-bold" : ""}>
+            <li className={currentUrl === "/community" ? "font-bold" : ""}>
               <a href="/community">Community</a>
             </li>
           </ul>
