@@ -18,7 +18,7 @@ ArtGen is a collection of all your digital tools to design and build stunning so
 ## Technologies Used
 - ReactJS
 - NextJS
-- Firebase Authentication
+- Firebase
 - Cloud Firestore
 
 ## Pull Requests
