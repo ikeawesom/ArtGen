@@ -1,7 +1,7 @@
 export default function FeatureBanner() {
   return (
     <div>
-      <h1 className="z-20 absolute bottom-0 left-0 w-full grid place-items-center translate-y-1/2 feature-banner">
+      <h1 className="z-20 absolute w-full grid place-items-center feature-banner">
         <div className="w-3/4 bg-violet-100 rounded-md p-8 shadow-lg ring-1 ring-violet-50/10 text-center">
           <h1 className="text-3xl text-indigo-950 font-bold">
             Ignite Your Creative Spark with{" "}

@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <main className="relative">
       <LandingPage />
+      <FeatureBanner />
       <PageWrapper>
         <div className="h-screen">
           <h1>hello world</h1>

@@ -19,7 +19,6 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <FeatureBanner />
     </div>
   );
 }

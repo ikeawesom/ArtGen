@@ -89,10 +89,8 @@ nav {
   transform: scale(1.05);
 }
 
-@media (max-width: 920px) {
-  .feature-banner {
-    transform: translateY(80%);
-  }
+.feature-banner {
+  transform: translateY(-20%);
 }
 
 @media (min-width: 560px) {
