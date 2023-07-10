@@ -26,6 +26,7 @@ body {
 
 .page-wrapper {
   background-image: linear-gradient(180deg, #e8caff 0%, #f5e9ff 52%);
+  padding: 5rem;
 }
 
 span.gradient {
@@ -81,16 +82,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom left, var(--purple), #efddff, #f9f2ff);
   padding: 2rem;
 }
 
 .feature-banner li:hover {
   transform: scale(1.05);
-}
-
-.feature-banner {
-  transform: translateY(-20%);
 }
 
 @media (min-width: 560px) {

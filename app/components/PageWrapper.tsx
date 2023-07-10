@@ -5,7 +5,5 @@ interface Props {
 }
 
 export default function PageWrapper({ children }: Props) {
-  return (
-    <div className="relative w-100 md:px-48 px-10 page-wrapper">{children}</div>
-  );
+  return <div className="relative w-100 page-wrapper py-20">{children}</div>;
 }

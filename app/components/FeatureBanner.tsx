@@ -1,8 +1,8 @@
 export default function FeatureBanner() {
   return (
     <div>
-      <h1 className="z-20 absolute w-full grid place-items-center feature-banner">
-        <div className="w-3/4 bg-violet-100 rounded-md p-8 shadow-lg ring-1 ring-violet-50/10 text-center">
+      <div className="z-20 w-full grid place-items-center feature-banner">
+        <div className="w-full bg-violet-100 rounded-md p-8 shadow-lg ring-1 ring-violet-50/10 text-center">
           <h1 className="text-3xl text-indigo-950 font-bold">
             Ignite Your Creative Spark with{" "}
             <span className="gradient">ArtGen</span>
@@ -11,7 +11,7 @@ export default function FeatureBanner() {
             Our Popular Picks
           </h4>
           <ul className="flex flex-wrap gap-4 justify-around items-center w-full text-indigo-950 mb-5">
-            <li className="ring-1 ring-slate-900/5 shadow-lg">
+            <li className="ring-1 ring-slate-900/5 shadow-md">
               <a href="/features/theme_generator">
                 <div className="flex flex-col gap-3 items-center justify-center">
                   <img
@@ -23,7 +23,7 @@ export default function FeatureBanner() {
                 </div>
               </a>
             </li>
-            <li className="ring-1 ring-slate-900/5 shadow-lg">
+            <li className="ring-1 ring-slate-900/5 shadow-md">
               <a href="/features/gradients">
                 <div className="flex flex-col gap-3 items-center justify-center">
                   <img
@@ -35,7 +35,7 @@ export default function FeatureBanner() {
                 </div>
               </a>
             </li>
-            <li className="ring-1 ring-slate-900/5 shadow-lg">
+            <li className="ring-1 ring-slate-900/5 shadow-md">
               <a href="/features/font_pairing">
                 <div className="flex flex-col gap-3 items-center justify-center">
                   <img
@@ -47,7 +47,7 @@ export default function FeatureBanner() {
                 </div>
               </a>
             </li>
-            <li className="ring-1 ring-slate-900/5 shadow-lg">
+            <li className="ring-1 ring-slate-900/5 shadow-md">
               <a href="/features/icons">
                 <div className="flex flex-col gap-3 items-center justify-center">
                   <img
@@ -69,7 +69,7 @@ export default function FeatureBanner() {
             </a>
           </div>
         </div>
-      </h1>
+      </div>
     </div>
   );
 }
