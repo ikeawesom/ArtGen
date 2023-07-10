@@ -11,11 +11,13 @@ export default function Nav() {
   }, []);
 
   return (
-    <div className="flex w-full justify-center items-center sticky top-0 left-0 z-20 bg-[#f9f2ffa2] shadow-md backdrop-blur-md">
+    <div className="flex w-full justify-center items-center sticky top-0 left-0 z-50 bg-[#f9f2ffa2] shadow-md backdrop-blur-md">
       <div className="flex items-center justify-between px-4 py-2 max-w-[1800px] w-full">
         <a href="/" className="flex gap-2 items-center">
           <img src="/favicon.svg" alt="icon" className="h-8" />
-          <h1 className="text-xl font-bold text-violet-700">{APP_NAME}</h1>
+          <h1 className="text-xl font-bold text-violet-700">
+            <span className="gradient">{APP_NAME}</span>
+          </h1>
         </a>
 
         {/* Account Buttons */}
@@ -34,6 +36,9 @@ export default function Nav() {
             </li>
             <li className={currentUrl === "/community" ? "font-bold" : ""}>
               <a href="/community">Community</a>
+            </li>
+            <li className={currentUrl === "/pricing" ? "font-bold" : ""}>
+              <a href="/pricing">Pricing</a>
             </li>
           </ul>
 

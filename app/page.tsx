@@ -2,7 +2,7 @@
 
 import PageWrapper from "./components/PageWrapper";
 import LandingPage from "./components/LandingPage";
-import Circle from "./components/Circle";
+import FeatureBanner from "./components/FeatureBanner";
 import { useState } from "react";
 
 export default function Home() {

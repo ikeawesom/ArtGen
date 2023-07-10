@@ -3,10 +3,11 @@
 import Heading from "./Heading";
 import ButtonGradient from "./ButtonGradient";
 import Circle from "./Circle";
+import FeatureBanner from "./FeatureBanner";
 
 export default function LandingPage() {
   return (
-    <div className="overflow-clip relative">
+    <div className=" relative landing-page shadow-md">
       <Circle color="bg-violet-300" position="top-0 right-20" />
       <Circle color="bg-cyan-200" position="top-1/3 left-20" />
 
@@ -18,6 +19,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+      <FeatureBanner />
     </div>
   );
 }
