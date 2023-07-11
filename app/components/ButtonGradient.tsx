@@ -7,10 +7,17 @@ interface Props {
   text: string;
   link: string;
   tab: boolean;
+  animation?: boolean;
   onClick?: () => void;
 }
 
-export default function ButtonGradient({ text, link, tab, onClick }: Props) {
+export default function ButtonGradient({
+  text,
+  link,
+  tab,
+  onClick,
+  animation,
+}: Props) {
   return (
     <Link
       href={{ pathname: link }}
@@ -18,7 +25,11 @@ export default function ButtonGradient({ text, link, tab, onClick }: Props) {
       className="w-full min-[500px]:w-fit"
       onClick={onClick}
     >
-      <button className="w-full text-blue-50 px-7 py-3 rounded-lg bg-gradient-to-r from-violet-700 to-fuchsia-700 shadow-md [transition:background-color_200ms,transform_300ms,opacity_300ms] ease-in-out delay-150 hover:translate-y-2">
+      <button
+        className={`w-full text-blue-50 px-7 py-3 rounded-lg bg-gradient-to-r from-violet-700 to-fuchsia-700 shadow-md [transition:background-color_200ms,transform_300ms,opacity_300ms] ease-in-out delay-150 ${
+          animation ? "hover:translate-y-2" : ""
+        }`}
+      >
         {text}
       </button>
     </Link>

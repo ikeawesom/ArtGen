@@ -15,7 +15,12 @@ export default function LandingPage() {
         <div className="flex flex-col items-center justify-center">
           <Heading />
           <div className="flex gap-5 flex-wrap align-middle justify-center w-full">
-            <ButtonGradient text="Get started" link="/account" tab={false} />
+            <ButtonGradient
+              animation={true}
+              text="Start creating"
+              link="/account"
+              tab={false}
+            />
           </div>
         </div>
       </div>

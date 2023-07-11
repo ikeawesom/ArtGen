@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main>
       <LandingPage />
       <PageWrapper>
         <div className="h-screen">
