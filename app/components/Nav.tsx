@@ -52,7 +52,7 @@ export default function Nav() {
           }`}
         >
           {/* Utility Buttons */}
-          <ul className="min-[900px]:flex gap-7 justify-center items-center text-violet-700 div-items font-semibold nav-items px-4 py-2">
+          <ul className="min-[900px]:flex gap-7 justify-center items-center text-violet-700 div-items font-semibold nav-items py-2">
             <li className={currentUrl === "/features" ? "font-bold" : ""}>
               <a href="/features">Features</a>
             </li>
@@ -72,18 +72,9 @@ export default function Nav() {
 
           {/* Account Buttons */}
 
-          <ul className="min-[900px]:flex gap-2 justify-center items-center px-4 py-2">
+          <ul className="min-[900px]:flex gap-2 justify-center items-center pr-4 py-2">
             <li className="mx-4 mb-2 min-[900px]:m-0">
               <ButtonGradient text="Get started" link="/account" tab={false} />
-            </li>
-            <li className="mx-4 mb-4 min-[900px]:m-0">
-              <Button
-                textcolor="text-violet-700"
-                text="Login"
-                link="/account"
-                tab={false}
-                color="transparent"
-              />
             </li>
           </ul>
         </div>

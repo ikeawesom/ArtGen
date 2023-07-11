@@ -17,7 +17,7 @@ export default function LandingPage() {
           <div className="flex gap-5 flex-wrap align-middle justify-center w-full">
             <ButtonGradient
               animation={true}
-              text="Start creating"
+              text="Start exploring"
               link="/account"
               tab={false}
             />

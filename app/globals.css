@@ -85,10 +85,10 @@ span.gradient {
 /* Feature Banner */
 
 .feature-banner {
-  background-image: linear-gradient(180deg, #b2eee8 5%, #ba97ff 95%);
+  background-image: linear-gradient(225deg, #b2eee8 5%, #ba97ff 95%);
 }
 .feature-banner li {
-  transition: 100ms ease-in-out;
+  transition: 150ms ease-in-out;
   align-self: stretch;
   display: flex;
   align-items: center;
