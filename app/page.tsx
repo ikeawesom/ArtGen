@@ -59,7 +59,7 @@ export default function Home() {
           <SectionImage img="img_collaborate.svg" />
         </Section>
 
-        <h2 className="text-center text-6xl font-bold text-indigo-950 my-3">
+        <h2 className="text-center lg:text-6xl text-4xl font-bold text-indigo-950 my-3">
           Choose <span className="gradient">ArtGen</span> and embark on a
           journey where creativity knows no bounds.
         </h2>
