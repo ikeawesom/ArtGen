@@ -1,4 +1,4 @@
-import PageWrapper from "@/app/components/PageWrapper";
+import PageWrapper from "@/components/PageWrapper";
 import { Metadata } from "next";
 
 const metadata: Metadata = {
@@ -6,36 +6,58 @@ const metadata: Metadata = {
 };
 
 export default function Page() {
+  const features_lst = [
+    { name: "Theme Generator", link: "theme_generator" },
+    {
+      name: "Gradients",
+      link: "gradients",
+    },
+    {
+      name: "Color Palette",
+      link: "color_palette",
+    },
+    {
+      name: "Page Dividers",
+      link: "page_dividers",
+    },
+    {
+      name: "Font Pairs",
+      link: "font_pairing",
+    },
+    {
+      name: "Icons",
+      link: "icons",
+    },
+    {
+      name: "Blob Generator",
+      link: "blob_generator",
+    },
+  ];
   return (
     <PageWrapper>
       <div>
-        <h1 className="heading m-5">
-          Features at <span className="gradient">ArtGen</span>
-        </h1>
+        <div className="text-center my-5">
+          <h1 className="heading mb-2">
+            Features at <span className="gradient">ArtGen</span>
+          </h1>
+          <p className="sub-heading">
+            Unleash your creative mind with our extensive tools - by the
+            community, for you.
+          </p>
+        </div>
 
-        <ul className="flex gap-4 justify-center items-center text-indigo-950">
-          <li>
-            <a href="/features/theme_generator">Theme Generator</a>
-          </li>
-          <li>
-            <a href="/features/color_palette">Color Palette</a>
-          </li>
-          <li>
-            <a href="/features/gradients">Gradients</a>
-          </li>
-          <li>
-            <a href="/features/page_dividers">Page Dividers</a>
-          </li>
-          <li>
-            <a href="/features/font_pairing">Font Pairs</a>
-          </li>
-          <li>
-            <a href="/features/icons">Icons</a>
-          </li>
-          <li>
-            <a href="/features/blob_generator">Blob Generator</a>
-          </li>
-        </ul>
+        <div className="w-100 my-20">
+          <ul className="flex gap-4 justify-center items-center text-indigo-950">
+            {features_lst.map((item) => (
+              <a
+                href={`/features/${item.link}`}
+                className="p-5 shadow-md self-stretch flex-1"
+              >
+                <li>{item.name}</li>
+              </a>
+            ))}
+          </ul>
+        </div>
       </div>
     </PageWrapper>
   );

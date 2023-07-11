@@ -2,7 +2,7 @@
 
 import { getAuth, Auth } from "firebase/auth";
 import { use, useState } from "react";
-import Alert from "../components/Alert";
+import Alert from "@/components/Alert";
 import SignUp from "@/firebase/auth/SignUp";
 import app from "@/firebase/config";
 import AuthCheck from "@/firebase/auth/AuthCheck";

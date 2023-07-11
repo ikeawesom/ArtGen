@@ -76,6 +76,11 @@ span.gradient {
   padding: 0 10rem;
 }
 
+@media (max-width: 800px) {
+  .page-wrapper {
+    padding: 5rem;
+  }
+}
 @media (max-width: 660px) {
   .page-wrapper {
     padding: 2rem 1rem;
@@ -86,9 +91,12 @@ span.gradient {
 
 .feature-banner {
   transform: translateY(-6rem);
+  background-image: linear-gradient(180deg, rgb(241 245 249) 60%, #d3f8ff 95%);
   /* background-image: linear-gradient(225deg, #b2eee8 5%, #ba97ff 95%); */
 }
 .feature-banner li {
+  border-radius: 5px;
+  padding: 8px 3px;
   transition: 150ms ease-in-out;
   align-self: stretch;
   display: flex;
@@ -96,8 +104,14 @@ span.gradient {
   justify-content: center;
 }
 
+.feature-banner li img {
+  height: 100px;
+  width: 100px;
+}
+
 .feature-banner li:hover {
-  transform: scale(1.05);
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.14);
+  background-color: #faf3ffa6;
 }
 
 @media (min-width: 300px) {

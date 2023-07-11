@@ -30,14 +30,14 @@ export default function FeatureBanner() {
   return (
     <div>
       <div className="w-full grid place-items-center">
-        <div className="w-full z-10 feature-banner bg-slate-100 rounded-md p-8 shadow-2xl ring-1 ring-violet-200/10 text-center">
+        <div className="w-full z-10 feature-banner rounded-md md:p-10 p-8 shadow-2xl ring-1 ring-violet-200/10 text-center">
           <h1 className="text-3xl text-violet-900 font-bold">
             Ignite Your Creative Spark
           </h1>
-          <p className="m-3">
+          <p className="my-3">
             Popular design and digital art tools available with us.
           </p>
-          <ul className="my-10 flex flex-wrap gap-10 justify-around items-center w-full text-violet-900">
+          <ul className="my-5 flex flex-wrap gap-x-20 gap-y-5 justify-around items-center w-full text-violet-900">
             {feautured_lst.map((item) => (
               <li>
                 <a href={`/features/${item.link}`}>

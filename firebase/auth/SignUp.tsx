@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 
-import Alert from "@/app/components/Alert";
+import Alert from "@/components/Alert";
 
 interface Props {
   email: string;
