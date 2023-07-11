@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  /* border: 2px dotted red; */
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start: #f5e9ff;
@@ -72,8 +75,10 @@ span.gradient {
 }
 
 .page-wrapper {
+  width: 100%;
   background-image: linear-gradient(0deg, #e8caff 0%, #f5e9ff 52%);
-  padding: 0 10rem;
+  padding: 10rem;
+  padding-top: 0rem;
 }
 
 @media (max-width: 800px) {
