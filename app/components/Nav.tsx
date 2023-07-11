@@ -72,7 +72,7 @@ export default function Nav() {
 
           {/* Account Buttons */}
 
-          <ul className="min-[900px]:flex gap-2 justify-center items-center pr-4 py-2">
+          <ul className="min-[900px]:flex gap-2 justify-center items-center min-[900px]:pr-4 py-2">
             <li className="mx-4 mb-2 min-[900px]:m-0">
               <ButtonGradient text="Get started" link="/account" tab={false} />
             </li>
