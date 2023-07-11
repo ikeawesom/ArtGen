@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { APP_NAME } from "../app/globals";
+import { APP_NAME } from "../../app/globals";
 import Button from "./Button";
 import { UilBars, UilTimes } from "@iconscout/react-unicons";
 import ButtonGradient from "./ButtonGradient";

@@ -1,7 +1,7 @@
 "use client";
 import { getAuth, signOut } from "firebase/auth";
 import app from "@/firebase/config";
-import Button from "@/components/Button";
+import Button from "@/components/utilities/Button";
 import { Metadata } from "next";
 
 const metadata: Metadata = {
