@@ -29,8 +29,8 @@ export default function FeatureBanner() {
   ];
   return (
     <div>
-      <div className="z-20 w-full grid place-items-center">
-        <div className="w-full feature-banner rounded-md p-8 shadow-2xl ring-1 ring-violet-200/10 text-center">
+      <div className="w-full grid place-items-center">
+        <div className="w-full z-10 feature-banner bg-slate-100 rounded-md p-8 shadow-2xl ring-1 ring-violet-200/10 text-center">
           <h1 className="text-3xl text-violet-900 font-bold">
             Ignite Your Creative Spark
           </h1>
