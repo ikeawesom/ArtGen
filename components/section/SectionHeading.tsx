@@ -17,7 +17,7 @@ export default function SectionHeading({
         <span className="gradient">{subject}</span>
       </h4>
       <h1
-        className={`text-5xl my-2 font-extrabold text-indigo-950 ${identifier}`}
+        className={`lg:text-5xl text-3xl my-2 font-extrabold text-indigo-950 ${identifier}`}
       >
         {header}
       </h1>

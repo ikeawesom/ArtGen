@@ -7,6 +7,7 @@ import Nav from "@/components/utilities/Nav";
 import Section from "@/components/section/Section";
 import SectionText from "@/components/section/SectionText";
 import SectionImage from "@/components/section/SectionImage";
+import ButtonGradient from "@/components/utilities/ButtonGradient";
 
 export default function Home() {
   return (
@@ -57,6 +58,23 @@ export default function Home() {
 
           <SectionImage img="img_collaborate.svg" />
         </Section>
+
+        <h2 className="text-center text-6xl font-bold text-indigo-950 my-3">
+          Choose <span className="gradient">ArtGen</span> and embark on a
+          journey where creativity knows no bounds.
+        </h2>
+        <p className="text-center text-lg font-medium mb-5">
+          Engage yourself in a vast collection of design and digital art tools,
+          supported by an engaging community that fuels your passion.
+        </p>
+        <div className="grid place-items-center my-5">
+          <ButtonGradient
+            text="Start exploring"
+            link="/features"
+            tab={false}
+            animation={true}
+          />
+        </div>
       </PageWrapper>
     </main>
   );

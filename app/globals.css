@@ -96,7 +96,7 @@ span.gradient {
 
 .feature-banner {
   transform: translateY(-6rem);
-  background-image: linear-gradient(180deg, rgb(241 245 249) 60%, #d3f8ff 95%);
+  background-image: linear-gradient(180deg, #f9f2fa 30%, #f3d4ff 97%);
   /* background-image: linear-gradient(225deg, #b2eee8 5%, #ba97ff 95%); */
 }
 .feature-banner li {
