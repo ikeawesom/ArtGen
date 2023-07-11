@@ -3,7 +3,6 @@
 import Heading from "./Heading";
 import ButtonGradient from "./ButtonGradient";
 import Circle from "./Circle";
-import FeatureBanner from "./FeatureBanner";
 
 export default function LandingPage() {
   return (
@@ -18,7 +17,7 @@ export default function LandingPage() {
             <ButtonGradient
               animation={true}
               text="Start exploring"
-              link="/account"
+              link="/features"
               tab={false}
             />
           </div>

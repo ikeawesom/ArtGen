@@ -7,7 +7,9 @@ const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <h1 className="heading m-5">Features at ArtGen</h1>
+      <h1 className="heading m-5">
+        Features at <span className="gradient">ArtGen</span>
+      </h1>
 
       <ul className="flex gap-4 justify-center items-center text-indigo-950">
         <li>
