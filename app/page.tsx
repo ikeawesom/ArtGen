@@ -18,7 +18,6 @@ export default function Home() {
         <Section>
           <SectionText
             side="text-start"
-            identifier="section-text"
             header="Experience The Unparellend Variety"
             subject="What we offer"
             text="Our extensive collection ensures that you'll always find the
@@ -30,10 +29,10 @@ export default function Home() {
 
           <SectionImage img="img_variety.svg" />
         </Section>
+
         <Section reverse={true}>
           <SectionText
             side="text-end"
-            identifier="section-text"
             header="Quality Craftsmenship"
             subject="What we offer"
             text="Immerse yourself in meticulously curated resources, handpicked for
@@ -44,6 +43,19 @@ export default function Home() {
           />
 
           <SectionImage img="img_craft.png" />
+        </Section>
+
+        <Section>
+          <SectionText
+            side="text-start"
+            header="Open-Source Community"
+            subject="What we offer"
+            text="Connect with fellow artists, share your work, and collaborate within a vibrant community of like-minded individuals. Tap into the energy of collective inspiration and support."
+            link="/community"
+            linktext="Visit the community"
+          />
+
+          <SectionImage img="img_collaborate.svg" />
         </Section>
       </PageWrapper>
     </main>
