@@ -162,3 +162,9 @@ span.gradient {
     padding: 2rem;
   }
 }
+
+@media (max-width: 260px) {
+  .gradient.banner ul {
+    flex-direction: column;
+  }
+}
