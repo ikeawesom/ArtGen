@@ -35,8 +35,8 @@ export default function Page() {
   ];
   return (
     <PageWrapper>
-      <div>
-        <div className="text-center my-5">
+      <div className="pt-5">
+        <div className="text-center">
           <h1 className="heading mb-2">
             Features at <span className="gradient">ArtGen</span>
           </h1>
