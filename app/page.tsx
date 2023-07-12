@@ -29,7 +29,7 @@ export default function Home() {
             text="Our extensive collection ensures that you'll always find the
             perfect elements to elevate your artwork and designs. Discover a
             world of options, catering to every style and project imaginable."
-            link="/features/color_palette"
+            link="/features/color-palette"
             linktext="View the palette"
           />
 

@@ -33,7 +33,7 @@ export function FeatureBanner() {
     },
     {
       name: "Font Pairs",
-      link: "font_pairing",
+      link: "font-pairing",
       alt: "Font Pairs",
       icon: "icon_fonts.svg",
     },

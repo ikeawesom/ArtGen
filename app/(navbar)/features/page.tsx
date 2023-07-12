@@ -7,22 +7,22 @@ const metadata: Metadata = {
 
 export default function Page() {
   const features_lst = [
-    { name: "Theme Generator", link: "theme_generator" },
+    { name: "Theme Generator", link: "theme-generator" },
     {
       name: "Gradients",
       link: "gradients",
     },
     {
       name: "Color Palette",
-      link: "color_palette",
+      link: "color-palette",
     },
     {
       name: "Page Dividers",
-      link: "page_dividers",
+      link: "page-dividers",
     },
     {
       name: "Font Pairs",
-      link: "font_pairing",
+      link: "font-pairing",
     },
     {
       name: "Icons",
@@ -30,7 +30,7 @@ export default function Page() {
     },
     {
       name: "Blob Generator",
-      link: "blob_generator",
+      link: "blob-generator",
     },
   ];
   return (
