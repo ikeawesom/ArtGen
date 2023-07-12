@@ -1,9 +1,9 @@
 export function FrameworkList() {
   const frameworkList = ["React", "Svelte", "Angular", "Vue", "Vanilla"];
   return (
-    <ul className="flex items-center gap-2 justify-around my-10">
+    <ul className="flex items-center gap-5 justify-around my-10 flex-wrap">
       {frameworkList.map((item) => (
-        <li className="flex items-center gap-2 justify-center hover:scale-95 duration-100 ease-in-out">
+        <li className="flex items-center gap-2 justify-center hover:scale-95 duration-100 ease-in-out flex-col">
           <span className="bg-white rounded-full p-3">
             <img className="h-10" src={`./frameworks/${item}.svg`} alt={item} />
           </span>
