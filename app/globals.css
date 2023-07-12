@@ -107,7 +107,7 @@ span.gradient {
 .feature.banner {
   transform: translateY(-6rem);
 }
-.feature-banner li {
+.feature.banner li {
   border-radius: 5px;
   padding: 8px 3px;
   transition: 150ms ease-in-out;
@@ -117,23 +117,36 @@ span.gradient {
   justify-content: center;
 }
 
-.feature-banner li img {
+.feature.banner li img {
+  transition: 200ms;
   height: 100px;
   width: 100px;
 }
 
-.feature-banner li:hover {
+.feature.banner li p {
+  transition: 200ms;
+}
+
+.feature.banner li:hover {
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.14);
   background-color: #faf3ffa6;
 }
 
+.feature.banner li:hover img {
+  transform: scale(0.85);
+}
+
+.feature.banner li:hover p {
+  transform: translateY(-22%);
+}
+
 @media (min-width: 300px) {
-  .feature-banner li {
+  .feature.banner li {
     flex: 1;
   }
 }
 @media (max-width: 300px) {
-  .feature-banner li {
+  .feature.banner li {
     width: 100%;
     padding: 1rem;
   }

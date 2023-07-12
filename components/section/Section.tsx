@@ -21,7 +21,7 @@ export default function Section({
 }: Props) {
   return (
     <div
-      className={`${identifier} ${size} ${background} ${color} ${style} md:mb-72 mb-52`}
+      className={`${identifier} ${size} ${background} ${color} ${style} md:mb-64 mb-52`}
     >
       <div
         className={`flex justify-between items-center max-[900px]:flex-col gap-5 p-0 ${
