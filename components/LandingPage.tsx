@@ -1,8 +1,8 @@
 "use client";
 
 import Heading from "./Heading";
-import ButtonGradient from "@/components/utilities/ButtonGradient";
-import Circle from "./Circle";
+import { ButtonGradient } from "@/components/Buttons";
+import Circle from "./utilities/Circle";
 
 export default function LandingPage() {
   return (

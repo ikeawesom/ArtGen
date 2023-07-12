@@ -2,15 +2,17 @@
 
 import PageWrapper from "@/components/PageWrapper";
 import LandingPage from "@/components/LandingPage";
-import FeatureBanner from "@/components/FeatureBanner";
 import Nav from "@/components/utilities/Nav";
-import Section from "@/components/section/Section";
-import SectionText from "@/components/section/SectionText";
-import SectionImage from "@/components/section/SectionImage";
-import ButtonGradient from "@/components/utilities/ButtonGradient";
-import Banner from "@/components/Banner";
-import { FrameworkHeading, FrameworkList } from "@/components/Frameworks";
 import ShortLink from "@/components/utilities/ShortLink";
+
+import { MainBanner, FeatureBanner } from "@/components/Banners";
+import {
+  SectionContainer,
+  SectionImage,
+  SectionText,
+} from "@/components/Sections";
+import { ButtonGradient } from "@/components/Buttons";
+import { FrameworkHeading, FrameworkList } from "@/components/Frameworks";
 
 export default function Home() {
   return (
@@ -19,7 +21,7 @@ export default function Home() {
       <LandingPage />
       <PageWrapper>
         <FeatureBanner />
-        <Section>
+        <SectionContainer>
           <SectionText
             side="text-start"
             header="Experience The Unparellend Variety"
@@ -32,8 +34,8 @@ export default function Home() {
           />
 
           <SectionImage img="img_variety.svg" />
-        </Section>
-        <Section reverse={true}>
+        </SectionContainer>
+        <SectionContainer reverse={true}>
           <SectionText
             side="text-end"
             header="Quality Craftsmenship"
@@ -46,8 +48,8 @@ export default function Home() {
           />
 
           <SectionImage img="img_craft.png" />
-        </Section>
-        <Section>
+        </SectionContainer>
+        <SectionContainer>
           <SectionText
             side="text-start"
             header="Open-Source Community"
@@ -58,7 +60,7 @@ export default function Home() {
           />
 
           <SectionImage img="img_collaborate.svg" />
-        </Section>
+        </SectionContainer>
         <div className="mb-52">
           <h2 className="text-center lg:text-6xl text-4xl font-bold text-indigo-950 my-3">
             Choose <span className="gradient">ArtGen</span> and embark on a
@@ -78,7 +80,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Banner identifier="banner gradient">
+        <MainBanner identifier="banner gradient">
           <FrameworkHeading
             header="Work with your favourite framework"
             subheader="Tools at ArtGen are compatible with popular frameworks and even
@@ -96,7 +98,7 @@ export default function Home() {
             </span>
             .
           </p>
-        </Banner>
+        </MainBanner>
       </PageWrapper>
 
       {/* To do

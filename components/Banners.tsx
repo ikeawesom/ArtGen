@@ -1,7 +1,23 @@
+import { ReactNode } from "react";
 import { UilArrowRight } from "@iconscout/react-unicons";
-import Banner from "./Banner";
 
-export default function FeatureBanner() {
+interface BannerProps {
+  children?: ReactNode;
+  identifier?: string;
+}
+export function MainBanner({ children, identifier }: BannerProps) {
+  return (
+    <div className="w-full grid place-items-center">
+      <div
+        className={`w-full z-10 ${identifier} rounded-md md:p-10 p-8 shadow-2xl ring-1 ring-violet-200/10 text-center`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+export function FeatureBanner() {
   let feautured_lst = [
     {
       name: "Theme Generator",
@@ -30,7 +46,7 @@ export default function FeatureBanner() {
   ];
   return (
     <div>
-      <Banner identifier="feature banner">
+      <MainBanner identifier="feature banner">
         <h1 className="text-3xl text-violet-900 font-bold">
           Ignite Your Creative Spark
         </h1>
@@ -58,7 +74,7 @@ export default function FeatureBanner() {
             </p>
           </a>
         </div>
-      </Banner>
+      </MainBanner>
     </div>
   );
 }
