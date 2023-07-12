@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 
 interface Props {
-  children: ReactNode;
+  dark?: string;
+  children?: ReactNode;
 }
 
-export default function PageWrapper({ children }: Props) {
-  return <div className="page-wrapper">{children}</div>;
+export default function PageWrapper({ children, dark }: Props) {
+  return <div className={`page-wrapper ${dark}`}>{children}</div>;
 }

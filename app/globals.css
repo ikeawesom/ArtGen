@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  /* border: 2px dotted red; */
-}
+/* * {
+  border: 2px dotted red;
+} */
+
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start: #f5e9ff;
+  --background-start: #fdf9ff;
   --background-end: #ffffff;
   --purple: #d49cff;
 }
@@ -77,8 +78,14 @@ span.gradient {
 .page-wrapper {
   width: 100%;
   background-image: linear-gradient(0deg, #e8caff 0%, #f5e9ff 52%);
+  /* background-color: var(--background-start); */
   padding: 10rem;
   padding-top: 0rem;
+}
+
+.page-wrapper.dark {
+  background-image: linear-gradient(180deg, #150017 29%, #2b1135 100%);
+  padding: 5rem 10rem;
 }
 
 @media (max-width: 800px) {
@@ -92,12 +99,13 @@ span.gradient {
   }
 }
 
-/* Feature Banner */
+/* Banners */
 
-.feature-banner {
-  transform: translateY(-6rem);
+.banner {
   background-image: linear-gradient(180deg, #f9f2fa 30%, #f3d4ff 97%);
-  /* background-image: linear-gradient(225deg, #b2eee8 5%, #ba97ff 95%); */
+}
+.feature.banner {
+  transform: translateY(-6rem);
 }
 .feature-banner li {
   border-radius: 5px;
@@ -129,4 +137,9 @@ span.gradient {
     width: 100%;
     padding: 1rem;
   }
+}
+
+.gradient.banner {
+  background-image: linear-gradient(0deg, #c594e5 0%, #e3a9cd 65%);
+  padding: 4rem;
 }

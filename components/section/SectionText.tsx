@@ -1,4 +1,5 @@
 import SectionHeading from "./SectionHeading";
+import ShortLink from "../utilities/ShortLink";
 
 interface Props {
   identifier?: string;
@@ -6,8 +7,8 @@ interface Props {
   subheader?: string;
   subject: string;
   text: string;
-  link?: string;
-  linktext?: string;
+  link: string;
+  linktext: string;
   side: string;
 }
 
@@ -29,18 +30,13 @@ export default function SectionText({
       <p className={` flex-1`}>{text}</p>
       {link && (
         <div
-          className={`flex items-center justify-center ${
+          className={`mt-5 flex items-center justify-center ${
             side === "text-start"
               ? "min-[900px]:justify-start"
               : "min-[900px]:justify-end"
           }`}
         >
-          <a
-            href={link}
-            className="mt-5 w-fit hover:opacity-70 duration-150 ease-in-out text-violet-800 font-semibold"
-          >
-            {linktext}
-          </a>
+          <ShortLink link={link} linktext={linktext} />
         </div>
       )}
     </div>
