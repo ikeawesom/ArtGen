@@ -1,4 +1,3 @@
-import ContactLinks from "./ContactLinks";
 import {
   APP_NAME,
   FOOTER_HEADERS,
@@ -9,6 +8,20 @@ import {
 export default function Footer() {
   return (
     <div className="primary-footer shadow-2xl bg-gradient-to-br from-violet-950 to-fuchsia-950 md:px-20 px-5 py-10">
+      <div className="grid place-items center text-center mb-8">
+        <p className="text-slate-300 text-sm">
+          Find an issue with this page?{" "}
+          <span className="text-blue-400 hover:opacity-70">
+            <a
+              href="https://github.com/ikeawesom/ArtGen/tree/master/app"
+              target="_blank"
+            >
+              Fix it on GitHub
+            </a>
+          </span>
+          .
+        </p>
+      </div>
       <div className="flex md:flex-row flex-col gap-y-10">
         <div className="flex gap-2 md:items-start items-center md:text-start text-center flex-col justify-start flex-1 md:w-1/2 w-full">
           <a href="/">
@@ -19,7 +32,7 @@ export default function Footer() {
               </h1>
             </div>
           </a>
-          <h1 className="w-1/2 text-violet-100 font-semibold">
+          <h1 className="md:w-1/2 w-full text-violet-100 font-semibold">
             Discover the tools that will revolutionize your artistic journey.
           </h1>
         </div>
