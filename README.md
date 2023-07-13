@@ -31,7 +31,7 @@ You can play a part into building this non-exhaustive list of features!
 
 ## Contributing
 
-NextJS is the main backend framework for this platform. Read the [NextJS docs](https://nextjs.org/docs) before contributing!
+ReactJS and NextJS are the main development frameworks for this platform. Read about [NextJS](https://nextjs.org/docs) and [ReactJS](https://react.dev/learn) before contributing!
 
 <b>Note:</b> This site uses `app` routing, which removes the traditional `pages` and `src` dirs.
 
