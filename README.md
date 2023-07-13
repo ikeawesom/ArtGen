@@ -35,6 +35,14 @@ Please make sure you have thoroughly read through our [Contributing Guidelines](
 
 ReactJS and NextJS are the main development frameworks for this platform. Read about [NextJS](https://nextjs.org/docs) and [ReactJS](https://react.dev/learn) as well.
 
+Before making any changes, create a new branch in your local repository. This will isolate your work and keep the main branch clean. Use a descriptive name for your branch that reflects the nature of the changes you plan to make.
+
+```console
+git checkout -b feature/your-branch-name
+```
+
+Now you can make your desired changes to the codebase. Whether it's adding new features, fixing bugs, or improving existing functionality, we appreciate your contributions.
+
 <b>Note:</b> This site uses `app` routing, which removes the traditional `pages` and `src` dirs.
 
 ### How to Run it
@@ -61,14 +69,6 @@ All static media is managed in the `public` dir. You can easily add more content
 When editing, make sure to utilise `components` onto the `page.tsx` as much as possible instead of flooding the page with plain HTML. This is to improve readability and promote code reusability for other developers as well.
 
 <b>Important:</b> Firebase will not allow access to the backend services due to undisclosed environment variables. Avoid modifying the backend Typescript files (i.e. `firebase/config.js`, `firebase/auth/*`, etc.)
-
-Before making any changes, create a new branch in your local repository. This will isolate your work and keep the main branch clean. Use a descriptive name for your branch that reflects the nature of the changes you plan to make.
-
-```console
-git checkout -b feature/your-branch-name
-```
-
-Now you can make your desired changes to the codebase. Whether it's adding new features, fixing bugs, or improving existing functionality, we appreciate your contributions.
 
 ## Developing Basic Components
 
