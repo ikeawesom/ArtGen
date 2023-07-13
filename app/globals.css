@@ -27,6 +27,7 @@ span.gradient {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 900;
 }
 
 span.gradient1 {
@@ -34,6 +35,7 @@ span.gradient1 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 900;
 }
 
 /* Nav Items */
@@ -117,6 +119,7 @@ span.gradient1 {
 .banner {
   background-image: linear-gradient(180deg, #f9f2fa 30%, #f3d4ff 97%);
 }
+
 .feature.banner {
   transform: translateY(-6rem);
 }

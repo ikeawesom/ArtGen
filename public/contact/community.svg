@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <path fill="none" stroke-width="2" stroke-miterlimit="10" d="M32.001,0.887c17.184,0,31.113,13.929,31.112,31.113 C63.114,49.185,49.184,63.115,32,63.113C14.815,63.114,0.887,49.185,0.888,32.001C0.885,14.816,14.815,0.887,32.001,0.887z" style="stroke: rgb(30, 27, 75);"/>
+  <line fill="none" stroke-width="2" stroke-miterlimit="10" x1="32" y1="1" x2="32" y2="63" style="stroke: rgb(30, 27, 75);"/>
+  <line fill="none" stroke-width="2" stroke-miterlimit="10" x1="63" y1="32" x2="1" y2="32" style="stroke: rgb(30, 27, 75);"/>
+  <path fill="none" stroke-width="2" stroke-miterlimit="10" d="M30,1c0,0-14,11-14,31s14,31,14,31" style="stroke: rgb(30, 27, 75);"/>
+  <path fill="none" stroke-width="2" stroke-miterlimit="10" d="M34,1c0,0,14,11,14,31S34,63,34,63" style="stroke: rgb(30, 27, 75);"/>
+  <path stroke-width="2" stroke-miterlimit="10" d="M 8 12 C 8 12 13 22 32 22 C 36.323 22 39.922 21.482 42.901 20.682 C 53.016 17.967 56 12 56 12" fill="none" style="stroke: rgb(30, 27, 75);"/>
+  <path fill="none" stroke-width="2" stroke-miterlimit="10" d="M8,52c0,0,5-10,24-10s24,10,24,10" style="stroke: rgb(30, 27, 75);"/>
+</svg>
