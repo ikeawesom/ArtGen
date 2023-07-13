@@ -1,6 +1,6 @@
 "use client";
 
-import Heading from "./Heading";
+import Heading from "./SplashHeading";
 import { ButtonGradient } from "@/components/Buttons";
 import Circle from "./utilities/Circle";
 

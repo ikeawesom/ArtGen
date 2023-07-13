@@ -1,4 +1,4 @@
-export default function Heading() {
+export default function SplashHeading() {
   return (
     <div className="text-center m-0 mb-6 w-full">
       <h1 className="heading mb-5">
