@@ -52,11 +52,16 @@ export default function Nav() {
         >
           {/* Utility Buttons */}
           <ul className="min-[900px]:flex gap-7 justify-center items-center text-violet-700 div-items font-semibold nav-items py-2">
-            {APP_LINKS.map((item) => (
-              <li className={currentUrl === item.link ? "font-extrabold" : ""}>
-                <a href={item.link}>{item.title}</a>
-              </li>
-            ))}
+            {APP_LINKS.map(
+              (item) =>
+                item.showNav && (
+                  <li
+                    className={currentUrl === item.link ? "font-extrabold" : ""}
+                  >
+                    <a href={item.link}>{item.title}</a>
+                  </li>
+                )
+            )}
           </ul>
 
           {/* Account Buttons */}

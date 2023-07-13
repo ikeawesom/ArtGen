@@ -15,6 +15,7 @@ import { ButtonGradient } from "@/components/Buttons";
 import { FrameworkHeading, FrameworkList } from "@/components/Frameworks";
 import { Winner } from "@/components/Winner";
 import ContactLinks from "@/components/ContactLinks";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -196,6 +197,7 @@ export default function Home() {
           </div>
         </div>
       </PageWrapper>
+      <Footer />
     </main>
   );
 }
