@@ -54,11 +54,11 @@ npm run dev
 
 This should be locally hosted on `http://localhost:3000`.
 
-All static media is managed in the `public` dir. You can easily add more content by uploading them directly in GitHub. The `app` dir includes the general pages of the website. Within the recursive `(public)` dirs, `page.tsx` is the main HTML body of each page.
+All static media is managed in the `public` dir. You can easily add more content by uploading them directly in GitHub. The `app` dir includes the general pages of the website. Within its recursive dirs, `page.tsx` is the main HTML body of each page. Where necessary `layout.tsx` can be added to create general layouts for all of the `page.tsx` within that dir.
 
-When editing, make sure to utilise `components` onto the page as much as possible instead of flooding the page with plain HTML. This is to improve readability and promote code reusability for other developers as well.
+When editing, make sure to utilise `components` onto the `page.tsx` as much as possible instead of flooding the page with plain HTML. This is to improve readability and promote code reusability for other developers as well.
 
-<b>Important:</b> Firebase will not allow access to the backend services due to undisclosed environment variables.
+<b>Important:</b> Firebase will not allow access to the backend services due to undisclosed environment variables. Avoid modifying the backend Typescript files (i.e. `firebase/config.js`, `firebase/auth/*`, etc.)
 
 ## Developing Basic Components
 
