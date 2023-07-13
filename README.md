@@ -31,9 +31,7 @@ You can play a part into building this non-exhaustive list of features!
 
 ## Contributing
 
-Please make sure you have thoroughly read through our [Contributing Guidelines](https://github.com/ikeawesom/ArtGen/blob/master/CONTRIBUTING_GUIDELINES.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for this project before contributing!
-
-ReactJS and NextJS are the main development frameworks for this platform. Read about [NextJS](https://nextjs.org/docs) and [ReactJS](https://react.dev/learn) as well.
+Please make sure you have thoroughly read through our [Contributing Guidelines](https://github.com/ikeawesom/ArtGen/blob/master/CONTRIBUTING_GUIDELINES.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for this project before contributing! You should also read about [NextJS](https://nextjs.org/docs) and [ReactJS](https://react.dev/learn) as they are the main development frameworks for this project.
 
 Before making any changes, create a new branch in your local repository. This will isolate your work and keep the main branch clean. Use a descriptive name for your branch that reflects the nature of the changes you plan to make.
 
