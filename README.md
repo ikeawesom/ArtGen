@@ -31,7 +31,9 @@ You can play a part into building this non-exhaustive list of features!
 
 ## Contributing
 
-ReactJS and NextJS are the main development frameworks for this platform. Read about [NextJS](https://nextjs.org/docs) and [ReactJS](https://react.dev/learn) before contributing!
+Please make sure you have thoroughly read through our [Contributing Guidelines](https://github.com/ikeawesom/ArtGen/blob/master/CONTRIBUTING_GUIDELINES.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for this project before contributing!
+
+ReactJS and NextJS are the main development frameworks for this platform. Read about [NextJS](https://nextjs.org/docs) and [ReactJS](https://react.dev/learn) as well.
 
 <b>Note:</b> This site uses `app` routing, which removes the traditional `pages` and `src` dirs.
 
