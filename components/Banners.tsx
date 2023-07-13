@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { UilArrowRight } from "@iconscout/react-unicons";
-import { FEATURED_FEATURES_LIST } from "@/app/globals";
+import { FEATURES_LIST } from "@/app/globals";
 
 interface BannerProps {
   children?: ReactNode;
@@ -30,16 +30,19 @@ export function FeatureBanner() {
           Popular design and digital art tools available with us.
         </p>
         <ul className="my-5 flex flex-wrap gap-x-20 gap-y-5 justify-around items-center w-full text-violet-900">
-          {FEATURED_FEATURES_LIST.map((item) => (
-            <li>
-              <a href={`/features/${item.link}`}>
-                <div className="flex flex-col gap-3 items-center justify-center">
-                  <img src={`/features/${item.icon}`} alt={item.alt} />
-                  <p className="font-semibold text-lg">{item.name}</p>
-                </div>
-              </a>
-            </li>
-          ))}
+          {FEATURES_LIST.map(
+            (item) =>
+              item.featured && (
+                <li>
+                  <a href={`/features/${item.link}`}>
+                    <div className="flex flex-col gap-3 items-center justify-center">
+                      <img src={`/features/${item.icon}`} alt={item.name} />
+                      <p className="font-semibold text-lg">{item.name}</p>
+                    </div>
+                  </a>
+                </li>
+              )
+          )}
         </ul>
 
         <div className="grid place-items-center">

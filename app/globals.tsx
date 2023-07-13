@@ -113,58 +113,50 @@ export const CONTACT_LINKS = [
 
 // ---------------- FEATURES DETAILS ------------------- //
 export const FEATURES_LIST = [
-  { name: "Theme Generator", link: "theme-generator" },
-  {
-    name: "Gradients",
-    link: "gradients",
-  },
   {
     name: "Color Palette",
     link: "color-palette",
+    icon: "icon_palette.svg",
+    featured: false,
   },
   {
     name: "Page Dividers",
     link: "page-dividers",
-  },
-  {
-    name: "Font Pairs",
-    link: "font-pairing",
-  },
-  {
-    name: "Icons",
-    link: "icons",
+    icon: "icon_divider.svg",
+    featured: false,
   },
   {
     name: "Blob Generator",
     link: "blob-generator",
+    icon: "icon_blob.svg",
+    featured: false,
   },
-];
-export const FEATURED_FEATURES_LIST = [
   {
     name: "Theme Generator",
     link: "theme_generator",
-    alt: "Theme",
     icon: "icon_theme.svg",
+    featured: true,
   },
   {
     name: "Gradients",
     link: "gradients",
-    alt: "Gradients",
     icon: "icon_gradient.svg",
+    featured: true,
   },
   {
     name: "Font Pairs",
     link: "font-pairing",
-    alt: "Font Pairs",
     icon: "icon_fonts.svg",
+    featured: true,
   },
   {
     name: "Icons",
     link: "icons",
-    alt: "Icons",
     icon: "icon_icons.svg",
+    featured: true,
   },
 ];
+
 // --------------------------------------------------------------- //
 
 // ---------------- COMPETITION WINNER DETAILS ------------------- //
