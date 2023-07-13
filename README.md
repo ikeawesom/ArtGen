@@ -33,12 +33,6 @@ You can play a part into building this non-exhaustive list of features!
 
 Please make sure you have thoroughly read through our [Contributing Guidelines](https://github.com/ikeawesom/ArtGen/blob/master/CONTRIBUTING_GUIDELINES.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for this project before contributing! You should also read about [NextJS](https://nextjs.org/docs) and [ReactJS](https://react.dev/learn) as they are the main development frameworks for this project.
 
-Before making any changes, create a new branch in your local repository. This will isolate your work and keep the main branch clean. Use a descriptive name for your branch that reflects the nature of the changes you plan to make.
-
-```console
-git checkout -b feature/your-branch-name
-```
-
 Now you can make your desired changes to the codebase. Whether it's adding new features, fixing bugs, or improving existing functionality, we appreciate your contributions.
 
 <b>Note:</b> This site uses `app` routing, which removes the traditional `pages` and `src` dirs.
@@ -52,10 +46,16 @@ You can check the version by using the `-v` argument.
 node -v
 ```
 
-Once done, clone this repo and run the development server.
+Once done, clone this repo and create a new branch in your local repository. This will isolate your work and keep the main branch clean. Use a descriptive name for your branch that reflects the nature of the changes you plan to make.
 
 ```console
 git clone <this-repo>
+git checkout -b feature/your-branch-name
+```
+
+Install the necessary packages and run the development server.
+
+```console
 npm install
 npm run dev
 ```
