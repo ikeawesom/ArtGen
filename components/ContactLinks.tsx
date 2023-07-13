@@ -3,6 +3,11 @@ export default function ContactLinks() {
     { name: "Community", link: "/community", image: "community.svg" },
     { name: "Discord", link: "/", image: "discord.svg" },
     { name: "Instagram", link: "/", image: "instagram.svg" },
+    {
+      name: "Github",
+      link: "https://github.com/ikeawesom/ArtGen",
+      image: "github.svg",
+    },
   ];
   return (
     <div className="md:mt-7 mt-3 w-full">
