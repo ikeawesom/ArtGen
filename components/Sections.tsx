@@ -9,6 +9,7 @@ interface ContainerProps {
   style?: string;
   reverse?: boolean;
   children: ReactNode;
+  dark?: boolean;
 }
 
 export function SectionContainer({
@@ -19,13 +20,18 @@ export function SectionContainer({
   children,
   identifier,
   reverse,
+  dark,
 }: ContainerProps) {
   return (
     <div
-      className={`${identifier} ${size} ${background} ${color} ${style} md:mb-64 mb-52`}
+      className={`${identifier} ${size} ${background} ${color} ${style} ${
+        dark ? "" : "md:mb-64 mb-52"
+      }`}
     >
       <div
-        className={`flex justify-between items-center max-[900px]:flex-col gap-5 p-0 ${
+        className={`${
+          dark ? "block" : "flex"
+        } justify-between items-center max-[900px]:flex-col gap-5 p-0 ${
           reverse ? "flex-row-reverse" : ""
         }`}
       >
@@ -40,6 +46,7 @@ interface HeadingProps {
   subject?: string;
   header: string;
   subheader?: string;
+  dark?: boolean;
 }
 
 export function SectionHeading({
@@ -47,14 +54,17 @@ export function SectionHeading({
   header,
   subheader,
   subject,
+  dark,
 }: HeadingProps) {
   return (
     <div className="mb-5">
       <h4 className="text-xl font-bold">
-        <span className="gradient">{subject}</span>
+        <span className={"gradient"}>{subject}</span>
       </h4>
       <h1
-        className={`lg:text-5xl text-3xl my-2 font-extrabold text-indigo-950 ${identifier}`}
+        className={`lg:text-5xl text-3xl my-2 font-extrabold ${
+          dark ? "text-violet-50" : "text-indigo-950"
+        } ${identifier}`}
       >
         {header}
       </h1>
@@ -65,12 +75,22 @@ export function SectionHeading({
 
 interface ImageProps {
   img: string;
+  full?: boolean;
 }
 
-export function SectionImage({ img }: ImageProps) {
+export function SectionImage({ img, full }: ImageProps) {
   return (
-    <div className="flex items-center flex-1 min-[900px]:w-1/3 hover:scale-105 duration-150">
-      <img className="drop-shadow-2xl " src={`/about/${img}`} />
+    <div
+      className={`flex items-center justify-center flex-1 ${
+        full ? "w-full" : "min-[900px]:w-1/3"
+      }`}
+    >
+      <img
+        className={`shadow-cyan shadow-cyan-300  hover:scale-105 duration-150 ${
+          full ? "w-4/5 rounded-lg" : ""
+        }`}
+        src={`/about/${img}`}
+      />
     </div>
   );
 }
@@ -80,10 +100,11 @@ interface SectionProps {
   header: string;
   subheader?: string;
   subject: string;
-  text: string;
-  link: string;
-  linktext: string;
+  children: ReactNode;
+  link?: string;
+  linktext?: string;
   side: string;
+  dark?: boolean;
 }
 
 export function SectionText({
@@ -91,17 +112,24 @@ export function SectionText({
   header,
   subheader,
   subject,
-  text,
+  children,
   link,
   linktext,
   side,
+  dark,
 }: SectionProps) {
   return (
     <div
       className={`flex-1 min-[900pz]:w-1/2 ${identifier} max-[900px]:text-center ${side}`}
     >
-      <SectionHeading header={header} subheader={subheader} subject={subject} />
-      <p className={` flex-1`}>{text}</p>
+      <SectionHeading
+        header={header}
+        subheader={subheader}
+        subject={subject}
+        dark={dark}
+      />
+      <div className={` flex-1`}>{children}</div>
+
       {link && (
         <div
           className={`mt-5 flex items-center justify-center ${
@@ -110,7 +138,7 @@ export function SectionText({
               : "min-[900px]:justify-end"
           }`}
         >
-          <ShortLink link={link} linktext={linktext} />
+          {linktext && <ShortLink link={link} linktext={linktext} />}
         </div>
       )}
     </div>

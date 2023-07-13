@@ -4,10 +4,11 @@ import { UilArrowRight } from "@iconscout/react-unicons";
 interface BannerProps {
   children?: ReactNode;
   identifier?: string;
+  styles?: string;
 }
-export function MainBanner({ children, identifier }: BannerProps) {
+export function MainBanner({ children, identifier, styles }: BannerProps) {
   return (
-    <div className="w-full grid place-items-center">
+    <div className={`w-full grid place-items-center ${styles}`}>
       <div
         className={`w-full z-10 ${identifier} rounded-md md:p-10 p-8 shadow-2xl ring-1 ring-violet-200/10 text-center`}
       >

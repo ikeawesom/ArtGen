@@ -29,6 +29,13 @@ span.gradient {
   -webkit-text-fill-color: transparent;
 }
 
+span.gradient1 {
+  background: linear-gradient(270deg, #12b886 5%, #4dabf7 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Nav Items */
 .nav-items li:hover {
   opacity: 0.7;
@@ -76,16 +83,22 @@ span.gradient {
 }
 
 .page-wrapper {
+  z-index: 2;
   width: 100%;
   background-image: linear-gradient(0deg, #e8caff 0%, #f5e9ff 52%);
   /* background-color: var(--background-start); */
-  padding: 10rem;
-  padding-top: 0rem;
+  padding: 5rem 10rem;
+  /* border: 1px dotted red; */
+}
+
+.page-wrapper.start {
+  padding-top: 0;
 }
 
 .page-wrapper.dark {
-  background-image: linear-gradient(180deg, #150017 29%, #2b1135 100%);
-  padding: 5rem 10rem;
+  background-image: linear-gradient(180deg, #27002a 22%, #290a35 95%);
+  box-shadow: 0 30px 30px 0 black;
+  z-index: 5;
 }
 
 @media (max-width: 800px) {
