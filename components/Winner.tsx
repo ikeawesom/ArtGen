@@ -12,10 +12,10 @@ export function Winner() {
   return (
     <div className="winner my-10 text-center">
       <div className="my-10">
-        <h4 className="text-2xl font-semibold text-violet-50">
+        <h4 className="md:text-2xl text-xl font-semibold text-violet-50">
           Winner of July's Competition
         </h4>
-        <h1 className="text-4xl font-bold mt-3">
+        <h1 className="md:text-4xl text-2xl font-bold mt-3">
           <span className="gradient">{username}</span>
         </h1>
       </div>
@@ -28,7 +28,7 @@ export function Winner() {
         <h4 className="text-violet-100 text-lg font-semibold">
           Tools used from <span className="gradient font-bold">ArtGen</span>
         </h4>
-        <ul className="flex gap-5 items-center justify-center flex-wrap">
+        <ul className="flex gap-x-5 items-center justify-center flex-wrap">
           {tools_used.map((item) => (
             <a href={item.link}>
               <li className="text-violet-100 hover:text-violet-300">
