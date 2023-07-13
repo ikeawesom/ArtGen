@@ -149,7 +149,7 @@ export default function Home() {
           </SectionText>
         </SectionContainer>
       </PageWrapper>
-      <PageWrapper>
+      <PageWrapper identifier="end">
         <div className="w-full grid place-items-center my-28 mb-56">
           <div className="w-4/5 text-center">
             <h1 className="md:text-5xl text-3xl font-extrabold text-violet-950 mb-5">
@@ -177,6 +177,24 @@ export default function Home() {
             <ContactLinks />
           </div>
         </MainBanner>
+
+        <div className="w-full grid place-items-center mt-56">
+          <div className="w-full text-center">
+            <h1 className="md:text-8xl text-3xl font-extrabold text-violet-950 mb-5">
+              Inspired by the community.<br></br>
+              <span className="gradient">Built for you.</span>
+            </h1>
+
+            <div className="grid place-items-center my-10">
+              <ButtonGradient
+                text="Sign up for free"
+                link="/account"
+                tab={false}
+                animation={true}
+              />
+            </div>
+          </div>
+        </div>
       </PageWrapper>
     </main>
   );
