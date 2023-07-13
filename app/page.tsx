@@ -148,6 +148,20 @@ export default function Home() {
           </SectionText>
         </SectionContainer>
       </PageWrapper>
+      <PageWrapper>
+        <div className="w-full grid place-items-center my-20">
+          <div className="w-4/5 text-center">
+            <h1 className="text-5xl font-extrabold text-violet-950 mb-5">
+              "The best websites and softwares are not built alone, but are
+              crafted through collaboration and inspiration. ArtGen provides
+              just that."
+            </h1>
+            <h4 className="text-2xl font-bold text-violet-950">
+              Ike Lim, Founder of <span className="gradient">ArtGen</span>
+            </h4>
+          </div>
+        </div>
+      </PageWrapper>
     </main>
   );
 }
