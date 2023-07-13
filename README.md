@@ -18,6 +18,7 @@
 - Theme Generator
 
 You can play a part into building this non-exhaustive list of features!
+
 <i>Last updated: 13 July 2023</i>
 
 ## Technologies Used
@@ -31,6 +32,7 @@ You can play a part into building this non-exhaustive list of features!
 ## Contributing
 
 NextJS is the main backend framework for this platform. Read the [NextJS docs](https://nextjs.org/docs) before contributing!
+
 <b>Note:</b> This site uses `app` routing, which removes the traditional `pages` and `src` directories.
 
 ### How to Run it
@@ -52,12 +54,30 @@ npm start
 
 This should be locally hosted on `http://localhost:3000`.
 
-All static media is managed in the `public` directory. You can easily add more content by uploading them directly in GitHub. The `app` directory includes the general pages of the website. Within the recursive `(public)` directories, you will find the `page.tsx`
+All static media is managed in the `public` directory. You can easily add more content by uploading them directly in GitHub. The `app` directory includes the general pages of the website. Within the recursive `(public)` directories, `page.tsx` is the main HTML body of each page.
+
+When editing, make sure to utilise `components` onto the page as much as possible instead of flooding the page with plain HTML. This is to improve readability and promote code reusability for other developers as well.
 
 <b>Important:</b> Firebase will not allow access to the backend services due to undisclosed environment variables.
 
+## Developing Components
+
+All `component` files are located in the `root/components` directory. Create a new Typescript component with `.tsx`.
+
+<b>Tip:</b> If necessary, add your components to relevant exisiting directories or create new ones for better organisation.
+
+```typescript {class="blue large" data-filename="NewFeature.tsx"}
+export default function NewFeature() {
+  return <h1>This is my new feature</h1>;
+}
+```
+
 ## Feedback
 
-Feel free to make general comments on the project in the [Discussions](https://github.com/ikeawesom/ArtGen/discussions/categories/general) page. For Feature Requests, post them in the [Feature Suggestions](https://github.com/ikeawesom/ArtGen/discussions/categories/feature-suggestions) page.
+Feel free to make general comments on the project in the [Discussions](https://github.com/ikeawesom/ArtGen/discussions/categories/general) page. If you would like to see something new by the community, post them in the [Feature Suggestions](https://github.com/ikeawesom/ArtGen/discussions/categories/feature-suggestions) page.
 
 Being open source, we welcome all feedback and contributions to make ArtGen a more conducive environment for all developers!
+
+```
+
+```
