@@ -54,7 +54,7 @@ npm run dev
 
 This should be locally hosted on `http://localhost:3000`.
 
-All static media is managed in the `public` dir. You can easily add more content by uploading them directly in GitHub. The `app` dir includes the general pages of the website. Within its recursive dirs, `page.tsx` is the main HTML body of each page. Where necessary `layout.tsx` can be added to create general layouts for all of the `page.tsx` within that dir.
+All static media is managed in the `public` dir. You can easily add more content by uploading them directly in GitHub. The `app` dir includes the general pages of the website. Within its recursive dirs, `page.tsx` is the main HTML body of each page. Where necessary `layout.tsx` can be added to create general layouts for all of the `page.tsx` within that dir. Typos can also be edited directly in GitHub.
 
 When editing, make sure to utilise `components` onto the `page.tsx` as much as possible instead of flooding the page with plain HTML. This is to improve readability and promote code reusability for other developers as well.
 
