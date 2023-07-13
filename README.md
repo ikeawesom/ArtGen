@@ -72,7 +72,7 @@ export default function NewFeature() {
 }
 ```
 
-If you are adding larger component with similar details, avoid the `default` keyword when exporting. This way you can ustilise multiple exports within the same `<component-name>.tsx` file.
+If you are creating multiple sub components, avoid the `default` keyword when exporting. This way you can ustilise multiple exports within the same `<component-name>.tsx` file.
 
 ```typescript
 export function FeatureHeader() {
@@ -90,7 +90,7 @@ export function FeatureBody() {
 }
 ```
 
-Import them into the `page.tsx` you are modifying like this.
+Import your new components into the `page.tsx` you are modifying like this.
 
 ```typescript
 import {
