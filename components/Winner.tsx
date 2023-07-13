@@ -28,7 +28,7 @@ export function Winner() {
         <h4 className="text-violet-100 text-lg font-semibold">
           Tools used from <span className="gradient font-bold">ArtGen</span>
         </h4>
-        <ul className="flex gap-5 items-center justify-center">
+        <ul className="flex gap-5 items-center justify-center flex-wrap">
           {tools_used.map((item) => (
             <a href={item.link}>
               <li className="text-violet-100 hover:text-violet-300">

@@ -124,7 +124,8 @@ export default function Home() {
               platform; it's a vibrant community where artists and designers
               come together to inspire and support one another. To celebrate
               your talent and foster a sense of friendly competition, we host
-              monthly design competitions!
+              monthly design competitions known as{" "}
+              <span className="gradient font-bold">GenComps</span>!
             </p>
 
             <Winner />

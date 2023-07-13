@@ -86,9 +86,9 @@ export function SectionImage({ img, full }: ImageProps) {
       }`}
     >
       <img
-        className={`shadow-cyan shadow-cyan-300  hover:scale-105 duration-150 ${
-          full ? "w-4/5 rounded-lg" : ""
-        }`}
+        className={`${
+          full ? "shadow-cyan shadow-cyan-300" : "drop-shadow-2xl"
+        } hover:scale-105 duration-150 ${full ? "w-4/5 rounded-lg" : ""}`}
         src={`/about/${img}`}
       />
     </div>
