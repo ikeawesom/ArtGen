@@ -49,7 +49,7 @@ Once done, clone this repo and run the development server.
 ```console
 git clone <this-repo>
 npm install
-npm start
+npm run dev
 ```
 
 This should be locally hosted on `http://localhost:3000`.
