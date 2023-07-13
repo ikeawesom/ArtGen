@@ -42,13 +42,13 @@ ReactJS and NextJS are the main development frameworks for this platform. Read a
 First, ensure you have the latest version of [NodeJS](https://nodejs.org/en) installed.
 You can check the version by using the `-v` argument.
 
-```bash
+```console
 node -v
 ```
 
 Once done, clone this repo and run the development server.
 
-```bash
+```console
 git clone <this-repo>
 npm install
 npm run dev
@@ -64,7 +64,7 @@ When editing, make sure to utilise `components` onto the `page.tsx` as much as p
 
 Before making any changes, create a new branch in your local repository. This will isolate your work and keep the main branch clean. Use a descriptive name for your branch that reflects the nature of the changes you plan to make.
 
-```bash
+```console
 git checkout -b feature/your-branch-name
 ```
 
@@ -170,7 +170,7 @@ export default function NewFeature() {
 
 Once you're satisfied with your changes, commit them to your branch with a descriptive commit message. Then, push your branch to your forked repository on GitHub.
 
-```bash
+```console
 git add .
 git commit -m "Your descriptive commit message"
 git push origin feature/your-branch-name
