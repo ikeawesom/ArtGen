@@ -58,9 +58,7 @@ export default function Nav() {
             <li className={currentUrl === "/learn" ? "font-bold" : ""}>
               <a href="/learn">Learn</a>
             </li>
-            <li className={currentUrl === "/inspirations" ? "font-bold" : ""}>
-              <a href="/inspirations">Inspirations</a>
-            </li>
+
             <li className={currentUrl === "/community" ? "font-bold" : ""}>
               <a href="/community">Community</a>
             </li>
