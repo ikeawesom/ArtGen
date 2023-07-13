@@ -40,13 +40,13 @@ ReactJS and NextJS are the main development frameworks for this platform. Read a
 First, ensure you have the latest version of [NodeJS](https://nodejs.org/en) installed.
 You can check the version by using the `-v` argument.
 
-```console
+```bash
 node -v
 ```
 
 Once done, clone this repo and run the development server.
 
-```console
+```bash
 git clone <this-repo>
 npm install
 npm run dev
@@ -59,6 +59,14 @@ All static media is managed in the `public` dir. You can easily add more content
 When editing, make sure to utilise `components` onto the `page.tsx` as much as possible instead of flooding the page with plain HTML. This is to improve readability and promote code reusability for other developers as well.
 
 <b>Important:</b> Firebase will not allow access to the backend services due to undisclosed environment variables. Avoid modifying the backend Typescript files (i.e. `firebase/config.js`, `firebase/auth/*`, etc.)
+
+Before making any changes, create a new branch in your local repository. This will isolate your work and keep the main branch clean. Use a descriptive name for your branch that reflects the nature of the changes you plan to make.
+
+```bash
+git checkout -b feature/your-branch-name
+```
+
+Now you can make your desired changes to the codebase. Whether it's adding new features, fixing bugs, or improving existing functionality, we appreciate your contributions.
 
 ## Developing Basic Components
 
@@ -156,8 +164,26 @@ export default function NewFeature() {
 
 <b>Note:</b> Only modify `app/global.css` when styling inside the relevant `page.tsx` instead of components.
 
+## Submission
+
+Once you're satisfied with your changes, commit them to your branch with a descriptive commit message. Then, push your branch to your forked repository on GitHub.
+
+```bash
+git add .
+git commit -m "Your descriptive commit message"
+git push origin feature/your-branch-name
+```
+
+Head over to this main repository on GitHub and open a new pull request. Provide a clear title and description for your pull request, detailing the changes you've made.
+
+Our team will review your pull request and provide feedback or suggestions if needed. We value collaboration and may engage in discussions to refine and improve your contribution. If any changes are requested during the review process, make them in your local branch, commit, and push the changes to your forked repository. The pull request will automatically update with your latest changes.
+
+Once your pull request is approved and all changes are addressed, we will merge your contribution into the main repository. Congratulations, you are now a part of ArtGen!
+
+If you have any questions or need assistance during the contribution process, please feel free to reach out to us. Happy contributing!
+
 ## Feedback
 
 Feel free to make general comments on the project in the [Discussions](https://github.com/ikeawesom/ArtGen/discussions/categories/general) page. If you would like to see something new by the community, post them in the [Feature Suggestions](https://github.com/ikeawesom/ArtGen/discussions/categories/feature-suggestions) page.
 
-Being open source, we welcome all feedback and contributions to make ArtGen a more conducive environment for all developers!
+By working together, we can create an amazing platform for digital creatives. We truly appreciate your time and effort in making our project better for everyone.
