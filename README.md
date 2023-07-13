@@ -178,7 +178,7 @@ Head over to this main repository on GitHub and open a new pull request. Provide
 
 Our team will review your pull request and provide feedback or suggestions if needed. We value collaboration and may engage in discussions to refine and improve your contribution. If any changes are requested during the review process, make them in your local branch, commit, and push the changes to your forked repository. The pull request will automatically update with your latest changes.
 
-Once your pull request is approved and all changes are addressed, we will merge your contribution into the main repository. Congratulations, you are now a part of ArtGen!
+Once your pull request is approved and all changes are addressed, we will merge your contribution into the main repository. <b>Congratulations, you are now a part of ArtGen!</b>
 
 If you have any questions or need assistance during the contribution process, please feel free to reach out to us. Happy contributing!
 
