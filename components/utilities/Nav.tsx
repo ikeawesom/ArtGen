@@ -20,7 +20,7 @@ export default function Nav() {
           className="flex gap-2 items-center max-[900px]:bg-[#f9f2ff] px-4 py-2"
         >
           <img src="/favicon.svg" alt="icon" className="h-8" />
-          <h1 className="text-xl font-bold text-violet-700">
+          <h1 className="text-xl font-extrabold text-violet-700">
             <span className="gradient">{APP_NAME}</span>
           </h1>
         </a>
