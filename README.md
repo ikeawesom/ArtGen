@@ -102,10 +102,10 @@ import {
 When using `export default` in your `<component-name>.tsx`, you can import without `{}`.
 
 ```typescript
-import NewFeature from "@/components/<component-dir>/<component-name>
+import NewFeature from "@/components/<component-dir>/<component-name>";
 ```
 
-## Developing Advanced Components
+<!-- ## Developing Advanced Components -->
 
 ## Styling Components
 
@@ -118,7 +118,7 @@ export default function NewFeature() {
   return (
     <div className="w-full p-10">
       <h1 className="my-10 text-center">Hello World</h1>
-      <p className="text-sm">This is a new feature I am developing!</p>
+      <p className="text-sm">This is my feature!</p>
     </div>
   );
 }
@@ -148,26 +148,16 @@ export default function NewFeature() {
   return (
     <div className={styles.block}>
       <h1 className={styles.heading}>Hello World</h1>
-      <p className={styles.subtitle}>This is a new feature I am developing!</p>
+      <p className={styles.subtitle}>This my feature!</p>
     </div>
   );
 }
 ```
+
+<b>Note:</b> Only modify `app/global.css` when styling inside the relevant `page.tsx` instead of components.
 
 ## Feedback
 
 Feel free to make general comments on the project in the [Discussions](https://github.com/ikeawesom/ArtGen/discussions/categories/general) page. If you would like to see something new by the community, post them in the [Feature Suggestions](https://github.com/ikeawesom/ArtGen/discussions/categories/feature-suggestions) page.
 
 Being open source, we welcome all feedback and contributions to make ArtGen a more conducive environment for all developers!
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
