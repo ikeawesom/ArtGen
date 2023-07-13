@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { UilArrowRight } from "@iconscout/react-unicons";
+import { FEATURED_FEATURES_LIST } from "@/app/globals";
 
 interface BannerProps {
   children?: ReactNode;
@@ -19,32 +20,6 @@ export function MainBanner({ children, identifier, styles }: BannerProps) {
 }
 
 export function FeatureBanner() {
-  let feautured_lst = [
-    {
-      name: "Theme Generator",
-      link: "theme_generator",
-      alt: "Theme",
-      icon: "icon_theme.svg",
-    },
-    {
-      name: "Gradients",
-      link: "gradients",
-      alt: "Gradients",
-      icon: "icon_gradient.svg",
-    },
-    {
-      name: "Font Pairs",
-      link: "font-pairing",
-      alt: "Font Pairs",
-      icon: "icon_fonts.svg",
-    },
-    {
-      name: "Icons",
-      link: "icons",
-      alt: "Icons",
-      icon: "icon_icons.svg",
-    },
-  ];
   return (
     <div>
       <MainBanner identifier="feature banner">
@@ -55,7 +30,7 @@ export function FeatureBanner() {
           Popular design and digital art tools available with us.
         </p>
         <ul className="my-5 flex flex-wrap gap-x-20 gap-y-5 justify-around items-center w-full text-violet-900">
-          {feautured_lst.map((item) => (
+          {FEATURED_FEATURES_LIST.map((item) => (
             <li>
               <a href={`/features/${item.link}`}>
                 <div className="flex flex-col gap-3 items-center justify-center">

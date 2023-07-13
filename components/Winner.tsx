@@ -1,14 +1,11 @@
 import { SectionImage } from "./Sections";
+import {
+  COMP_WINNER_USERNAME,
+  COMP_WINNER_IMG,
+  COMP_WINNER_TOOLS,
+} from "@/app/globals";
 
 export function Winner() {
-  const username = "@DianaMalewicz"; // sample
-  const project_img = "img_winner.png"; // sample
-  const tools_used = [
-    { name: "Color Palette", link: "color-palette" },
-    { name: "Gradients", link: "gradients" },
-    { name: "Font Pairs", link: "font-pairing" },
-    { name: "Icons", link: "icons" },
-  ];
   return (
     <div className="winner my-10 text-center">
       <div className="my-10">
@@ -16,12 +13,12 @@ export function Winner() {
           Winner of July's Competition
         </h4>
         <h1 className="md:text-4xl text-2xl font-bold mt-3">
-          <span className="gradient">{username}</span>
+          <span className="gradient">{COMP_WINNER_USERNAME}</span>
         </h1>
       </div>
 
       <SectionImage
-        img={`../community/competition/${project_img}`}
+        img={`../community/competition/${COMP_WINNER_IMG}`}
         full={true}
       />
       <div className="my-10">
@@ -29,7 +26,7 @@ export function Winner() {
           Tools used from <span className="gradient font-bold">ArtGen</span>
         </h4>
         <ul className="flex gap-x-5 items-center justify-center flex-wrap">
-          {tools_used.map((item) => (
+          {COMP_WINNER_TOOLS.map((item) => (
             <a href={item.link}>
               <li className="text-violet-100 hover:text-violet-300">
                 {item.name}

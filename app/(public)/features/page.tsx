@@ -1,38 +1,12 @@
 import PageWrapper from "@/components/PageWrapper";
 import { Metadata } from "next";
+import { FEATURES_LIST } from "@/app/globals";
 
 const metadata: Metadata = {
   title: "Features | ArtGen",
 };
 
 export default function Page() {
-  const features_lst = [
-    { name: "Theme Generator", link: "theme-generator" },
-    {
-      name: "Gradients",
-      link: "gradients",
-    },
-    {
-      name: "Color Palette",
-      link: "color-palette",
-    },
-    {
-      name: "Page Dividers",
-      link: "page-dividers",
-    },
-    {
-      name: "Font Pairs",
-      link: "font-pairing",
-    },
-    {
-      name: "Icons",
-      link: "icons",
-    },
-    {
-      name: "Blob Generator",
-      link: "blob-generator",
-    },
-  ];
   return (
     <PageWrapper>
       <div className="pt-5">
@@ -48,7 +22,7 @@ export default function Page() {
 
         <div className="w-100 my-20">
           <ul className="flex gap-4 justify-center items-center text-indigo-950">
-            {features_lst.map((item) => (
+            {FEATURES_LIST.map((item) => (
               <a
                 href={`/features/${item.link}`}
                 className="p-5 shadow-md self-stretch flex-1"

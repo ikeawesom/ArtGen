@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { APP_NAME } from "@/app/globals";
+import { APP_NAME, APP_LINKS } from "@/app/globals";
 import { UilBars, UilTimes } from "@iconscout/react-unicons";
 import { ButtonGradient } from "@/components/Buttons";
 
@@ -52,19 +52,11 @@ export default function Nav() {
         >
           {/* Utility Buttons */}
           <ul className="min-[900px]:flex gap-7 justify-center items-center text-violet-700 div-items font-semibold nav-items py-2">
-            <li className={currentUrl === "/features" ? "font-bold" : ""}>
-              <a href="/features">Features</a>
-            </li>
-            <li className={currentUrl === "/learn" ? "font-bold" : ""}>
-              <a href="/learn">Learn</a>
-            </li>
-
-            <li className={currentUrl === "/community" ? "font-bold" : ""}>
-              <a href="/community">Community</a>
-            </li>
-            <li className={currentUrl === "/pricing" ? "font-bold" : ""}>
-              <a href="/pricing">Pricing</a>
-            </li>
+            {APP_LINKS.map((item) => (
+              <li className={currentUrl === item.link ? "font-extrabold" : ""}>
+                <a href={item.link}>{item.title}</a>
+              </li>
+            ))}
           </ul>
 
           {/* Account Buttons */}
