@@ -17,7 +17,7 @@ export const APP_LINKS = [
   },
   {
     title: "Releases",
-    link: "/releases",
+    link: "https://github.com/ikeawesom/ArtGen/releases",
     type: "Overview",
     showNav: false,
   },
