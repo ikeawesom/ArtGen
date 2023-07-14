@@ -113,7 +113,7 @@ export default function Home() {
           </p>
         </MainBanner>
       </PageWrapper>
-      <PageWrapper dark={"dark"}>
+      <PageWrapper identifier={"dark"}>
         <SectionContainer dark={true}>
           <SectionText
             header="Friendly Competitions"
