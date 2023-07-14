@@ -56,6 +56,7 @@ export default function Nav() {
               (item) =>
                 item.showNav && (
                   <li
+                    key={item.title}
                     className={currentUrl === item.link ? "font-extrabold" : ""}
                   >
                     <a href={item.link}>{item.title}</a>

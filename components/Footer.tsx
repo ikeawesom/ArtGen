@@ -39,12 +39,12 @@ export default function Footer() {
         <div className="md:w-1/2 w-full flex-1 md:text-start text-center">
           <div className="flex gap-x-10 gap-y-5 flex-wrap">
             {FOOTER_HEADERS.map((header) => (
-              <ul className="flex-1">
+              <ul className="flex-1" key={header}>
                 <h4 className="font-bold text-violet-200">{header}</h4>
                 {APP_LINKS.map(
                   (item) =>
                     item.type === header && (
-                      <li className="mt-5">
+                      <li className="mt-5" key={item.title}>
                         <a
                           className="text-violet-200 hover:opacity-70 duration-150"
                           href={item.link}
@@ -67,7 +67,11 @@ export default function Footer() {
           {CONTACT_LINKS.map(
             (item) =>
               item.display.includes("footer") && (
-                <a href={item.link} className="duration-150 hover:opacity-70">
+                <a
+                  key={item.name}
+                  href={item.link}
+                  className="duration-150 hover:opacity-70"
+                >
                   <li>
                     <img
                       height={25}

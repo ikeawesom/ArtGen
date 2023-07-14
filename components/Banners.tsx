@@ -33,7 +33,7 @@ export function FeatureBanner() {
           {FEATURES_LIST.map(
             (item) =>
               item.featured && (
-                <li>
+                <li key={item.name}>
                   <a href={`/features/${item.link}`}>
                     <div className="flex flex-col gap-3 items-center justify-center">
                       <img src={`/features/${item.icon}`} alt={item.name} />

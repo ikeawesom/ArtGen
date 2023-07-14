@@ -18,6 +18,8 @@ export default function Page() {
         Features at <span className="gradient">ArtGen</span>
       </PageHeading>
 
+      {/* TODO: Add Agolia Search */}
+
       <div className="w-100 my-20">
         <ul className="flex lg:gap-x-16 gap-x-5 gap-y-16 justify-evenly items-center flex-wrap text-indigo-950">
           {FEATURES_LIST.map((item) => (

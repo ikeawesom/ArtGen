@@ -11,7 +11,7 @@ export default function ContactLinks({ name, icon }: Props) {
         {CONTACT_LINKS.map(
           (item) =>
             item.display.includes("banner") && (
-              <a href={item.link}>
+              <a href={item.link} key={item.name}>
                 <li className="flex flex-wrap gap-3 items-center justify-center hover:opacity-70 duration-200">
                   {(icon === undefined || icon === true) && (
                     <span>

@@ -27,7 +27,7 @@ export function Winner() {
         </h4>
         <ul className="flex gap-x-5 items-center justify-center flex-wrap">
           {COMP_WINNER_TOOLS.map((item) => (
-            <a href={item.link}>
+            <a key={item.name} href={item.link}>
               <li className="text-violet-100 hover:text-violet-300">
                 {item.name}
               </li>
