@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import PageHeading from "@/components/PageHeading";
 import FeatureList from "@/components/features/FeatureList";
 import CategoryList from "@/components/features/CategoryList";
+import SearchBar from "@/components/features/SearchBar";
 
 const metadata: Metadata = {
   title: "Features | ArtGen",
@@ -13,9 +14,14 @@ const metadata: Metadata = {
 export default function Page() {
   const [pageNumber, setPageNumber] = useState(1);
   const [category, setCategory] = useState("All");
+  const [query, setQuery] = useState("");
 
   const handleCategory = (cat: string) => {
     setCategory(cat);
+  };
+
+  const handleSearch = (query: string) => {
+    setQuery(query);
   };
 
   return (
@@ -27,10 +33,11 @@ export default function Page() {
         Features at <span className="gradient">ArtGen</span>
       </PageHeading>
 
-      {/* TODO: Add Agolia Search */}
+      <SearchBar onClick={handleSearch} />
+
       <div className="md:flex flex-wrap gap-10">
         <CategoryList
-          className="flex-1 xl:w-1/5 md:w-1/3 w-full md:sticky top-20 self-start z-10"
+          className="flex-1 xl:w-1/5 md:w-1/3 mb-5 md:mb-0 p-2 sticky top-20 self-start z-10 bg-violet-500 md:ring-0 ring-1 ring-violet-500/10 md:bg-transparent rounded-lg shadow-lg md:shadow-none"
           onClick={handleCategory}
           cat={category}
         />
@@ -39,6 +46,7 @@ export default function Page() {
           className="flex-3 xl:w-4/5 md:w-2/3 w-full"
           page={pageNumber}
           cat={category}
+          query={query}
         />
       </div>
     </PageWrapper>
