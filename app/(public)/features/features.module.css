@@ -1,0 +1,47 @@
+.feature-item {
+  width: 100%;
+}
+
+.feature-item li img {
+  height: 200px;
+  width: 200px;
+  transition: 0.3s;
+}
+
+.feature-item:hover img {
+  transform: scale(0.8);
+}
+
+.image-container {
+  height: 75%;
+}
+
+.text-container {
+  background-image: linear-gradient(
+    0deg,
+    rgba(116, 203, 247, 0.95) 20%,
+    rgba(137, 147, 255, 0.95) 52%,
+    rgba(191, 116, 247, 0.95) 100%
+  );
+}
+
+@media (min-width: 820px) {
+  .feature-item {
+    position: relative;
+    width: 25%;
+  }
+
+  .text-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    width: 100%;
+    transition: 200ms ease-in-out 200ms;
+    height: 100%;
+  }
+
+  .feature-item:hover .text-container {
+    transform: translateY(0%);
+  }
+}

@@ -114,46 +114,53 @@ export const CONTACT_LINKS = [
 // ---------------- FEATURES DETAILS ------------------- //
 export const FEATURES_LIST = [
   {
-    name: "Color Palette",
-    link: "color-palette",
-    icon: "icon_palette.svg",
-    featured: false,
-  },
-  {
-    name: "Page Dividers",
-    link: "page-dividers",
-    icon: "icon_divider.svg",
-    featured: false,
-  },
-  {
-    name: "Blob Generator",
-    link: "blob-generator",
-    icon: "icon_blob.svg",
-    featured: false,
-  },
-  {
     name: "Theme Generator",
+    desc: "Easily create visually stunning color schemes that harmonize seamlessly.",
     link: "theme_generator",
     icon: "icon_theme.svg",
     featured: true,
   },
   {
     name: "Gradients",
+    desc: "Generate captivating gradients to add depth and allure to your designs.",
     link: "gradients",
     icon: "icon_gradient.svg",
     featured: true,
   },
   {
     name: "Font Pairs",
+    desc: "Discover perfect font combinations and typography styles for impactful visuals.",
     link: "font-pairing",
     icon: "icon_fonts.svg",
     featured: true,
   },
   {
     name: "Icons",
+    desc: "Enhance your designs with a vast collection of professionally crafted icons.",
     link: "icons",
     icon: "icon_icons.svg",
     featured: true,
+  },
+  {
+    name: "Color Palette",
+    desc: "Access a comprehensive selection of hues and shades to simplify your color choices.",
+    link: "color-palette",
+    icon: "icon_palette.svg",
+    featured: false,
+  },
+  {
+    name: "Page Dividers",
+    desc: "Add a touch of creativity to your website layouts with wavy and artistic dividers.",
+    link: "page-dividers",
+    icon: "icon_divider.svg",
+    featured: false,
+  },
+  {
+    name: "Blob Generator",
+    desc: "Unleash your creativity with organic and fluid shapes that add a playful touch to your designs.",
+    link: "blob-generator",
+    icon: "icon_blob.svg",
+    featured: false,
   },
 ];
 
