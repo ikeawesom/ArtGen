@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { UilArrowRight } from "@iconscout/react-unicons";
 import { FEATURES_LIST } from "@/app/globals";
 
 interface BannerProps {
@@ -48,8 +47,14 @@ export function FeatureBanner() {
         <div className="grid place-items-center">
           <a href="/features">
             <p className="hover:translate-x-5 duration-300 ease-in-out text-violet-800 font-semibold flex items-center justify-center">
-              View all features
-              <UilArrowRight size="25" color="rgb(109 40 217)" />
+              <span className="flex gap-1 items-center justify-center">
+                View all features
+                <img
+                  src="/icons/icon_right-arrow.svg"
+                  alt="Proceed"
+                  width={20}
+                />
+              </span>
             </p>
           </a>
         </div>

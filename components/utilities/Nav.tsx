@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { APP_NAME, APP_LINKS } from "@/app/globals";
-import { UilBars, UilTimes } from "@iconscout/react-unicons";
 import { ButtonGradient } from "@/components/Buttons";
 
 export default function Nav() {
@@ -17,7 +16,7 @@ export default function Nav() {
       <div className="min-[900px]:flex items-center justify-between max-w-[1800px] w-full relative">
         <a
           href="/"
-          className="flex gap-2 items-center max-[900px]:bg-[#f9f2ff] px-4 py-2"
+          className="flex gap-2 items-center max-[900px]:bg-[#f9f2ff] p-4"
         >
           <img src="/favicon.svg" alt="icon" className="h-8" />
           <h1 className="text-xl font-extrabold text-violet-700">
@@ -27,18 +26,20 @@ export default function Nav() {
 
         <div>
           {!navOpen && (
-            <UilBars
-              size="25"
-              color="rgb(109 40 217)"
-              className="cursor-pointer hover:opacity-70 min-[900px]:hidden absolute top-3 right-5"
+            <img
+              src="/icons/icon_hamburger.svg"
+              alt="Menu"
+              width={50}
+              className="cursor-pointer hover:opacity-70 min-[900px]:hidden absolute top-2 right-3"
               onClick={() => setNavOpen(!navOpen)}
             />
           )}
           {navOpen && (
-            <UilTimes
-              size="25"
-              color="rgb(109 40 217)"
-              className="cursor-pointer hover:opacity-70 min-[900px]:hidden absolute top-3 right-5"
+            <img
+              src="/icons/icon_cross.svg"
+              alt="Exit"
+              width={30}
+              className="cursor-pointer hover:opacity-70 min-[900px]:hidden absolute top-4 right-5"
               onClick={() => setNavOpen(!navOpen)}
             />
           )}
