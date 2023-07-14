@@ -26,7 +26,7 @@ export default function Footer() {
         <div className="flex gap-2 md:items-start items-center md:text-start text-center flex-col justify-start flex-1 md:w-1/2 w-full">
           <a href="/">
             <div className="flex gap-2 items-center justify-center hover:brightness-125 duration-200">
-              <img width={50} src="favicon.svg" alt="ArtGen Icon" />
+              <img width={50} src="/favicon.svg" alt="ArtGen Icon" />
               <h1 className="text-4xl">
                 <span className="gradient">{APP_NAME}</span>
               </h1>
