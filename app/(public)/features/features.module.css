@@ -37,7 +37,7 @@
     left: 0;
     transform: translateY(100%);
     width: 100%;
-    transition: 200ms ease-in-out 200ms;
+    transition: 300ms ease-in-out 200ms;
     height: 100%;
   }
 

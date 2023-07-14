@@ -24,7 +24,7 @@ export default function Page() {
             <a
               key={item.name}
               href={`/features/${item.link}`}
-              className={`bg-violet-200 shadow-md self-stretch rounded-md overflow-hidden hover:scale-105 duration-300 ease-in-out ${styles["feature-item"]}`}
+              className={`bg-slate-100 shadow-md self-stretch rounded-md overflow-hidden hover:scale-105 duration-300 ease-in-out ${styles["feature-item"]}`}
             >
               <li>
                 <div
