@@ -122,6 +122,12 @@ span.gradient1 {
   padding: 5rem 4rem;
 }
 
+@media screen and (max-width: 500px) {
+  .page-wrapper.features {
+    padding: 5rem 1rem;
+  }
+}
+
 /* Banners */
 
 .banner {

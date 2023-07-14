@@ -11,13 +11,13 @@ export default function CategoryList({ className, onClick, cat }: Props) {
   return (
     <div className={className}>
       <ul
-        className={`md:block flex gap-x-5 justify-center items-center flex-wrap mb-5 md:mb-0`}
+        className={`md:block flex sm:gap-x-5 gap-1 justify-center items-center md:mb-5`}
       >
         {FEATURES_CAT.map((item) => (
           <li
             key={item.title}
             onClick={() => onClick(item.title)}
-            className={`p-2 mb-3 hover:bg-violet-300 duration-150 rounded-md font-medium cursor-pointer flex gap-2 items-center justify-start ${
+            className={`p-2 md:mb-3 hover:bg-violet-300 duration-150 md:rounded-lg rounded-full font-medium cursor-pointer flex gap-2 items-center justify-start ${
               item.title === cat && "bg-violet-300"
             }`}
           >
@@ -26,7 +26,7 @@ export default function CategoryList({ className, onClick, cat }: Props) {
               alt={item.title}
               width={40}
             />
-            {item.title}
+            <span className="md:block hidden">{item.title}</span>
           </li>
         ))}
       </ul>
