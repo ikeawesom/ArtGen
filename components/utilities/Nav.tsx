@@ -27,10 +27,10 @@ export default function Nav() {
         <div>
           {!navOpen && (
             <img
-              src="/icons/icon_hamburger.svg"
+              src="/icons/icon_menu.svg"
               alt="Menu"
-              width={50}
-              className="cursor-pointer hover:opacity-70 min-[900px]:hidden absolute top-2 right-3"
+              width={30}
+              className="cursor-pointer hover:opacity-70 min-[900px]:hidden absolute top-4 right-3"
               onClick={() => setNavOpen(!navOpen)}
             />
           )}
@@ -39,7 +39,7 @@ export default function Nav() {
               src="/icons/icon_cross.svg"
               alt="Exit"
               width={30}
-              className="cursor-pointer hover:opacity-70 min-[900px]:hidden absolute top-4 right-5"
+              className="cursor-pointer hover:opacity-70 min-[900px]:hidden absolute top-4 right-3"
               onClick={() => setNavOpen(!navOpen)}
             />
           )}
