@@ -30,7 +30,7 @@ export default function Page() {
       {/* TODO: Add Agolia Search */}
       <div className="md:flex flex-wrap gap-10">
         <CategoryList
-          className="flex-1 xl:w-1/5 md:w-1/3 w-full md:sticky top-20 self-start z-20"
+          className="flex-1 xl:w-1/5 md:w-1/3 w-full md:sticky top-20 self-start z-10"
           onClick={handleCategory}
           cat={category}
         />
