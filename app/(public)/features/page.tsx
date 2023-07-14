@@ -37,7 +37,7 @@ export default function Page() {
 
       <div className="md:flex flex-wrap gap-10">
         <CategoryList
-          className="flex-1 xl:w-1/5 md:w-1/3 mb-5 md:mb-0 p-2 sticky top-20 self-start z-10 bg-violet-500 md:ring-0 ring-1 ring-violet-500/10 md:bg-transparent rounded-lg shadow-lg md:shadow-none"
+          className="flex-1 xl:w-1/5 md:w-1/3 mb-5 md:mb-0 p-2 sticky top-20 self-start z-10 md:bg-none bg-gradient-to-r from-violet-700 to-fuchsia-700 md:ring-0 ring-1 ring-violet-500/10 rounded-lg shadow-xl md:shadow-none"
           onClick={handleCategory}
           cat={category}
         />

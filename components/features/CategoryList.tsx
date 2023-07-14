@@ -18,7 +18,7 @@ export default function CategoryList({ className, onClick, cat }: Props) {
             key={item.title}
             onClick={() => onClick(item.title)}
             className={`p-2 md:mb-3 hover:bg-violet-300 duration-150 md:rounded-lg rounded-full font-medium cursor-pointer flex gap-2 items-center justify-start ${
-              item.title === cat && "bg-violet-300"
+              item.title === cat && "md:bg-violet-300 bg-violet-300/50"
             }`}
           >
             <img

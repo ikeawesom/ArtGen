@@ -27,6 +27,7 @@ export default function FeatureList({ page, className, cat, query }: Props) {
 
   return (
     <div className={className}>
+      <h1 className="mb-3 font-medium">Current category: {cat}</h1>
       {page_list.length === 0 && (
         <div className="grid place-items-center h-full p-10 text-center">
           <img src="/icons/icon_no-results.svg" alt="" width={250} />
