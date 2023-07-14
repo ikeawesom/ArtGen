@@ -27,7 +27,7 @@ You can play a part into building this non-exhaustive list of features!
 - NextJS
 - TailwindCSS
 - Typescript
-- Firebase
+- Supabase (TBC)
 
 ## Contributing
 
@@ -65,8 +65,6 @@ This should be locally hosted on `http://localhost:3000`.
 All static media is managed in the `public` dir. You can easily add more content by uploading them directly in GitHub. The `app` dir includes the general pages of the website. Within its recursive dirs, `page.tsx` is the main HTML body of each page. Where necessary `layout.tsx` can be added to create general layouts for all of the `page.tsx` within that dir. Typos can also be edited directly in GitHub.
 
 When editing, make sure to utilise `components` onto the `page.tsx` as much as possible instead of flooding the page with plain HTML. This is to improve readability and promote code reusability for other developers as well.
-
-<b>Important:</b> Firebase will not allow access to the backend services due to undisclosed environment variables. Avoid modifying the backend Typescript files (i.e. `firebase/config.js`, `firebase/auth/*`, etc.)
 
 ## Developing Basic Components
 
@@ -135,7 +133,7 @@ export default function NewFeature() {
 If a custom CSS is required, create a new `<component-name>.module.css` in the `root/components/<component-name>` dir.
 
 ```css
-.block {
+.primary-body {
   background-color: linear-gradient(to bottom, black, red);
 }
 .heading {
@@ -154,15 +152,15 @@ import styles from "./<component-name>.module.css";
 
 export default function NewFeature() {
   return (
-    <div className={styles.block}>
-      <h1 className={styles.heading}>Hello World</h1>
-      <p className={styles.subtitle}>This my feature!</p>
+    <div className={styles["primary-body"]}> // for class names with dashes or any other punctuation
+      <h1 className={styles["heading"]}>Hello World</h1> // can also be used for one-word class names
+      <p className={styles.subtitle}>This my feature!</p> // object usage (punctuations will not work here)
     </div>
   );
 }
 ```
 
-<b>Note:</b> Only modify `app/global.css` when styling inside the relevant `page.tsx` instead of components.
+**Important:** Add the `modules.css` file into the **same** dir as your `component.tsx` file. Do not mix them up with other dirs.
 
 ## Submission
 
