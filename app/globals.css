@@ -118,6 +118,10 @@ span.gradient1 {
   }
 }
 
+.page-wrapper.features {
+  padding: 5rem 4rem;
+}
+
 /* Banners */
 
 .banner {

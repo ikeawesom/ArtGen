@@ -112,13 +112,22 @@ export const CONTACT_LINKS = [
 // ------------------------------------------------------------ //
 
 // ---------------- FEATURES DETAILS ------------------- //
+export const FEATURES_CAT = [
+  { title: "All", icon: "icon_home.svg" },
+  { title: "Backgrounds", icon: "icon_bg.svg" },
+  { title: "Colors", icon: "icon_colors.svg" },
+  { title: "Graphics", icon: "icon_graphics.svg" },
+  { title: "Typography", icon: "icon_typo.svg" },
+];
+
 export const FEATURES_LIST = [
   {
     name: "Theme Generator",
     desc: "Easily create visually stunning color schemes that harmonize seamlessly.",
-    link: "theme_generator",
+    link: "theme-generator",
     icon: "icon_theme.svg",
     featured: true,
+    cat: ["All", "Backgrounds", "Colors"],
   },
   {
     name: "Gradients",
@@ -126,6 +135,7 @@ export const FEATURES_LIST = [
     link: "gradients",
     icon: "icon_gradient.svg",
     featured: true,
+    cat: ["All", "Backgrounds", "Colors"],
   },
   {
     name: "Font Pairs",
@@ -133,6 +143,7 @@ export const FEATURES_LIST = [
     link: "font-pairing",
     icon: "icon_fonts.svg",
     featured: true,
+    cat: ["All", "Typography"],
   },
   {
     name: "Icons",
@@ -140,6 +151,7 @@ export const FEATURES_LIST = [
     link: "icons",
     icon: "icon_icons.svg",
     featured: true,
+    cat: ["All", "Graphics"],
   },
   {
     name: "Color Palette",
@@ -147,6 +159,7 @@ export const FEATURES_LIST = [
     link: "color-palette",
     icon: "icon_palette.svg",
     featured: false,
+    cat: ["All", "Colors"],
   },
   {
     name: "Page Dividers",
@@ -154,6 +167,7 @@ export const FEATURES_LIST = [
     link: "page-dividers",
     icon: "icon_divider.svg",
     featured: false,
+    cat: ["All", "Backgrounds", "Colors"],
   },
   {
     name: "Blob Generator",
@@ -161,6 +175,7 @@ export const FEATURES_LIST = [
     link: "blob-generator",
     icon: "icon_blob.svg",
     featured: false,
+    cat: ["All", "Graphics"],
   },
 ];
 
