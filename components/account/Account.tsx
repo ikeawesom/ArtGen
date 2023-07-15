@@ -1,5 +1,8 @@
-import { ReactNode } from "react";
+import { FormEvent, ReactNode, use, useEffect, useState } from "react";
+import { handleSignUp } from "@/supabase/auth/handleAuth";
+
 import "./account.css";
+import Alert from "../utilities/Alert";
 
 const paddings = "px-5 sm:px-10 lg:px-28 md:px-20 content-container";
 
@@ -19,6 +22,76 @@ interface FormProps {
 }
 
 export function AccountForm({ title, user, onClick }: FormProps) {
+  const [userDetails, setUserDetails] = useState({
+    email: "",
+    password: "",
+    f_name: "",
+    l_name: "",
+  });
+  const [pass, setPass] = useState("");
+  const [cfmPass, setCfmPass] = useState("");
+  const [verify, setVerify] = useState("");
+
+  function handleEmailChange(email_s: string) {
+    setUserDetails((userDetails) => {
+      return { ...userDetails, email: email_s };
+    });
+  }
+
+  function handleFNameChange(fname_s: string) {
+    setUserDetails((userDetails) => {
+      return { ...userDetails, f_name: fname_s };
+    });
+  }
+
+  function handleLNameChange(lname_s: string) {
+    setUserDetails((userDetails) => {
+      return { ...userDetails, l_name: lname_s };
+    });
+  }
+
+  function handlePasswordChange(password_s: string, cfm: boolean) {
+    if (cfm) {
+      setPass(password_s);
+    } else setCfmPass(password_s);
+    setUserDetails((userDetails) => {
+      return { ...userDetails, password: password_s };
+    });
+  }
+
+  async function handleSignUp_Client(
+    user: string,
+    password: string,
+    f_name: string,
+    l_name: string
+  ) {
+    const { data, error } = await handleSignUp(user, password, f_name, l_name);
+    if (!error) setVerify("success");
+    else {
+      setVerify(error.toString());
+      console.log(`[CLIENT] ${error}`);
+    }
+  }
+
+  async function handlePassword(e: FormEvent) {
+    e.preventDefault();
+
+    if (pass === cfmPass && pass !== "") {
+      console.log("Email:", userDetails.email);
+      console.log("Password:", userDetails.password);
+      console.log("F_name:", userDetails.f_name);
+      console.log("L_name:", userDetails.l_name);
+      handleSignUp_Client(
+        userDetails.email,
+        userDetails.password,
+        userDetails.f_name,
+        userDetails.l_name
+      );
+    } else {
+      alert("Passwords do not match.");
+    }
+  }
+
   return (
     <div className={`grid place-content-center h-full ${paddings} `}>
       <div className="account-container">
@@ -60,29 +133,61 @@ export function AccountForm({ title, user, onClick }: FormProps) {
             </h4>
           </form>
         ) : (
-          <form className="px-30 w-full" id="register">
+          <form
+            className="px-30 w-full"
+            id="register"
+            onSubmit={(e) => handlePassword(e)}
+          >
             <input
               type="email"
-              id="email"
               placeholder="Enter your email"
               className="w-full"
+              required={true}
+              // value={userDetails.email}
+              onChange={(e) => handleEmailChange(e.target.value)}
             />
             <div className="flex gap-2">
-              <input type="text" placeholder="First name" className="w-1/2" />
-              <input type="text" placeholder="Last name" className="w-1/2" />
+              <input
+                type="text"
+                placeholder="First name"
+                className="w-1/2"
+                required={true}
+                // value={userDetails.f_name}
+                onChange={(e) => handleFNameChange(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Last name"
+                required={true}
+                className="w-1/2"
+                // value={userDetails.l_name}
+                onChange={(e) => handleLNameChange(e.target.value)}
+              />
             </div>
             <input
               type="password"
               id="password-1"
               placeholder="Choose a password"
-              className="w-full"
+              className={`w-full ${
+                pass !== cfmPass && "border-2 border-red-500"
+              }`}
+              minLength={6}
+              onChange={(e) => handlePasswordChange(e.target.value, false)}
             />
             <input
               type="password"
               id="password-2"
               placeholder="Confirm your password"
-              className="w-full"
+              className={`w-full ${
+                pass !== cfmPass && "border-2 border-red-500"
+              }`}
+              onChange={(e) => handlePasswordChange(e.target.value, true)}
             />
+            {pass !== cfmPass && (
+              <p className="text-red-500 text-md font-medium">
+                Passwords do not match.
+              </p>
+            )}
 
             <button className="w-full bg-violet-600 text-violet-50 py-3 rounded-md shadow-md mt-5 hover:opacity-80 duration-200">
               Get started
@@ -96,6 +201,13 @@ export function AccountForm({ title, user, onClick }: FormProps) {
                 Log in.
               </span>
             </h4>
+            {verify !== "" && (
+              <Alert type={verify === "success" ? verify : ""}>
+                {verify === "success"
+                  ? `An email verification has been sent to ${userDetails.email}. Please verify your email before joining us!`
+                  : verify}
+              </Alert>
+            )}
           </form>
         )}
       </div>
