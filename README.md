@@ -27,7 +27,7 @@ You can play a part into building this non-exhaustive list of features!
 - NextJS
 - TailwindCSS
 - Typescript
-- Supabase (TBC)
+- Supabase
 
 ## Contributing
 
@@ -152,9 +152,13 @@ import styles from "./<component-name>.module.css";
 
 export default function NewFeature() {
   return (
-    <div className={styles["primary-body"]}> // for class names with dashes or any other punctuation
-      <h1 className={styles["heading"]}>Hello World</h1> // can also be used for one-word class names
-      <p className={styles.subtitle}>This my feature!</p> // object usage (punctuations will not work here)
+    <div className={styles["primary-body"]}>
+      {" "}
+      // for class names with dashes or any other punctuation
+      <h1 className={styles["heading"]}>Hello World</h1> // can also be used for
+      one-word class names
+      <p className={styles.subtitle}>This my feature!</p> // object usage (punctuations
+      will not work here)
     </div>
   );
 }
