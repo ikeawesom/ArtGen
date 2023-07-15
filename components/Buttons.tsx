@@ -1,24 +1,26 @@
 import Link from "next/link";
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface ButtonProps {
-  text: string;
-  link: string;
-  tab: boolean;
+  children?: ReactNode;
+  link?: string;
+  tab?: boolean;
   color: string;
   textcolor: string;
-  hovercolor?: string;
+  duration?: string;
+  hover?: string;
   onClick?: () => void;
 }
 
 export function Button({
-  text,
+  children,
   link,
   tab,
   onClick,
   color,
   textcolor,
-  hovercolor,
+  hover,
+  duration,
 }: ButtonProps) {
   return (
     <Link
@@ -28,9 +30,9 @@ export function Button({
       onClick={onClick}
     >
       <button
-        className={`w-full ${color} ${textcolor} ${hovercolor} px-7 py-2 rounded-lg [transition:background-color_200ms] ease-in-out delay-150`}
+        className={`w-full ${color} ${textcolor} ${hover} ${duration} px-7 py-2 rounded-lg ease-in-out delay-150`}
       >
-        {text}
+        {children}
       </button>
     </Link>
   );
