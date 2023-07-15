@@ -66,6 +66,8 @@ All static media is managed in the `public` dir. You can easily add more content
 
 When editing, make sure to utilise `components` onto the `page.tsx` as much as possible instead of flooding the page with plain HTML. This is to improve readability and promote code reusability for other developers as well.
 
+<b>Important:</b> Supabase will not allow access to the backend services due to undisclosed environment variables. Avoid modifying the backend config files (i.e. `supabase/config.js`, `firebase/auth/*`, etc.)
+
 ## Developing Basic Components
 
 All `component` files are located in the `root/components` dir. Create a new Typescript component with `.tsx`.
