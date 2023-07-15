@@ -182,7 +182,7 @@ export default function Home() {
         <div className="w-full grid place-items-center mt-56">
           <div className="w-full text-center">
             <h1 className="md:text-8xl sm:text-6xl text-4xl font-extrabold text-violet-950 mb-5">
-              Inspired by the community.<br></br>
+              Inspired by the community. <br />
               <span className="gradient">Built for you.</span>
             </h1>
 
