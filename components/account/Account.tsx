@@ -1,6 +1,5 @@
 import { FormEvent, ReactNode, use, useEffect, useState } from "react";
-import { handleSignUp } from "@/supabase/auth/handleAuth";
-
+import { handleSignUp, handleSignIn } from "@/supabase/auth/handleAuth";
 import "./account.css";
 import Alert from "../utilities/Alert";
 
@@ -22,6 +21,21 @@ interface FormProps {
 }
 
 export function AccountForm({ title, user, onClick }: FormProps) {
+  // Log in
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleLogin(e: FormEvent) {
+    e.preventDefault();
+    const { data, error } = await handleSignIn(email, password);
+    if (!error) window.location.href = "/account/dashboard";
+    else {
+      setVerify(error.toString());
+      console.log(`[CLIENT] ${error}`);
+    }
+  }
+
+  // Register
   const [userDetails, setUserDetails] = useState({
     email: "",
     password: "",
@@ -98,18 +112,25 @@ export function AccountForm({ title, user, onClick }: FormProps) {
         <h1 className="text-3xl font-semibold mb-5 text-indigo-900">{title}</h1>
 
         {user ? (
-          <form className="px-30 w-full" id="login">
+          // Login
+          <form
+            className="px-30 w-full"
+            id="login"
+            onSubmit={(e) => handleLogin(e)}
+          >
             <input
               type="email"
               id="email"
               placeholder="Enter your email"
               className="w-full"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               id="password"
               placeholder="Enter your password"
               className="w-full"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div className="flex my-1 justify-end">
               <h4
@@ -128,11 +149,12 @@ export function AccountForm({ title, user, onClick }: FormProps) {
                 className="text-violet-600 cursor-pointer hover:opacity-70 duration-200"
                 onClick={() => onClick()}
               >
-                Register.
+                Get started.
               </span>
             </h4>
           </form>
         ) : (
+          // Register
           <form
             className="px-30 w-full"
             id="register"
