@@ -204,3 +204,16 @@ span.gradient1 {
   box-shadow: 0 10px 50px 0 rgb(0 0 0/0.9);
   /* background-image: linear-gradient(180deg, #360045 4%, #10001c 93%); */
 }
+
+.spinner {
+  animation: spinnerAnimate 800ms ease-in-out infinite;
+}
+
+@keyframes spinnerAnimate {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

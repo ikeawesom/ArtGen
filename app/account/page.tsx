@@ -9,6 +9,7 @@ import Circle from "@/components/utilities/Circle";
 import "@/components/account/account.css";
 import { useEffect, useState } from "react";
 import supabase from "@/supabase/config";
+import LoadingScreen from "@/components/Loading";
 
 export default function Page() {
   const [logIn, setLogIn] = useState(false);
@@ -72,5 +73,5 @@ export default function Page() {
       </div>
     );
   }
-  return <h1>Loading...</h1>;
+  return <LoadingScreen text="Redirecting to dashboard..." />;
 }
