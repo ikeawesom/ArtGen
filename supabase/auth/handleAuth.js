@@ -22,5 +22,6 @@ export async function getUserDetails() {
 
 export async function handleSignOut() {
     const { error } = await supabase.auth.signOut()
-    return { error }
+    if (error) {return error}
+    else {return "success"}
 }
