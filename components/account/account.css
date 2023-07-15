@@ -1,0 +1,55 @@
+input {
+  padding: 10px 20px;
+  margin: 8px auto;
+  border-radius: 6px;
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),
+    0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+p {
+  font-size: 10pt;
+}
+
+.account-container {
+  opacity: 0;
+  transform: translateY(-10%);
+  animation: fade-in 500ms ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@media (max-width: 600px) {
+  .main-container {
+    display: block;
+  }
+  .sub-container {
+    width: 100%;
+    height: fit-content;
+  }
+  .heading {
+    width: 100%;
+    background-color: rgb(245 243 255);
+    border-radius: 0;
+    position: sticky;
+    top: 0;
+  }
+  .content-container {
+    padding: 1rem;
+  }
+  .account-container {
+    margin-bottom: 10vh;
+    margin-top: 10vh;
+  }
+
+  /* .account-container input {
+    padding: 5px 10px;
+  } */
+}

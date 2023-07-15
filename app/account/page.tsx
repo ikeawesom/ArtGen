@@ -1,91 +1,58 @@
+"use client";
+
+import {
+  FormContainer,
+  AccountForm,
+  Display,
+} from "@/components/account/Account";
+import Circle from "@/components/utilities/Circle";
+import "@/components/account/account.css";
+import { useState } from "react";
+
 export default function Page() {
-  return <h1>Hello World</h1>;
+  const [logIn, setLogIn] = useState(false);
+
+  const handleSwitchForm = () => {
+    setLogIn(!logIn);
+  };
+
+  return (
+    <div className="min-h-screen overflow-hidden">
+      <a href="/community">
+        <div className="heading sm:hover:top-8 hover:bg-slate-50 duration-200 bg-white flex gap-2 items-center justify-center select-none w-fit px-5 py-2 shadow-lg rounded-md absolute sm:top-5 sm:left-1/2 sm:-translate-x-1/2 z-20">
+          <img src="/favicon.svg" alt="ArtGen" width={50} />
+          <div>
+            <h1 className="text-3xl m-0 p-0">
+              <span className="gradient">ArtGen</span>
+            </h1>
+            <p className="m-0 p-0 text-sm">Community</p>
+          </div>
+        </div>
+      </a>
+
+      <div className="flex h-full main-container">
+        <FormContainer className="bg-gradient-to-b from-violet-200 to-cyan-200 relative sub-container">
+          <Circle color="bg-green-200 z-0" position="bottom-10 left-10" />
+          <Circle color="bg-pink-300 z-0" position="top-10 right-10" />
+          <Display />
+        </FormContainer>
+        <FormContainer className="sub-container">
+          {!logIn && (
+            <AccountForm
+              title="Create an account"
+              user={false}
+              onClick={handleSwitchForm}
+            />
+          )}
+          {logIn && (
+            <AccountForm
+              title="Log in"
+              user={true}
+              onClick={handleSwitchForm}
+            />
+          )}
+        </FormContainer>
+      </div>
+    </div>
+  );
 }
-// "use client";
-
-// import { getAuth, Auth } from "firebase/auth";
-// import { use, useState } from "react";
-// import Alert from "@/components/utilities/Alert";
-// import SignUp from "@/firebase/auth/SignUp";
-// import app from "@/firebase/config";
-// import AuthCheck from "@/firebase/auth/AuthCheck";
-// import { Metadata } from "next";
-
-// const metadata: Metadata = {
-//   title: "Account | ArtGen",
-// };
-
-// export default function Page() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [verify, setVerify] = useState(false);
-//   const [status, setStatus] = useState(false);
-
-//   const auth = getAuth(app);
-
-//   function checkAuth(auth: Auth) {
-//     const logged = AuthCheck(auth);
-//     if (logged) window.location.href = "/dashboard";
-//   }
-
-//   const handleSignUp = (email: string, password: string, auth: Auth) => {
-//     setStatus(true);
-//     setTimeout(() => {
-//       checkAuth(auth);
-//     }, 4000);
-//   };
-
-//   checkAuth(auth);
-
-//   return (
-//     <div className="grid place-items-center h-screen w-full px-10 md:px-32">
-//       <div className="p-4 md:p-10 rounded-lg ring-1 ring-slate-900/10 shadow-lg md:w-96 bg-white">
-//         <form>
-//           <label htmlFor="email">
-//             <p className="text-slate-500 mb-3 text-sm">Email</p>
-//             <input
-//               className="px-3 py-3 rounded-lg ring-1 ring-slate-900/10 shadow-sm w-full mb-5"
-//               onChange={(e) => setEmail(e.target.value)}
-//               required
-//               type="email"
-//               name="email"
-//               id="email"
-//               placeholder="Enter your email address."
-//             />
-//           </label>
-//           <label htmlFor="password">
-//             <p className="text-slate-500 mb-3 text-sm">Password</p>
-//             <input
-//               className="px-3 py-3 rounded-lg ring-1 ring-slate-900/10 shadow-sm w-full mb-5"
-//               onChange={(e) => setPassword(e.target.value)}
-//               required
-//               type="password"
-//               name="password"
-//               id="password"
-//               placeholder="Enter a password"
-//             />
-//           </label>
-//           {verify && (
-//             <Alert
-//               text={"An email verification has been sent to " + email}
-//               type="success"
-//             />
-//           )}
-//           {status && <SignUp email={email} password={password} auth={auth} />}
-//           <button
-//             disabled={verify}
-//             className={
-//               verify
-//                 ? "mt-5 w-full px-7 py-3 rounded-lg bg-gray-500 text-gray-100"
-//                 : "mt-5 w-full px-7 py-3 rounded-lg bg-indigo-950 text-blue-50 hover:bg-indigo-800 focus:bg-indigo-800"
-//             }
-//             onClick={() => handleSignUp(email, password, auth)}
-//             type="button"
-//           >
-//             {verify ? <>Redirecting...</> : <>Sign Up</>}
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
