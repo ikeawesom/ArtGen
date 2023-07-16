@@ -12,7 +12,7 @@ export async function handleSignUp(user, password, f_name, l_name) {
     },
   });
 
-  return { data, error };
+  return error;
 }
 
 export async function getUserDetails() {

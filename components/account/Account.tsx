@@ -79,7 +79,7 @@ export function AccountForm({ title, user, onClick }: FormProps) {
     f_name: string,
     l_name: string
   ) {
-    const { data, error } = await handleSignUp(user, password, f_name, l_name);
+    const error = await handleSignUp(user, password, f_name, l_name);
     if (!error) setVerify("success");
     else {
       setVerify(error.toString());
