@@ -38,3 +38,8 @@ export async function handleSignIn(email, password) {
   });
   return { data, error };
 }
+
+export async function handlePasswordReset(email) {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email);
+  return error;
+}
