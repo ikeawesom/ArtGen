@@ -12,7 +12,7 @@ export default function Alert({ type, children }: Props) {
       : "bg-red-300 text-red-950 ring-red-800";
   return (
     <div
-      className={`${c_name} ring-1 w-full rounded-lg p-3 text-sm font-semibold`}
+      className={`${c_name} ring-1 w-full rounded-md p-3 text-sm font-semibold`}
     >
       {children}
     </div>
