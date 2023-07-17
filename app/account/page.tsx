@@ -19,7 +19,6 @@ export default function Page() {
     async function LoggedIn() {
       const { data, error } = await supabase.auth.getSession();
 
-      console.log(`[CLIENT] ${data.session?.user}`);
       if (data.session) {
         setSess(true);
         window.location.href = "/account/dashboard";
