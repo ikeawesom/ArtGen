@@ -1,7 +1,12 @@
 import { FormEvent, ReactNode, use, useEffect, useState } from "react";
-import { handleSignUp, handleSignIn } from "@/supabase/auth/handleAuth";
+import {
+  handleSignUp,
+  handleSignIn,
+  handlePasswordReset,
+} from "@/supabase/auth/handleAuth";
 import "./account.css";
 import Alert from "../utilities/Alert";
+import { AuthError } from "@supabase/supabase-js";
 
 const paddings = "px-5 sm:px-10 lg:px-28 md:px-20 content-container";
 
@@ -21,18 +26,44 @@ interface FormProps {
 }
 
 export function AccountForm({ title, user, onClick }: FormProps) {
+  const [loading, setLoading] = useState(false);
+
+  // Forgot Password
+  const [forgot, setForgot] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
+
+  async function handleForgotPass(e: FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    console.log(forgotEmail);
+    const error = await handlePasswordReset(forgotEmail);
+    if (error) {
+      displayError(error);
+    } else {
+      setVerify("success");
+    }
+    setLoading(false);
+  }
+
   // Log in
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  function displayError(error: AuthError) {
+    const error_lst = error.toString().split(": ");
+    setVerify(`ERROR: ${error_lst[1]}`);
+    console.log(`[CLIENT] ${error}`);
+  }
+
   async function handleLogin(e: FormEvent) {
     e.preventDefault();
+    setLoading(true);
     const { data, error } = await handleSignIn(email, password);
     if (!error) window.location.href = "/account/dashboard";
     else {
-      setVerify(error.toString());
-      console.log(`[CLIENT] ${error}`);
+      displayError(error);
     }
+    setLoading(false);
   }
 
   // Register
@@ -80,21 +111,19 @@ export function AccountForm({ title, user, onClick }: FormProps) {
     l_name: string
   ) {
     const error = await handleSignUp(user, password, f_name, l_name);
-    if (!error) setVerify("success");
-    else {
-      setVerify(error.toString());
-      console.log(`[CLIENT] ${error}`);
+    if (!error) {
+      setVerify("success");
+    } else {
+      displayError(error);
     }
+    setLoading(false);
   }
 
   async function handlePassword(e: FormEvent) {
     e.preventDefault();
+    setLoading(true);
 
     if (pass === cfmPass && pass !== "") {
-      console.log("Email:", userDetails.email);
-      console.log("Password:", userDetails.password);
-      console.log("F_name:", userDetails.f_name);
-      console.log("L_name:", userDetails.l_name);
       handleSignUp_Client(
         userDetails.email,
         userDetails.password,
@@ -103,6 +132,7 @@ export function AccountForm({ title, user, onClick }: FormProps) {
       );
     } else {
       alert("Passwords do not match.");
+      setLoading(false);
     }
   }
 
@@ -111,7 +141,7 @@ export function AccountForm({ title, user, onClick }: FormProps) {
       <div className="account-container">
         <h1 className="text-3xl font-semibold mb-5 text-indigo-900">{title}</h1>
 
-        {user ? (
+        {user && !forgot && (
           // Login
           <form
             className="px-30 w-full"
@@ -119,6 +149,7 @@ export function AccountForm({ title, user, onClick }: FormProps) {
             onSubmit={(e) => handleLogin(e)}
           >
             <input
+              required={true}
               type="email"
               id="email"
               placeholder="Enter your email"
@@ -135,13 +166,27 @@ export function AccountForm({ title, user, onClick }: FormProps) {
             <div className="flex my-1 justify-end">
               <h4
                 className="text-violet-600 cursor-pointer hover:opacity-70 duration-200 text-end font-medium text-sm w-fit"
-                onClick={() => onClick()}
+                onClick={() => setForgot(true)}
               >
-                Having issues logging in?
+                Forgot Password
               </h4>
             </div>
-            <button className="w-full bg-violet-600 text-violet-50 py-3 rounded-md shadow-md mt-5 hover:opacity-80 duration-200">
-              Log in
+            <button
+              disabled={loading}
+              className={`w-full bg-violet-600 text-violet-50 py-3 rounded-md shadow-md mt-5 duration-200 grid place-items-center ${
+                !loading && "hover:opacity-80"
+              } ${loading && "opacity-70"}`}
+            >
+              {!loading ? (
+                "Log in"
+              ) : (
+                <img
+                  src="/icons/icon_spinner_light.svg"
+                  alt="Loading Info..."
+                  className="spinner"
+                  width={20}
+                />
+              )}
             </button>
             <h4 className="text-center font-medium text-indigo-900 my-3">
               New to ArtGen?{" "}
@@ -152,8 +197,14 @@ export function AccountForm({ title, user, onClick }: FormProps) {
                 Get started.
               </span>
             </h4>
+            {verify !== "" && (
+              <Alert type={verify === "success" ? verify : ""}>
+                {verify !== "success" && verify}
+              </Alert>
+            )}
           </form>
-        ) : (
+        )}
+        {!user && !forgot && (
           // Register
           <form
             className="px-30 w-full"
@@ -211,8 +262,22 @@ export function AccountForm({ title, user, onClick }: FormProps) {
               </p>
             )}
 
-            <button className="w-full bg-violet-600 text-violet-50 py-3 rounded-md shadow-md mt-5 hover:opacity-80 duration-200">
-              Get started
+            <button
+              disabled={loading}
+              className={`w-full bg-violet-600 text-violet-50 py-3 rounded-md shadow-md mt-5 duration-200 grid place-items-center ${
+                !loading && "hover:opacity-80"
+              } ${loading && "opacity-70"}`}
+            >
+              {!loading ? (
+                "Get started"
+              ) : (
+                <img
+                  src="/icons/icon_spinner_light.svg"
+                  alt="Loading Info..."
+                  className="spinner"
+                  width={20}
+                />
+              )}
             </button>
             <h4 className="text-center font-medium text-indigo-900 my-3">
               Already part of ArtGen?{" "}
@@ -227,6 +292,56 @@ export function AccountForm({ title, user, onClick }: FormProps) {
               <Alert type={verify === "success" ? verify : ""}>
                 {verify === "success"
                   ? `An email verification has been sent to ${userDetails.email}. Please verify your email before joining us!`
+                  : verify}
+              </Alert>
+            )}
+          </form>
+        )}
+
+        {user && forgot && (
+          <form
+            className="px-30 w-full account-container"
+            id="forgot"
+            onSubmit={(e) => handleForgotPass(e)}
+          >
+            <input
+              type="email"
+              id="email"
+              required={true}
+              placeholder="Enter your email"
+              className="w-full"
+              onChange={(e) => setForgotEmail(e.target.value)}
+            />
+            <button
+              disabled={loading}
+              className={`w-full bg-violet-600 text-violet-50 py-3 rounded-md shadow-md mt-5 duration-200 grid place-items-center ${
+                !loading && "hover:opacity-80"
+              } ${loading && "opacity-70"}`}
+            >
+              {!loading ? (
+                "Send me an email"
+              ) : (
+                <img
+                  src="/icons/icon_spinner_light.svg"
+                  alt="Loading Info..."
+                  className="spinner"
+                  width={20}
+                />
+              )}
+            </button>
+            <h4 className="text-center font-medium text-indigo-900 my-3">
+              New to ArtGen?{" "}
+              <span
+                className="text-violet-600 cursor-pointer hover:opacity-70 duration-200"
+                onClick={() => onClick()}
+              >
+                Get started.
+              </span>
+            </h4>
+            {verify !== "" && (
+              <Alert type={verify === "success" ? verify : ""}>
+                {verify === "success"
+                  ? `A password reset email has been sent to ${forgotEmail}`
                   : verify}
               </Alert>
             )}
