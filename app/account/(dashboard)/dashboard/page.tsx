@@ -5,7 +5,6 @@ import { UserMetadata } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import LoadingScreen from "@/components/Loading";
 import { handleSignOut } from "@/supabase/auth/handleAuth";
-import { addUser, getUserDBDetails } from "@/supabase/database/handleDB";
 import "@/app/globals.css";
 
 export default function Page() {
@@ -16,29 +15,7 @@ export default function Page() {
     async function handleUserInfo() {
       const res = await getUserDetails();
       if (res) {
-        const { data, error } = await getUserDBDetails(res.id);
-        if (error) {
-          // User does not exist OR Already added
-
-          const error = await addUser(
-            res.id,
-            res.email,
-            res.user_metadata.first_name,
-            res.user_metadata.last_name
-          );
-          if (error) {
-            console.log(error);
-          } else {
-            setUserInfo(res.user_metadata);
-          }
-        } else {
-          data?.forEach((item, index) => {
-            if (item.id === res.id) {
-              console.log(data[index]);
-              return;
-            }
-          });
-        }
+        setUserInfo(res.user_metadata);
       }
       // console.log(res.user_metadata); // first_name, last_name
     }
