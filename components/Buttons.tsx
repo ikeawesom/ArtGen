@@ -9,6 +9,7 @@ interface ButtonProps {
   textcolor: string;
   duration?: string;
   hover?: string;
+  delay?: string;
   onClick?: () => void;
 }
 
@@ -21,6 +22,7 @@ export function Button({
   textcolor,
   hover,
   duration,
+  delay,
 }: ButtonProps) {
   return (
     <Link
@@ -30,7 +32,7 @@ export function Button({
       onClick={onClick}
     >
       <button
-        className={`w-full ${color} ${textcolor} ${hover} ${duration} px-7 py-2 rounded-lg ease-in-out delay-150`}
+        className={`w-full ${color} ${textcolor} ${hover} ${duration} px-7 py-2 rounded-md ease-in-out ${delay}`}
       >
         {children}
       </button>
