@@ -2,7 +2,7 @@ import { FormEvent, ReactNode, use, useEffect, useState } from "react";
 import {
   handleSignUp,
   handleSignIn,
-  handlePasswordReset,
+  handleSendPasswordResetEmail,
 } from "@/supabase/auth/handleAuth";
 import "./account.css";
 import Alert from "../utilities/Alert";
@@ -36,7 +36,8 @@ export function AccountForm({ title, user, onClick }: FormProps) {
     e.preventDefault();
     setLoading(true);
     console.log(forgotEmail);
-    const error = await handlePasswordReset(forgotEmail);
+    const { data, error } = await handleSendPasswordResetEmail(forgotEmail);
+    console.log(data);
     if (error) {
       displayError(error);
     } else {
@@ -141,6 +142,7 @@ export function AccountForm({ title, user, onClick }: FormProps) {
       <div className="account-container">
         <h1 className="text-3xl font-semibold mb-5 text-indigo-900">{title}</h1>
 
+        {/* Signing in */}
         {user && !forgot && (
           // Login
           <form
@@ -204,6 +206,8 @@ export function AccountForm({ title, user, onClick }: FormProps) {
             )}
           </form>
         )}
+
+        {/* Signing up */}
         {!user && !forgot && (
           // Register
           <form
@@ -298,6 +302,7 @@ export function AccountForm({ title, user, onClick }: FormProps) {
           </form>
         )}
 
+        {/* Forgot Password */}
         {user && forgot && (
           <form
             className="px-30 w-full account-container"
@@ -350,10 +355,6 @@ export function AccountForm({ title, user, onClick }: FormProps) {
       </div>
     </div>
   );
-}
-
-interface DisplayProps {
-  display: boolean;
 }
 
 export function Display() {
