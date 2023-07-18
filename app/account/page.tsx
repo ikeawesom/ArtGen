@@ -22,9 +22,16 @@ export default function Page() {
       if (data.session) {
         setSess(true);
         window.location.href = "/account/dashboard";
+        // const { error } = await supabase.auth.signOut()
       }
     }
-    LoggedIn();
+
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log(event);
+      if (event !== "PASSWORD_RECOVERY") {
+        LoggedIn();
+      }
+    });
   }, []);
 
   const handleSwitchForm = () => {

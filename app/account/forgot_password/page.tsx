@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import supabase from "@/supabase/config";
 import Alert from "@/components/utilities/Alert";
 import "@/components/account/account.css";
+import { handleSignOut } from "@/supabase/auth/handleAuth";
 
 export default function Page() {
   const [pass, setPass] = useState("");
@@ -11,12 +12,15 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
   const [verify, setVerify] = useState("");
 
+  const [seconds, setSeconds] = useState(5);
+
   useEffect(() => {
-    supabase.auth.onAuthStateChange(async (event, session) => {
+    supabase.auth.onAuthStateChange(async (event) => {
+      console.log(event);
       if (event == "PASSWORD_RECOVERY") {
         setSess(true);
       } else {
-        window.location.href = "/account";
+        // window.location.href = "/account";
       }
     });
   }, []);
@@ -30,11 +34,16 @@ export default function Page() {
       });
 
       if (data) {
-        setVerify("success)");
+        const res = await handleSignOut();
+        if (res === "success") {
+          setVerify("success");
+        } else {
+          setVerify(res.toString());
+        }
       }
       if (error) setVerify(error.toString());
-      setLoading(false);
     }
+    setLoading(false);
   }
 
   if (sess) {
@@ -96,7 +105,7 @@ export default function Page() {
             {verify !== "" && (
               <Alert type={verify === "success" ? verify : ""}>
                 {verify === "success"
-                  ? `Your password has been reset. Head over to sign in now!`
+                  ? `Your password has been reset. You will be redirected to the sign in page in ${seconds}s.`
                   : verify}
               </Alert>
             )}

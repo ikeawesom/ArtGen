@@ -1,4 +1,5 @@
 import supabase from "../config";
+import { DEFAULT_URL } from "@/app/globals";
 
 export async function handleSignUp(user, password, f_name, l_name) {
   const { data, error } = await supabase.auth.signUp({
@@ -18,8 +19,9 @@ export async function handleSignUp(user, password, f_name, l_name) {
 export async function getUserDetails() {
   const {
     data: { user },
+    error,
   } = await supabase.auth.getUser();
-  return user;
+  return { user, error };
 }
 
 export async function handleSignOut() {
@@ -39,7 +41,11 @@ export async function handleSignIn(email, password) {
   return { data, error };
 }
 
-export async function handlePasswordReset(email) {
-  const { data, error } = await supabase.auth.resetPasswordForEmail(email);
-  return error;
+export async function handleSendPasswordResetEmail(email) {
+  // const { data, error } = await supabase.auth.resetPasswordForEmail(email);
+
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${DEFAULT_URL}/account/forgot_password`,
+  });
+  return { data, error };
 }
