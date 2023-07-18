@@ -1,4 +1,5 @@
 export const APP_NAME = "ArtGen";
+export const DEFAULT_URL = "http://localhost:3000";
 
 export const FOOTER_HEADERS = ["Overview", "Company", "Resources"];
 export const APP_LINKS = [
