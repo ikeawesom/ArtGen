@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-const metadata: Metadata = {
-  title: "Pricing | ArtGen",
+export const metadata: Metadata = {
+  title: "Pricing",
 };
 
 export default function Page() {

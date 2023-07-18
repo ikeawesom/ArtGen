@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-const metadata: Metadata = {
-  title: "Community | ArtGen",
+export const metadata: Metadata = {
+  title: "Tutorials",
 };
 
 export default function Page() {

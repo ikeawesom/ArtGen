@@ -1,11 +1,14 @@
+import { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "ArtGen | Ike Lim",
-  description: "Your all-in-one palette for digital art.",
+export const metadata: Metadata = {
+  title: {
+    template: "%s | ArtGen",
+    default: "ArtGen | Ike Lim", // a default is required when creating a template
+  },
 };
 
 export default function RootLayout({

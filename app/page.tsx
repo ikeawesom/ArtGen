@@ -16,6 +16,11 @@ import { FrameworkHeading, FrameworkList } from "@/components/Frameworks";
 import { Winner } from "@/components/Winner";
 import ContactLinks from "@/components/ContactLinks";
 import Footer from "@/components/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Features",
+};
 
 export default function Home() {
   return (
