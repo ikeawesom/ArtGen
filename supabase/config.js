@@ -1,8 +1,16 @@
+import { createClient } from "@supabase/supabase-js";
 
-import { createClient } from '@supabase/supabase-js'
+const supabaseUrl = "https://aiwhejprdsdpqdcmyizi.supabase.co";
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-const supabaseUrl = 'https://aiwhejprdsdpqdcmyizi.supabase.co'
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
+export default supabase;
 
-export default supabase
+// TODO: PERSISTSESSION = TRUE = PROVIDE STORAGE
+// const supabase = createClient(supabaseUrl, supabaseKey, {
+//   auth: {
+//     autoRefreshToken: true,
+//     persistSession: false,
+//     detectSessionInUrl: true,
+//   },
+// });
