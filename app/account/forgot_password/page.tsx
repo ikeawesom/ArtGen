@@ -15,31 +15,39 @@ export default function Page() {
   const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
-    supabase.auth.onAuthStateChange(async (event) => {
+    supabase.auth.onAuthStateChange(async (event, session) => {
       console.log(event);
-      if (event == "PASSWORD_RECOVERY") {
+      if (event === "PASSWORD_RECOVERY") {
         setSess(true);
-      } else {
-        // window.location.href = "/account";
       }
     });
   }, []);
+
+  function redirectDashboard() {
+    for (var i = 0; i < 4; i++) {
+      setTimeout(() => {
+        setSeconds(seconds - 1);
+      }, 1000);
+    }
+
+    window.location.href = "/account/dashboard";
+  }
 
   async function handlePasswordChange(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
     if (pass === cfmPass) {
-      const { data, error } = await supabase.auth.updateUser({
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.updateUser({
         password: cfmPass,
       });
 
-      if (data) {
-        const res = await handleSignOut();
-        if (res === "success") {
-          setVerify("success");
-        } else {
-          setVerify(res.toString());
-        }
+      if (user) {
+        console.log(user);
+        setVerify("success");
+        redirectDashboard();
       }
       if (error) setVerify(error.toString());
     }
@@ -105,7 +113,7 @@ export default function Page() {
             {verify !== "" && (
               <Alert type={verify === "success" ? verify : ""}>
                 {verify === "success"
-                  ? `Your password has been reset. You will be redirected to the sign in page in ${seconds}s.`
+                  ? `Your password has been reset. You will be redirected to your dashboard in ${seconds}s.`
                   : verify}
               </Alert>
             )}
