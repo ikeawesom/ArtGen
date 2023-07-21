@@ -1,5 +1,6 @@
+import { FEATURES_LIST } from "@/app/globals";
 import { ReactNode, useEffect, useState } from "react";
-import { getAllData } from "@/supabase/database/handleDB";
+import LoadingIcon from "./utilities/LoadingIcon";
 
 interface BannerProps {
   children?: ReactNode;
@@ -19,20 +20,6 @@ export function MainBanner({ children, identifier, styles }: BannerProps) {
 }
 
 export function FeatureBanner() {
-  const [features, setFeatures] = useState<any[]>();
-
-  useEffect(() => {
-    async function loadFeatures() {
-      const features = await getAllData("features");
-      if (features) {
-        setFeatures(features);
-      } else {
-        setFeatures([]);
-      }
-    }
-    loadFeatures();
-  }, []);
-
   return (
     <div>
       <MainBanner identifier="feature banner">
@@ -43,8 +30,8 @@ export function FeatureBanner() {
           Popular design and digital art tools available with us.
         </p>
         <ul className="my-5 flex flex-wrap gap-x-20 gap-y-5 justify-around items-center w-full text-violet-900">
-          {features &&
-            features.map(
+          {FEATURES_LIST &&
+            FEATURES_LIST.map(
               (item) =>
                 item.featured && (
                   <li key={item.name}>
@@ -58,16 +45,7 @@ export function FeatureBanner() {
                 )
             )}
 
-          {!features && (
-            <div className="grid place-items-center">
-              <img
-                src="/icons/icon_spinner.svg"
-                alt="Loading Info..."
-                className="spinner bg-viol mb-5"
-                width={50}
-              />
-            </div>
-          )}
+          {!FEATURES_LIST && <LoadingIcon size={50} />}
         </ul>
 
         <div className="grid place-items-center">
