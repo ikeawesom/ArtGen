@@ -1,13 +1,13 @@
 interface Props {
   size: number;
-  light: boolean;
+  light?: boolean;
 }
 export default function LoadingIcon({ size, light }: Props) {
   return (
     <div className="grid place-items-center h-full">
       <img
         src={
-          light ? "/icons/icon_spinner_light.svg" : "/icons/icon_spinner.svg"
+          !light ? "/icons/icon_spinner.svg" : "/icons/icon_spinner_light.svg"
         }
         alt="Loading Info..."
         className="spinner bg-viol mb-5"

@@ -89,7 +89,7 @@ export default function FeatureList({ page, className, cat, query }: Props) {
           ))}
         </ul>
       )}
-      {!pageList && <LoadingIcon light={false} size={100} />}
+      {!pageList && <LoadingIcon size={100} />}
     </div>
   );
 }

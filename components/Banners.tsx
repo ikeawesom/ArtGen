@@ -55,7 +55,7 @@ export function FeatureBanner() {
                 )
             )}
 
-          {!features && <LoadingIcon size={50} light={false} />}
+          {!features && <LoadingIcon size={50} />}
         </ul>
 
         <div className="grid place-items-center">

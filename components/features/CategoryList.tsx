@@ -43,7 +43,7 @@ export default function CategoryList({ className, onClick, cat }: Props) {
               <span className="md:block hidden">{item.name}</span>
             </li>
           ))}
-        {!catList && <LoadingIcon size={50} light={false} />}
+        {!catList && <LoadingIcon size={50} />}
       </ul>
     </div>
   );
