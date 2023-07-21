@@ -28,7 +28,7 @@ export default function Page() {
         Features at <span className="gradient">ArtGen</span>
       </PageHeading>
 
-      <SearchBar onClick={handleSearch} />
+      <SearchBar onChange={handleSearch} />
 
       <div className="md:flex flex-wrap gap-10">
         <CategoryList
