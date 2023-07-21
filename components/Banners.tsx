@@ -1,6 +1,6 @@
-import { FEATURES_LIST } from "@/app/globals";
 import { ReactNode, useEffect, useState } from "react";
 import LoadingIcon from "./utilities/LoadingIcon";
+import FeatureDB from "@/supabase/database/handleFeatures";
 
 interface BannerProps {
   children?: ReactNode;
@@ -20,6 +20,16 @@ export function MainBanner({ children, identifier, styles }: BannerProps) {
 }
 
 export function FeatureBanner() {
+  const [features, setFeatures] = useState<any[]>();
+
+  useEffect(() => {
+    async function getFeatures() {
+      const res = await FeatureDB.getFeatured();
+      if (res) setFeatures(res);
+    }
+    getFeatures();
+  }, []);
+
   return (
     <div>
       <MainBanner identifier="feature banner">
@@ -30,8 +40,8 @@ export function FeatureBanner() {
           Popular design and digital art tools available with us.
         </p>
         <ul className="my-5 flex flex-wrap gap-x-20 gap-y-5 justify-around items-center w-full text-violet-900">
-          {FEATURES_LIST &&
-            FEATURES_LIST.map(
+          {features &&
+            features.map(
               (item) =>
                 item.featured && (
                   <li key={item.name}>
@@ -45,7 +55,7 @@ export function FeatureBanner() {
                 )
             )}
 
-          {!FEATURES_LIST && <LoadingIcon size={50} />}
+          {!features && <LoadingIcon size={50} />}
         </ul>
 
         <div className="grid place-items-center">

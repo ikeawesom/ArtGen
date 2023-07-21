@@ -1,7 +1,8 @@
 import styles from "./features.module.css";
 import { ListItem } from "./CategoryItems";
-import { FEATURES_LIST } from "@/app/globals";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FeatureDB from "@/supabase/database/handleFeatures";
+import LoadingIcon from "../utilities/LoadingIcon";
 
 interface Props {
   page: number;
@@ -11,24 +12,59 @@ interface Props {
 }
 
 export default function FeatureList({ page, className, cat, query }: Props) {
+  const [pageList, setPageList] = useState<any[]>();
   const start_index = (page - 1) * 9;
   const end_index = start_index + 9;
 
-  var cat_list = FEATURES_LIST.filter((item) => item.cat.includes(cat));
-  if (query !== "") {
-    cat_list = cat_list.filter(
-      (item) =>
-        item.name.toLowerCase().includes(query.toLowerCase()) ||
-        item.desc.toLowerCase().includes(query.toLowerCase())
-    );
-  }
-
-  const page_list = cat_list.slice(start_index, end_index);
+  useEffect(() => {
+    async function getFeatures() {
+      const res = await FeatureDB.getAll();
+      if (res) {
+        var cat_list = res.filter((item) => item.category.includes(cat));
+        var new_cat_list = [];
+        if (query !== "") {
+          for (var i = 0; i < cat_list.length; i++) {
+            if (
+              cat_list[i].name.toLowerCase().includes(query.toLowerCase()) ||
+              cat_list[i].desc.toLowerCase().includes(query.toLowerCase())
+            ) {
+              new_cat_list.push(cat_list[i]);
+            } else {
+              cat_list[i].category.forEach((item: string) => {
+                if (item.toLowerCase().includes(query.toLowerCase())) {
+                  new_cat_list.push(cat_list[i]);
+                }
+              });
+              if (cat_list[i].tags) {
+                cat_list[i].tags.forEach((item: string) => {
+                  if (item.toLowerCase().includes(query.toLowerCase())) {
+                    new_cat_list.push(cat_list[i]);
+                  }
+                });
+              }
+            }
+          }
+          // cat_list = cat_list.filter(
+          //   (item) =>
+          //     item.name.toLowerCase().includes(query.toLowerCase()) ||
+          //     item.desc.toLowerCase().includes(query.toLowerCase()) ||
+          //     item.category.includes(query)
+          // );
+          const page_list = new_cat_list.slice(start_index, end_index);
+          setPageList(page_list);
+        } else {
+          const page_list = cat_list.slice(start_index, end_index);
+          setPageList(page_list);
+        }
+      }
+    }
+    getFeatures();
+  }, [cat, query, start_index, end_index]);
 
   return (
     <div className={className}>
       <h1 className="mb-3 font-medium">Current category: {cat}</h1>
-      {page_list.length === 0 && (
+      {pageList && pageList.length === 0 && (
         <div className="grid place-items-center h-full p-10 text-center">
           <img src="/icons/icon_no-results.svg" alt="" width={250} />
           <h1 className="text-2xl font-semibold text-indigo-800 mt-5 mb-1">
@@ -40,9 +76,9 @@ export default function FeatureList({ page, className, cat, query }: Props) {
           </p>
         </div>
       )}
-      {page_list.length !== 0 && (
+      {pageList && (
         <ul className={styles["feature-catalog"]}>
-          {page_list.map((item) => (
+          {pageList.map((item) => (
             <ListItem
               key={item.name}
               name={item.name}
@@ -53,6 +89,7 @@ export default function FeatureList({ page, className, cat, query }: Props) {
           ))}
         </ul>
       )}
+      {!pageList && <LoadingIcon size={100} />}
     </div>
   );
 }

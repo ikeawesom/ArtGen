@@ -1,5 +1,6 @@
-import styles from "./features.module.css";
-import { FEATURES_CAT } from "@/app/globals";
+import FeatureDB from "@/supabase/database/handleFeatures";
+import { useEffect, useState } from "react";
+import LoadingIcon from "../utilities/LoadingIcon";
 
 interface Props {
   className?: string;
@@ -8,27 +9,41 @@ interface Props {
 }
 
 export default function CategoryList({ className, onClick, cat }: Props) {
+  const [catList, setCatList] = useState<any[]>();
+
+  useEffect(() => {
+    async function getCats() {
+      const res = await FeatureDB.getCategories();
+      if (res) {
+        setCatList(res);
+      }
+    }
+    getCats();
+  }, []);
+
   return (
     <div className={className}>
       <ul
-        className={`md:block flex sm:gap-x-5 gap-1 justify-center items-center md:mb-5`}
+        className={`md:block flex sm:gap-x-5 gap-1 justify-center items-center mb-0 p-0 md:mb-5`}
       >
-        {FEATURES_CAT.map((item) => (
-          <li
-            key={item.title}
-            onClick={() => onClick(item.title)}
-            className={`p-2 md:mb-3 hover:bg-violet-300 duration-150 md:rounded-lg rounded-full font-medium cursor-pointer flex gap-2 items-center justify-start ${
-              item.title === cat && "md:bg-violet-300 bg-violet-300/50"
-            }`}
-          >
-            <img
-              src={`/features/categories/${item.icon}`}
-              alt={item.title}
-              width={40}
-            />
-            <span className="md:block hidden">{item.title}</span>
-          </li>
-        ))}
+        {catList &&
+          catList.map((item) => (
+            <li
+              key={item.name}
+              onClick={() => onClick(item.name)}
+              className={`p-2 md:mb-3 hover:bg-violet-300 duration-150 md:rounded-lg rounded-full font-medium cursor-pointer flex gap-2 items-center justify-start ${
+                item.name === cat && "md:bg-violet-300 bg-violet-300/50"
+              }`}
+            >
+              <img
+                src={`/features/categories/${item.icon}`}
+                alt={item.name}
+                width={40}
+              />
+              <span className="md:block hidden">{item.name}</span>
+            </li>
+          ))}
+        {!catList && <LoadingIcon size={50} />}
       </ul>
     </div>
   );
