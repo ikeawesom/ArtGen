@@ -1,7 +1,7 @@
 import styles from "./features.module.css";
 import { ListItem } from "./CategoryItems";
 import { useEffect, useState } from "react";
-import FeatureDB from "@/supabase/database/handleFeatures";
+import { FeatureDB } from "@/supabase/database/handleFeatures";
 import LoadingIcon from "../utilities/LoadingIcon";
 
 interface Props {

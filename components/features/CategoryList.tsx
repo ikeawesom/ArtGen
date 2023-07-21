@@ -1,4 +1,4 @@
-import FeatureDB from "@/supabase/database/handleFeatures";
+import { FeatureCat } from "@/supabase/database/handleFeatures";
 import { useEffect, useState } from "react";
 import LoadingIcon from "../utilities/LoadingIcon";
 
@@ -13,7 +13,7 @@ export default function CategoryList({ className, onClick, cat }: Props) {
 
   useEffect(() => {
     async function getCats() {
-      const res = await FeatureDB.getCategories();
+      const res = await FeatureCat.getAll();
       if (res) {
         setCatList(res);
       }

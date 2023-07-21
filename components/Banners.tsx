@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import LoadingIcon from "./utilities/LoadingIcon";
-import FeatureDB from "@/supabase/database/handleFeatures";
+import { FeatureDB } from "@/supabase/database/handleFeatures";
 
 interface BannerProps {
   children?: ReactNode;
@@ -24,7 +24,7 @@ export function FeatureBanner() {
 
   useEffect(() => {
     async function getFeatures() {
-      const res = await FeatureDB.getFeatured();
+      const res = await FeatureDB.getSpecific("featured", true);
       if (res) setFeatures(res);
     }
     getFeatures();
