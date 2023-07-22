@@ -10,6 +10,7 @@ interface ButtonProps {
   duration?: string;
   hover?: string;
   delay?: string;
+  round?: string;
   onClick?: () => void;
 }
 
@@ -23,6 +24,7 @@ export function Button({
   hover,
   duration,
   delay,
+  round,
 }: ButtonProps) {
   return (
     <Link
@@ -32,7 +34,9 @@ export function Button({
       onClick={onClick}
     >
       <button
-        className={`w-full ${color} ${textcolor} ${hover} ${duration} px-7 py-2 rounded-md ease-in-out ${delay}`}
+        className={`w-full ${color} ${textcolor} ${hover} ${duration} px-7 py-2 ${
+          round ? round : "rounded-md"
+        } ease-in-out ${delay}`}
       >
         {children}
       </button>
