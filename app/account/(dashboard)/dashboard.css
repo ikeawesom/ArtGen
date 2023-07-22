@@ -11,9 +11,21 @@
 }
 
 .sidebar ul img {
+  min-width: 30px;
   width: 30px;
   height: 30px;
 }
+
 .sidebar li:hover {
   background-color: rgb(150, 112, 239);
+}
+
+@media screen and (max-width: 1280px) {
+  .sidebar span.text {
+    display: none;
+  }
+
+  .sidebar li {
+    justify-content: center;
+  }
 }

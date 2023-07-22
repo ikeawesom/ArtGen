@@ -1,19 +1,38 @@
 "use client";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
-export function SideBar() {
+interface sideBarProps {
+  state: boolean;
+  hideMenu: () => void;
+}
+export function SideBar({ state, hideMenu }: sideBarProps) {
   const [curPage, setCurPage] = useState("");
+
   useEffect(() => {
     setCurPage(window.location.pathname);
   }, []);
+
   return (
-    <div className="flex-1 sm:relative w-1/6 min-h-screen bg-violet-900 absolute sm:p-5 -translate-x-full sm:translate-x-0 sidebar">
+    <div
+      className={`flex-1 sm:relative min-h-screen bg-violet-900 absolute sm:p-5 duration-200 ease-in-out -translate-x-full ${
+        state ? "translate-x-0 shadow-2xl z-20" : ""
+      } sm:translate-x-0 sidebar shadow-sm`}
+    >
+      <div className="w-full grid place-items-center mt-5">
+        <img
+          src="/icons/icon_back.svg"
+          className="sm:hidden block"
+          alt=""
+          width={50}
+          onClick={hideMenu}
+        />
+      </div>
       <a
         href="/"
-        className="flex gap-4 items-center justify-start p-[1rem] mb-8 hover:brightness-125 duration-150"
+        className="flex gap-4 items-center justify-center p-[1rem] mb-8 hover:brightness-125 duration-150"
       >
         <img src="/favicon.svg" alt="" width={40} />
-        <h1 className="text-3xl">
+        <h1 className="text-3xl hidden xl:block">
           <span className="gradient">ArtGen</span>
         </h1>
       </a>
@@ -23,7 +42,7 @@ export function SideBar() {
             <span>
               <img src="/icons/icon_dashboard.svg" />
             </span>
-            Dashboard
+            <span className="text">Dashboard</span>
           </li>
         </a>
         <a href="/account/projects">
@@ -31,7 +50,7 @@ export function SideBar() {
             <span>
               <img src="/icons/icon_suitcase.svg" />
             </span>
-            Projects
+            <span className="text">Projects</span>
           </li>
         </a>
         <a href="/account/posts">
@@ -39,7 +58,7 @@ export function SideBar() {
             <span>
               <img src="/icons/icon_camera.svg" />
             </span>
-            Posts
+            <span className="text">Posts</span>
           </li>
         </a>
         <a href="/community">
@@ -47,7 +66,7 @@ export function SideBar() {
             <span>
               <img src="/icons/icon_social.svg" />
             </span>
-            Community
+            <span className="text">Community</span>
           </li>
         </a>
         <a href="/account/settings">
@@ -55,7 +74,7 @@ export function SideBar() {
             <span>
               <img src="/icons/icon_settings.svg" />
             </span>
-            Settings
+            <span className="text">Settings</span>
           </li>
         </a>
       </ul>
@@ -87,7 +106,11 @@ export function LogOutButton() {
   );
 }
 
-export function AccountBar() {
+interface accountBarProps {
+  displayMenu: () => void;
+}
+
+export function AccountBar({ displayMenu }: accountBarProps) {
   const [userInfo, setUserInfo] = useState<any>({});
 
   useEffect(() => {
@@ -96,7 +119,7 @@ export function AccountBar() {
       // console.log(user);
       if (user) {
         setUserInfo(user.user_metadata);
-        console.log("Metadata:", user.user_metadata);
+        // console.log("Metadata:", user.user_metadata);
       } else {
         window.location.href = "/account";
       }
@@ -104,20 +127,79 @@ export function AccountBar() {
     }
     handleUserInfo();
   }, []);
+
+  function showNotifs() {
+    alert("Notifs");
+  }
+  function showAccMenu() {
+    alert(userInfo);
+  }
+  function showHelpMenu() {
+    alert("Help");
+  }
   return (
-    <div className="flex-1 flex gap-5 items-center justify-center">
-      <h1>
-        <span className="font-bold">{`${
-          userInfo.first_name
-            ? `${userInfo.first_name} ${userInfo.last_name}`
-            : "..."
-        }`}</span>
-      </h1>
-      <LogOutButton />
+    <div className="flex items-center justify-between sm:justify-end bg-white shadow-md px-8 py-3 z-20">
+      <img
+        className="sm:hidden block"
+        src="/icons/icon_menu.svg"
+        alt=""
+        width={20}
+        onClick={displayMenu}
+      />
+      <div className="flex gap-4 items-center justify-center">
+        <h1>
+          <span className="font-bold">{`${
+            userInfo.first_name
+              ? `${userInfo.first_name} ${userInfo.last_name}`
+              : "..."
+          }`}</span>
+        </h1>
+        {/* <LogOutButton /> */}
+        <BarButton
+          icon="docs"
+          onClick={() => {
+            window.location.href = "/docs";
+          }}
+        />
+        <BarButton icon="help" onClick={() => showHelpMenu()} />
+        <BarButton icon="bell" onClick={() => showNotifs()} />
+        <BarButton icon="user" onClick={() => showAccMenu()} />
+      </div>
     </div>
   );
 }
 
-export function Dashboard() {
-  return <h1>dashboard</h1>;
+interface barButtonProps {
+  icon: string;
+  onClick: () => void;
+}
+
+function BarButton({ icon, onClick }: barButtonProps) {
+  return (
+    <div
+      onClick={onClick}
+      className="cursor-pointer hover:opacity-80 duration-200"
+    >
+      <img src={`/icons/icon_${icon}.svg`} alt={icon} width={35} />
+    </div>
+  );
+}
+
+interface dashboardProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function Dashboard({ children, className }: dashboardProps) {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <div className={className}>
+      <SideBar state={visible} hideMenu={() => setVisible(!visible)} />
+      <div className="xl:w-5/6 sm:w-11/12 w-full flex-5 bg-violet-50">
+        <AccountBar displayMenu={() => setVisible(!visible)} />
+        <div className="min-h-screen bg-violet-50">{children}</div>
+      </div>
+    </div>
+  );
 }

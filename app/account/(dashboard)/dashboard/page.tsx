@@ -1,5 +1,3 @@
-import { Dashboard } from "@/components/account/Dashboard";
-
 export default function Page() {
-  return <Dashboard />;
+  return <h1>hello</h1>;
 }
