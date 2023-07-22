@@ -51,14 +51,14 @@ export const APP_LINKS = [
     showNav: true,
   },
   {
-    title: "Learn",
-    link: "/learn",
+    title: "Docs",
+    link: "/docs",
     type: "Resources",
     showNav: true,
   },
   {
     title: "Tutorials",
-    link: "/learn/tutorials",
+    link: "/docs/tutorials",
     type: "Resources",
     showNav: false,
   },

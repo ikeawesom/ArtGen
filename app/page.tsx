@@ -65,7 +65,7 @@ export default function Home() {
               side="text-end"
               header="Quality Craftsmenship"
               subject="What we offer"
-              link="/learn"
+              link="/docs"
               linktext="Learn how it works"
             >
               <p>
