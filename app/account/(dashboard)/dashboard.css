@@ -1,0 +1,19 @@
+.sidebar li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.23rem;
+  padding: 1rem;
+  font-weight: 600;
+  transition: 200ms ease-in-out;
+}
+
+.sidebar ul img {
+  width: 30px;
+  height: 30px;
+}
+.sidebar li:hover {
+  background-color: rgb(150, 112, 239);
+}
