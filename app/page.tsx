@@ -58,7 +58,7 @@ export default function Home() {
               </p>
             </SectionText>
 
-            <SectionImage img="img_variety.svg" />
+            <SectionImage img="/about/img_variety.svg" />
           </SectionContainer>
           <SectionContainer reverse={true}>
             <SectionText
@@ -75,7 +75,7 @@ export default function Home() {
               </p>
             </SectionText>
 
-            <SectionImage img="img_craft.png" />
+            <SectionImage img="/about/img_craft.png" />
           </SectionContainer>
           <SectionContainer>
             <SectionText
@@ -92,7 +92,7 @@ export default function Home() {
               </p>
             </SectionText>
 
-            <SectionImage img="img_collaborate.svg" />
+            <SectionImage img="/about/img_collaborate.svg" />
           </SectionContainer>
           <div>
             <h2 className="text-center lg:text-6xl text-4xl font-bold text-indigo-950 my-3">
