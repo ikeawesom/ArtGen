@@ -110,14 +110,3 @@ export const CONTACT_LINKS = [
     display: ["footer"],
   },
 ];
-
-// ---------------- COMPETITION WINNER DETAILS ------------------- //
-export const COMP_WINNER_USERNAME = "@DianaMalewicz"; // sample
-export const COMP_WINNER_IMG = "img_winner.png"; // sample
-export const COMP_WINNER_TOOLS = [
-  { name: "Color Palette", link: "color-palette" },
-  { name: "Gradients", link: "gradients" },
-  { name: "Font Pairs", link: "font-pairing" },
-  { name: "Icons", link: "icons" },
-];
-// --------------------------------------------------------------- //
