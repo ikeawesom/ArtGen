@@ -10,12 +10,7 @@ export const APP_LINKS = [
     type: "Overview",
     showNav: true,
   },
-  {
-    title: "Pricing",
-    link: "/pricing",
-    type: "Overview",
-    showNav: true,
-  },
+
   {
     title: "Releases",
     link: "https://github.com/ikeawesom/ArtGen/releases",
@@ -67,6 +62,12 @@ export const APP_LINKS = [
     link: "/help",
     type: "Resources",
     showNav: false,
+  },
+  {
+    title: "Pricing",
+    link: "/pricing",
+    type: "Overview",
+    showNav: true,
   },
 ];
 
