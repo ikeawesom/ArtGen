@@ -1,4 +1,5 @@
-import { SideBar } from "@/components/account/Dashboard";
+import { SideBar, AccountBar } from "@/components/account/Dashboard";
+import "./dashboard.css";
 
 export default function RootLayout({
   children,
@@ -8,7 +9,10 @@ export default function RootLayout({
   return (
     <div className="flex">
       <SideBar />
-      <div className=" w-full sm:w-4/5 flex-5 p-5">{children}</div>
+      <div className="w-full sm:w-5/6 flex-5 bg-violet-50">
+        <AccountBar />
+        {children}
+      </div>
     </div>
   );
 }
