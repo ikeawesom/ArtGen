@@ -62,6 +62,8 @@ export function AccountForm({ title, user, onClick }: FormProps) {
     const { data, error } = await handleSignIn(email, password);
     if (error) {
       displayError(error);
+    } else {
+      window.location.href = "/account/dashboard";
     }
     setLoading(false);
   }
