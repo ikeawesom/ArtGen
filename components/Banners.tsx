@@ -24,7 +24,7 @@ export function FeatureBanner() {
 
   useEffect(() => {
     async function getFeatures() {
-      const res = await FeatureDB.getSpecific("featured", true);
+      const res = await FeatureDB.getSpecific("*", "featured", true);
       if (res) setFeatures(res);
     }
     getFeatures();

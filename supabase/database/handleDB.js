@@ -13,11 +13,11 @@ class mainDBClass {
     return res;
   }
 
-  async getSpecific(column, condition) {
+  async getSpecific(amt, column, condition) {
     // .eq(column name, query)
     let { data: res } = await supabase
       .from(this.table_name)
-      .select("*")
+      .select(amt)
       .eq(column, condition);
     return res;
   }
