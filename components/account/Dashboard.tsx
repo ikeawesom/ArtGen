@@ -14,8 +14,8 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
 
   return (
     <div
-      className={`flex-1 sm:relative min-h-screen bg-violet-900 absolute sm:p-5 duration-200 ease-in-out -translate-x-full ${
-        state ? "translate-x-0 shadow-2xl z-20" : ""
+      className={`sm:sticky sm:self-start left-0 top-0 bottom-0 flex-1 z-20 h-full min-h-screen bg-violet-900 fixed sm:p-5 duration-200 ease-in-out -translate-x-full ${
+        state ? "translate-x-0 shadow-2xl" : ""
       } sm:translate-x-0 sidebar shadow-sm`}
     >
       <div className="w-full grid place-items-center mt-5">
@@ -138,22 +138,22 @@ export function AccountBar({ displayMenu }: accountBarProps) {
     alert("Help");
   }
   return (
-    <div className="flex items-center justify-between sm:justify-end bg-white shadow-md px-8 py-3 z-20">
+    <div className="flex gap-9 items-center justify-between sm:justify-end bg-white px-5 py-1 accountbar z-10 shadow-md sticky top-0">
       <img
         className="sm:hidden block"
-        src="/icons/icon_menu.svg"
+        src="/icons/icon_hamburger.svg"
         alt=""
-        width={20}
+        width={35}
         onClick={displayMenu}
       />
-      <div className="flex gap-4 items-center justify-center">
-        <h1>
+      <div className="flex sm:gap-5 gap-1 items-center justify-center">
+        {/* <h1>
           <span className="font-bold">{`${
             userInfo.first_name
               ? `${userInfo.first_name} ${userInfo.last_name}`
               : "..."
           }`}</span>
-        </h1>
+        </h1> */}
         {/* <LogOutButton /> */}
         <BarButton
           icon="docs"
@@ -178,9 +178,9 @@ function BarButton({ icon, onClick }: barButtonProps) {
   return (
     <div
       onClick={onClick}
-      className="cursor-pointer hover:opacity-80 duration-200"
+      className="cursor-pointer hover:bg-violet-100 duration-200 rounded-full sm:p-3 p-2"
     >
-      <img src={`/icons/icon_${icon}.svg`} alt={icon} width={35} />
+      <img src={`/icons/icon_${icon}.svg`} alt={icon} />
     </div>
   );
 }
