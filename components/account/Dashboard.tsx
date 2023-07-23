@@ -83,6 +83,7 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
 }
 import { getUserDetails, handleSignOut } from "@/supabase/auth/handleAuth";
 import { Button } from "../Buttons";
+import { User } from "@supabase/supabase-js";
 
 export function LogOutButton() {
   async function handleClick() {
@@ -106,12 +107,41 @@ export function LogOutButton() {
   );
 }
 
+interface accountModalProps {
+  userInfo: any;
+  user: User | undefined;
+}
+
+function AccountModal({ userInfo, user }: accountModalProps) {
+  return (
+    <div className="modal account">
+      <ul>
+        <li>
+          <h1>
+            <span className="font-bold">{`${
+              userInfo.first_name
+                ? `${userInfo.first_name} ${userInfo.last_name}`
+                : "..."
+            }`}</span>
+          </h1>
+        </li>
+        <li>Dashboard</li>
+        <li>Account</li>
+        <li>
+          <LogOutButton />
+        </li>
+      </ul>
+    </div>
+  );
+}
+
 interface accountBarProps {
   displayMenu: () => void;
 }
 
 export function AccountBar({ displayMenu }: accountBarProps) {
   const [userInfo, setUserInfo] = useState<any>({});
+  const [userObj, setUserObj] = useState<User>();
 
   useEffect(() => {
     async function handleUserInfo() {
@@ -119,6 +149,7 @@ export function AccountBar({ displayMenu }: accountBarProps) {
       // console.log(user);
       if (user) {
         setUserInfo(user.user_metadata);
+        setUserObj(user);
         // console.log("Metadata:", user.user_metadata);
       } else {
         window.location.href = "/account";
@@ -128,15 +159,19 @@ export function AccountBar({ displayMenu }: accountBarProps) {
     handleUserInfo();
   }, []);
 
+  // Modals
+  const [modal, setModal] = useState<string>();
+
   function showNotifs() {
-    alert("Notifs");
+    modal ? setModal(undefined) : setModal("bell");
   }
   function showAccMenu() {
-    alert(userInfo);
+    modal ? setModal(undefined) : setModal("user");
   }
   function showHelpMenu() {
-    alert("Help");
+    modal ? setModal(undefined) : setModal("help");
   }
+
   return (
     <div className="flex gap-9 items-center justify-between sm:justify-end bg-white px-5 py-1 accountbar z-10 shadow-md sticky top-0">
       <img
@@ -147,23 +182,30 @@ export function AccountBar({ displayMenu }: accountBarProps) {
         onClick={displayMenu}
       />
       <div className="flex sm:gap-5 gap-1 items-center justify-center">
-        {/* <h1>
-          <span className="font-bold">{`${
-            userInfo.first_name
-              ? `${userInfo.first_name} ${userInfo.last_name}`
-              : "..."
-          }`}</span>
-        </h1> */}
-        {/* <LogOutButton /> */}
         <BarButton
           icon="docs"
           onClick={() => {
             window.location.href = "/docs";
           }}
         />
-        <BarButton icon="help" onClick={() => showHelpMenu()} />
-        <BarButton icon="bell" onClick={() => showNotifs()} />
-        <BarButton icon="user" onClick={() => showAccMenu()} />
+        <BarButton
+          icon="help"
+          onClick={() => showHelpMenu()}
+          state={modal === "help"}
+        />
+        <BarButton
+          icon="bell"
+          onClick={() => showNotifs()}
+          state={modal === "bell"}
+        />
+        <BarButton
+          icon="user"
+          onClick={() => showAccMenu()}
+          state={modal === "user"}
+        />
+        {modal === "user" && (
+          <AccountModal user={userObj} userInfo={userInfo} />
+        )}
       </div>
     </div>
   );
@@ -172,13 +214,18 @@ export function AccountBar({ displayMenu }: accountBarProps) {
 interface barButtonProps {
   icon: string;
   onClick: () => void;
+  state?: boolean;
 }
 
-function BarButton({ icon, onClick }: barButtonProps) {
+function BarButton({ icon, onClick, state }: barButtonProps) {
   return (
     <div
-      onClick={onClick}
-      className="cursor-pointer hover:bg-violet-100 duration-200 rounded-full sm:p-3 p-2"
+      onClick={() => {
+        onClick();
+      }}
+      className={`cursor-pointer hover:bg-violet-100 duration-200 rounded-full sm:p-3 p-2 relative ${
+        state && "bg-violet-100"
+      }`}
     >
       <img src={`/icons/icon_${icon}.svg`} alt={icon} />
     </div>
