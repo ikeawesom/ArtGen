@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, use, useEffect, useState } from "react";
 
 interface sideBarProps {
   state: boolean;
@@ -12,6 +12,13 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
     setCurPage(window.location.pathname);
   }, []);
 
+  const listItems = [
+    { a: "dashboard", img: "icon_dashboard.svg", display: "Dashboard" },
+    { a: "projects", img: "icon_suitcase.svg", display: "Projects" },
+    { a: "posts", img: "icon_camera.svg", display: "Posts" },
+    { a: "community", img: "icon_social.svg", display: "Community" },
+    { a: "settings", img: "icon_settings.svg", display: "Settings" },
+  ];
   return (
     <div
       className={`sm:sticky sm:self-start left-0 top-0 bottom-0 flex-1 z-20 h-full min-h-screen bg-violet-900 fixed sm:p-5 duration-200 ease-in-out -translate-x-full ${
@@ -36,47 +43,18 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
           <span className="gradient">ArtGen</span>
         </h1>
       </a>
+
       <ul className="text-violet-50">
-        <a href="/account/dashboard">
-          <li className={curPage.includes("dashboard") ? "bg-violet-500" : ""}>
-            <span>
-              <img src="/icons/icon_dashboard.svg" />
-            </span>
-            <span className="text">Dashboard</span>
-          </li>
-        </a>
-        <a href="/account/projects">
-          <li className={curPage.includes("projects") ? "bg-violet-500" : ""}>
-            <span>
-              <img src="/icons/icon_suitcase.svg" />
-            </span>
-            <span className="text">Projects</span>
-          </li>
-        </a>
-        <a href="/account/posts">
-          <li className={curPage.includes("posts") ? "bg-violet-500" : ""}>
-            <span>
-              <img src="/icons/icon_camera.svg" />
-            </span>
-            <span className="text">Posts</span>
-          </li>
-        </a>
-        <a href="/community">
-          <li>
-            <span>
-              <img src="/icons/icon_social.svg" />
-            </span>
-            <span className="text">Community</span>
-          </li>
-        </a>
-        <a href="/account/settings">
-          <li className={curPage.includes("settings") ? "bg-violet-500" : ""}>
-            <span>
-              <img src="/icons/icon_settings.svg" />
-            </span>
-            <span className="text">Settings</span>
-          </li>
-        </a>
+        {listItems.map((item) => (
+          <a key={item.a} href={`/account/${item.a}`}>
+            <li className={curPage.includes(item.a) ? "bg-violet-500" : ""}>
+              <span>
+                <img src={`/icons/${item.img}`} alt="" />
+              </span>
+              <span className="text">{item.display}</span>
+            </li>
+          </a>
+        ))}
       </ul>
     </div>
   );
@@ -93,16 +71,19 @@ export function LogOutButton() {
   }
   return (
     <Button
-      color="bg-white"
-      hover="hover:bg-slate-50"
+      color="bg-violet-800"
+      hover="hover:bg-violet-600"
       shadow="shadow-lg"
       padding="p-2"
-      duration="duration-200"
+      duration="duration-100"
       textcolor="text-violet-50"
       onClick={handleClick}
-      round="rounded-full"
+      round="rounded-md"
     >
-      <img src="/icons/icon_power.svg" alt="" width={30} />
+      <span className="flex gap-2 items-center justify-center text-violet-50 font-medium">
+        Sign Out
+        <img src="/icons/icon_power_bright.svg" className="logout" width={15} />
+      </span>
     </Button>
   );
 }
@@ -113,24 +94,65 @@ interface accountModalProps {
 }
 
 function AccountModal({ userInfo, user }: accountModalProps) {
+  const listItems = [
+    { display: "Dashboard", a: "dashboard" },
+    { display: "Account", a: "settings" },
+    { display: "Theme", a: "" },
+    { display: "Account", a: "settings" },
+  ];
+
   return (
-    <div className="modal account">
-      <ul>
-        <li>
-          <h1>
-            <span className="font-bold">{`${
-              userInfo.first_name
-                ? `${userInfo.first_name} ${userInfo.last_name}`
-                : "..."
-            }`}</span>
-          </h1>
-        </li>
-        <li>Dashboard</li>
-        <li>Account</li>
-        <li>
-          <LogOutButton />
-        </li>
+    <div className="modal account text-indigo-950">
+      <div className="text-container">
+        <h1 className="text-lg font-bold">
+          {`${
+            userInfo.first_name
+              ? `${userInfo.first_name} ${userInfo.last_name}`
+              : "..."
+          }`}
+        </h1>
+        <h4 className="text-sm text-violet-400">{user && user.email}</h4>
+      </div>
+      <ul className="text-indigo-900 text-sm links">
+        <a href="/account/settings#profile">
+          <li>Your profile</li>
+        </a>
       </ul>
+
+      <ul className="text-indigo-900 text-sm links">
+        <a href="/account/posts/mine">
+          <li>Your posts</li>
+        </a>
+        <a href="/account/posts/favourites">
+          <li>Your favourites</li>
+        </a>
+        <a href="/account/posts/submissions">
+          <li>Your submissions</li>
+        </a>
+      </ul>
+      <hr />
+
+      <ul className="text-indigo-900 text-sm links">
+        <a href="/pricing">
+          <li>Upgrade plan</li>
+        </a>
+        <a href="/account/shop">
+          <li>Get more GenChips</li>
+        </a>
+        <a href="/help">
+          <li>Contact sales</li>
+        </a>
+      </ul>
+      <hr />
+      <ul className="text-indigo-900 text-sm links">
+        <a href="/">
+          <li>Homepage</li>
+        </a>
+      </ul>
+      <hr />
+      <div className="text-container">
+        <LogOutButton />
+      </div>
     </div>
   );
 }

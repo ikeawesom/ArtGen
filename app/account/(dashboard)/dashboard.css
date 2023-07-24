@@ -8,6 +8,36 @@
   padding: 1rem;
   font-weight: 600;
   transition: 200ms ease-in-out;
+  opacity: 0;
+}
+
+.sidebar ul a:nth-child(1) li {
+  animation: fade-in 300ms ease-in-out forwards 200ms;
+}
+
+.sidebar ul a:nth-child(2) li {
+  animation: fade-in 300ms ease-in-out forwards 300ms;
+}
+
+.sidebar ul a:nth-child(3) li {
+  animation: fade-in 300ms ease-in-out forwards 400ms;
+}
+
+.sidebar ul a:nth-child(4) li {
+  animation: fade-in 300ms ease-in-out forwards 500ms;
+}
+
+.sidebar ul a:nth-child(5) li {
+  animation: fade-in 300ms ease-in-out forwards 600ms;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .sidebar ul img {
@@ -16,7 +46,7 @@
   height: 30px;
 }
 
-.accountbar img {
+.accountbar img:not(.logout) {
   min-width: 20px;
   width: 25px;
   height: 25px;
@@ -26,7 +56,7 @@
   background-color: rgb(150, 112, 239);
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
   .sidebar span.text {
     display: none;
   }
@@ -40,18 +70,33 @@
   border-radius: 5px;
   box-shadow: 0 0 5px 0 rgb(199, 199, 199);
   background-color: white;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   position: absolute;
   opacity: 0;
   transform: scale(0);
   transform-origin: top right;
   animation: fade-grow 200ms ease-in-out forwards;
 }
+.text-container {
+  padding: 0 0.5rem;
+}
+hr {
+  margin: 0.5rem 0.3rem;
+}
+.modal ul li {
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  margin: 0.3rem 0;
+}
+
+.modal ul.links li:hover {
+  background-color: #eeeeee;
+}
 
 .modal.account {
   top: 110%;
-  right: 5px;
-  width: 200px;
+  right: 20px;
+  min-width: 200px;
 }
 
 @keyframes fade-grow {
