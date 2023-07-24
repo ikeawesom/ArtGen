@@ -2,10 +2,23 @@
 import { useState, useEffect } from "react";
 import { APP_NAME, APP_LINKS } from "@/app/globals";
 import { ButtonGradient } from "@/components/Buttons";
+import LoadingIcon from "./LoadingIcon";
+import supabase from "@/supabase/config";
 
 export default function Nav() {
   const [currentUrl, setCurrentUrl] = useState<string | null>(null);
   const [navOpen, setNavOpen] = useState(false);
+
+  const [sess, setSess] = useState<boolean>();
+
+  useEffect(() => {
+    async function LoggedIn() {
+      const { data, error } = await supabase.auth.getSession();
+      if (data.session) setSess(true);
+    }
+
+    LoggedIn();
+  }, []);
 
   useEffect(() => {
     setCurrentUrl(window.location.pathname);
@@ -70,7 +83,11 @@ export default function Nav() {
 
           <ul className="min-[900px]:flex gap-2 justify-center items-center min-[900px]:pr-4 py-2">
             <li className="mx-4 mb-2 min-[900px]:m-0">
-              <ButtonGradient text="Get started" link="/account" tab={false} />
+              <ButtonGradient
+                text={sess ? "Go to dashboard" : "Get started"}
+                link={sess ? "/account/dashboard" : "/account"}
+                tab={false}
+              />
             </li>
           </ul>
         </div>
