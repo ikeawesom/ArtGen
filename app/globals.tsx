@@ -21,30 +21,30 @@ export const APP_LINKS = [
   // Company Links
   {
     title: "About",
-    link: "/company",
+    link: "/about",
     type: "Company",
     showNav: false,
   },
   {
-    title: "Careers",
-    link: "/company/careers",
+    title: "Blog",
+    link: "https://github.com/ikeawesom/ArtGen/discussions/categories/blog",
     type: "Company",
     showNav: false,
   },
   {
     title: "Contact",
-    link: "/company/contact",
+    link: "/contact",
     type: "Company",
     showNav: false,
   },
 
   // Resources Links
-  {
-    title: "Community",
-    link: "/community",
-    type: "Resources",
-    showNav: true,
-  },
+  // {
+  //   title: "Community",
+  //   link: "/community",
+  //   type: "Resources",
+  //   showNav: true,
+  // },
   {
     title: "Docs",
     link: "/docs",
@@ -77,9 +77,15 @@ export const FRAMEWORK_LIST = ["React", "Svelte", "Angular", "Vue", "Vanilla"];
 export const CONTACT_LINKS = [
   {
     name: "Community",
-    link: "/community",
+    link: "https://github.com/ikeawesom/ArtGen/discussions/categories/general",
     image: "community.svg",
     image_bright: "community_bright.svg",
+    display: ["banner"],
+  },
+  {
+    name: "Email",
+    link: "/contact",
+    image: "email.svg",
     display: ["banner"],
   },
   {
@@ -89,13 +95,13 @@ export const CONTACT_LINKS = [
     image_bright: "discord_bright.svg",
     display: ["banner", "footer"],
   },
-  {
-    name: "Instagram",
-    link: "/",
-    image: "instagram.svg",
-    image_bright: "instagram_bright.svg",
-    display: ["banner", "footer"],
-  },
+  // {
+  //   name: "Instagram",
+  //   link: "/",
+  //   image: "instagram.svg",
+  //   image_bright: "instagram_bright.svg",
+  //   display: ["banner", "footer"],
+  // },
   {
     name: "Github",
     link: "https://github.com/ikeawesom/ArtGen",

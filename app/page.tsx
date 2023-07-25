@@ -66,8 +66,8 @@ export default function Home() {
             side="text-start"
             header="Open-Source Community"
             subject="What we offer"
-            link="/community"
-            linktext="Visit the community"
+            link="https://github.com/ikeawesom/ArtGen"
+            linktext="Visit the repo"
           >
             <p>
               Connect with fellow artists, share your work, and collaborate
@@ -108,7 +108,7 @@ export default function Home() {
             Want to add to this list?
             <span>
               <ShortLink
-                link="/community"
+                link="https://github.com/ikeawesom/ArtGen/discussions/categories/feature-suggestions"
                 linktext=" Learn how to contribute"
               />
             </span>
@@ -136,17 +136,22 @@ export default function Home() {
             <Winner />
 
             <p className="text-violet-50 text-lg mb-3">
-              Showcase your skills and upload your best designs created using
-              our features for a chance to win{" "}
+              Showcase your skills and upload your best designs to our{" "}
+              <span className=" text-violet-400 hover:opacity-80">
+                <a href="https://github.com/ikeawesom/ArtGen/discussions/categories/gencomps">
+                  GitHub
+                </a>
+              </span>{" "}
+              for a chance to win more{" "}
               <span className="gradient1 font-bold hover:opacity-70 duration-150">
                 <a href="/pricing#genchips">GenChips</a>
               </span>
               !
             </p>
-            <div className="grid place-items-center my-5">
+            <div className="grid place-items-center mt-5">
               <ButtonGradient
                 text="Sign up today"
-                link="/community"
+                link="/account"
                 tab={false}
               />
             </div>

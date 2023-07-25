@@ -36,7 +36,7 @@ export default function Page() {
     <div>
       {!sess && (
         <div className="min-h-screen overflow-hidden">
-          <a href="/community">
+          <a href="https://github.com/ikeawesom/ArtGen/discussions">
             <div className="heading sm:hover:top-8 hover:bg-slate-50 duration-200 bg-white flex gap-2 items-center justify-center select-none w-fit px-5 py-2 shadow-lg rounded-md absolute sm:top-5 sm:left-1/2 sm:-translate-x-1/2 z-20">
               <img src="/favicon.svg" alt="ArtGen" width={50} />
               <div>

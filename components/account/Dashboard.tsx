@@ -16,7 +16,11 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
     { a: "dashboard", img: "icon_dashboard.svg", display: "Dashboard" },
     { a: "projects", img: "icon_suitcase.svg", display: "Projects" },
     { a: "posts", img: "icon_camera.svg", display: "Posts" },
-    { a: "community", img: "icon_social.svg", display: "Community" },
+    {
+      a: "https://github.com/ikeawesom/ArtGen/discussions",
+      img: "icon_social.svg",
+      display: "Community",
+    },
     { a: "settings", img: "icon_settings.svg", display: "Settings" },
   ];
   return (
@@ -46,7 +50,11 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
 
       <ul className="text-violet-50">
         {listItems.map((item) => (
-          <a key={item.a} href={`/account/${item.a}`}>
+          <a
+            key={item.a}
+            href={item.display === "community" ? item.a : `/account/${item.a}`}
+            target={item.display === "community" ? "_blank" : ""}
+          >
             <li className={curPage.includes(item.a) ? "bg-violet-500" : ""}>
               <span>
                 <img src={`/icons/${item.img}`} alt="" />
