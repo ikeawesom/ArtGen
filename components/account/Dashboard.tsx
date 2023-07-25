@@ -75,7 +75,7 @@ export function LogOutButton() {
   async function handleClick() {
     const res = await handleSignOut();
     if (res !== "success") alert(res);
-    if (res === "success") window.location.href = "/account";
+    if (res === "success") window.location.href = "/";
   }
   return (
     <Button
@@ -182,7 +182,7 @@ export function AccountBar({ displayMenu }: accountBarProps) {
         setUserObj(user);
         // console.log("Metadata:", user.user_metadata);
       } else {
-        window.location.href = "/account";
+        window.location.href = "/";
       }
       // console.log(res.user_metadata); // first_name, last_name
     }
