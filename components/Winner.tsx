@@ -58,13 +58,14 @@ export function Winner() {
       return res;
     }
 
-    getWinner();
+    // getWinner();
   }, []);
 
-  if (winnerDetails) {
-    return (
-      <div className="winner my-10 text-center">
-        <div className="my-10">
+  // if (winnerDetails) {
+  return (
+    <div className="winner my-10 text-center">
+      {winnerDetails && (
+        <div className="">
           <h4 className="md:text-2xl text-xl font-semibold text-violet-50">
             Winner of July's Competition
           </h4>
@@ -72,8 +73,10 @@ export function Winner() {
             <span className="gradient">@{winnerDetails.username}</span>
           </h1>
         </div>
+      )}
 
-        {imageLink && <SectionImage img={imageLink.publicUrl} full={true} />}
+      {imageLink && <SectionImage img={imageLink.publicUrl} full={true} />}
+      {winnerDetails && (
         <div className="my-10">
           <h4 className="text-violet-100 text-lg font-semibold">
             Tools used from <span className="gradient font-bold">ArtGen</span>
@@ -92,8 +95,9 @@ export function Winner() {
             ))}
           </ul>
         </div>
-      </div>
-    );
-  }
-  return <LoadingIcon size={100} />;
+      )}
+    </div>
+  );
 }
+// return <LoadingIcon size={100} />;
+// }
