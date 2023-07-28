@@ -1,5 +1,6 @@
 "use client";
 import { ReactNode, use, useEffect, useState } from "react";
+import { SIDEBAR_LINKS } from "@/app/globals";
 
 interface sideBarProps {
   state: boolean;
@@ -12,20 +13,9 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
     setCurPage(window.location.pathname);
   }, []);
 
-  const listItems = [
-    { a: "dashboard", img: "icon_dashboard.svg", display: "Dashboard" },
-    { a: "projects", img: "icon_suitcase.svg", display: "Projects" },
-    { a: "posts", img: "icon_camera.svg", display: "Posts" },
-    {
-      a: "https://github.com/ikeawesom/ArtGen/discussions",
-      img: "icon_social.svg",
-      display: "Community",
-    },
-    { a: "settings", img: "icon_settings.svg", display: "Settings" },
-  ];
   return (
     <div
-      className={`sm:sticky sm:self-start left-0 top-0 bottom-0 flex-1 z-20 h-full min-h-screen bg-violet-900 fixed sm:p-5 duration-200 ease-in-out -translate-x-full ${
+      className={`sm:sticky sm:self-start left-0 top-0 bottom-0 z-20 h-full min-h-screen bg-violet-900 fixed sm:p-5 duration-200 ease-in-out -translate-x-full ${
         state ? "translate-x-0 shadow-2xl" : ""
       } sm:translate-x-0 sidebar shadow-sm`}
     >
@@ -49,7 +39,7 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
       </a>
 
       <ul className="text-violet-50">
-        {listItems.map((item) => (
+        {SIDEBAR_LINKS.map((item) => (
           <a
             key={item.a}
             href={item.display === "community" ? item.a : `/account/${item.a}`}
@@ -102,13 +92,6 @@ interface accountModalProps {
 }
 
 function AccountModal({ userInfo, user }: accountModalProps) {
-  const listItems = [
-    { display: "Dashboard", a: "dashboard" },
-    { display: "Account", a: "settings" },
-    { display: "Theme", a: "" },
-    { display: "Account", a: "settings" },
-  ];
-
   return (
     <div className="modal account text-indigo-950">
       <div className="text-container">
@@ -121,7 +104,7 @@ function AccountModal({ userInfo, user }: accountModalProps) {
         </h1>
         <h4 className="text-sm text-violet-400">{user && user.email}</h4>
       </div>
-      <ul className="text-indigo-900 text-sm links">
+      {/* <ul className="text-indigo-900 text-sm links">
         <a href="/account/settings#profile">
           <li>Your profile</li>
         </a>
@@ -137,7 +120,7 @@ function AccountModal({ userInfo, user }: accountModalProps) {
         <a href="/account/posts/submissions">
           <li>Your submissions</li>
         </a>
-      </ul>
+      </ul> */}
       <hr />
 
       <ul className="text-indigo-900 text-sm links">
@@ -156,6 +139,9 @@ function AccountModal({ userInfo, user }: accountModalProps) {
         <a href="/">
           <li>Homepage</li>
         </a>
+        <a href="https://github.com/ikeawesom">
+          <li>Github</li>
+        </a>
       </ul>
       <hr />
       <div className="text-container">
@@ -167,28 +153,15 @@ function AccountModal({ userInfo, user }: accountModalProps) {
 
 interface accountBarProps {
   displayMenu: () => void;
+  userInfo: any;
+  userObj: any;
 }
 
-export function AccountBar({ displayMenu }: accountBarProps) {
-  const [userInfo, setUserInfo] = useState<any>({});
-  const [userObj, setUserObj] = useState<User>();
-
-  useEffect(() => {
-    async function handleUserInfo() {
-      const { user, error } = await getUserDetails();
-      // console.log(user);
-      if (user) {
-        setUserInfo(user.user_metadata);
-        setUserObj(user);
-        // console.log("Metadata:", user.user_metadata);
-      } else {
-        window.location.href = "/";
-      }
-      // console.log(res.user_metadata); // first_name, last_name
-    }
-    handleUserInfo();
-  }, []);
-
+export function AccountBar({
+  displayMenu,
+  userInfo,
+  userObj,
+}: accountBarProps) {
   // Modals
   const [modal, setModal] = useState<string>();
 
@@ -269,13 +242,34 @@ interface dashboardProps {
 
 export function Dashboard({ children, className }: dashboardProps) {
   const [visible, setVisible] = useState(false);
+  const [userInfo, setUserInfo] = useState<any>({});
+  const [userObj, setUserObj] = useState<User>();
 
+  useEffect(() => {
+    async function handleUserInfo() {
+      const { user, error } = await getUserDetails();
+      // console.log(user);
+      if (user) {
+        setUserInfo(user.user_metadata);
+        setUserObj(user);
+        // console.log("Metadata:", user.user_metadata);
+      } else {
+        window.location.href = "/";
+      }
+      // console.log(res.user_metadata); // first_name, last_name
+    }
+    handleUserInfo();
+  }, []);
   return (
     <div className={className}>
       <SideBar state={visible} hideMenu={() => setVisible(!visible)} />
       <div className="xl:w-5/6 sm:w-11/12 w-full flex-5 bg-violet-50">
-        <AccountBar displayMenu={() => setVisible(!visible)} />
-        <div className="min-h-screen bg-violet-50">{children}</div>
+        <AccountBar
+          displayMenu={() => setVisible(!visible)}
+          userInfo={userInfo}
+          userObj={userObj}
+        />
+        <div className="min-h-screen bg-violet-50 p-5">{children}</div>
       </div>
     </div>
   );

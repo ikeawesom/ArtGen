@@ -117,3 +117,15 @@ export const CONTACT_LINKS = [
     display: ["footer"],
   },
 ];
+
+export const SIDEBAR_LINKS = [
+  { a: "dashboard", img: "icon_dashboard.svg", display: "Dashboard" },
+  { a: "features", img: "icon_suitcase.svg", display: "Features" },
+  { a: "posts", img: "icon_camera.svg", display: "Posts" },
+  {
+    a: "https://github.com/ikeawesom/ArtGen/discussions",
+    img: "icon_social.svg",
+    display: "Community",
+  },
+  { a: "settings", img: "icon_settings.svg", display: "Settings" },
+];
