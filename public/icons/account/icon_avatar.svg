@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="64" cy="64" id="circle" r="64" style="fill: rgb(76, 29, 149);" transform="matrix(1, 0, 0, 1, -1.7763568394002505e-15, 0)"/>
+  <g id="icon" transform="matrix(1, 0, 0, 1, -1.7763568394002505e-15, 0)">
+    <path d="M64,99h35c0-16-10.4-29-24.6-33.4C80.1,62,84,55.7,84,48.5c0-11-9-20-20-20" id="right" fill="#E6E6E6" style="paint-order: fill;"/>
+    <path d="M64,28.5c-11,0-20,9-20,20c0,7.2,3.9,13.6,9.6,17.1C39.4,70,29,83,29,99h35" id="left" fill="#FFFFFF" style="paint-order: fill;"/>
+  </g>
+</svg>
