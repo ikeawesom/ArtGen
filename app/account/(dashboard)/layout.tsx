@@ -1,5 +1,10 @@
 import { Dashboard } from "@/components/account/Dashboard";
 import "./dashboard.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dashboard", // a default is required when creating a template
+};
 
 export default function RootLayout({
   children,
@@ -8,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <div>
-      <Dashboard children={children} className="flex" />
+      <Dashboard children={children} className="flex bg-violet-900" />
     </div>
   );
 }
