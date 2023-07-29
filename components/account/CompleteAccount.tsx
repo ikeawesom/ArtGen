@@ -7,6 +7,7 @@ import "./account.css";
 export default function CompleteAccount() {
   const [incompleteTasks, setIncompleteTasks] = useState<any[]>();
   const totalTasks = 4;
+  const [percent, setPercent] = useState(0);
 
   function handleTasks(userInformation: any) {
     var temp = [];
@@ -53,16 +54,28 @@ export default function CompleteAccount() {
     getDetails();
   }, []);
 
+  useEffect(() => {
+    if (incompleteTasks) {
+      const percent_temp = (1 - incompleteTasks.length / totalTasks) * 100 + 50;
+      setPercent(percent_temp);
+    }
+  }, [incompleteTasks]);
+
   if (incompleteTasks)
     return (
       <div>
-        <div className="flex gap-2 items-center justify-start mb-5">
-          <h1 className="font-bold text-indigo-900">Spice up your account</h1>
-          <h4 className="text-violet-600 text-sm">
-            {(1 - incompleteTasks.length / totalTasks) * 100}%
-          </h4>
+        <div className="flex gap-2 items-center justify-start">
+          <h1 className="font-bold text-indigo-900">
+            Finish setting up your account
+          </h1>
+          <h4 className="text-violet-600 text-sm">{percent}%</h4>
         </div>
 
+        <div className="h-5 w-full rounded-lg bg-slate-50 my-3 shadow-md overflow-hidden">
+          <div
+            className={`h-5 progress-bar bg-violet-400 w-[${percent}%]`}
+          ></div>
+        </div>
         <ul className="flex gap-3 overflow-x-auto pr-3 py-3">
           {incompleteTasks.map((item: any) => (
             <a
