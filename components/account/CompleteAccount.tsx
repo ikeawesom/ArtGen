@@ -66,7 +66,7 @@ export default function CompleteAccount({ closeAction }: Props) {
 
   if (incompleteTasks)
     return (
-      <div className="border-2 border-violet-400 rounded-md p-8 pb-5 my-5 relative bg-violet-200 notice">
+      <div className="border-2 border-violet-400 rounded-md md:p-8 p-5 md:pb-5 my-5 relative bg-violet-200 notice">
         <div className="flex gap-2 items-center justify-start">
           <h1 className="font-bold text-indigo-900 text-xl">
             Spice up your account!
