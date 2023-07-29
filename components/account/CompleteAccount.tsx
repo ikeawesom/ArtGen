@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUserDetails } from "@/supabase/auth/handleAuth";
 import profilesDB from "@/supabase/database/handleProfiles";
-import "./account.css";
 
 interface Props {
   closeAction: () => void;
