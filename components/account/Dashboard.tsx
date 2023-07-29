@@ -15,7 +15,7 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
 
   return (
     <div
-      className={`sm:sticky sm:self-start left-0 top-0 bottom-0 z-20 h-full min-h-screen bg-violet-900 fixed sm:p-5 duration-200 ease-in-out -translate-x-full ${
+      className={`xl:w-1/6 sm:w-1/12 flex-1 sm:sticky sm:self-start left-0 top-0 bottom-0 z-20 h-full min-h-screen bg-violet-900 fixed sm:p-5 duration-200 ease-in-out -translate-x-full ${
         state ? "translate-x-0 shadow-2xl" : ""
       } sm:translate-x-0 sidebar shadow-sm`}
     >
