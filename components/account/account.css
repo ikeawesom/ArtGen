@@ -54,6 +54,20 @@ p {
   } */
 }
 
+.notice {
+  opacity: 0;
+  animation: fade-in-normal 300ms ease-in-out forwards;
+}
+
+@keyframes fade-in-normal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .complete-account-tab {
-  min-width: 10rem;
+  min-width: 8rem;
 }
