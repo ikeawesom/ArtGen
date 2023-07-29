@@ -113,8 +113,8 @@ export default function CompleteAccount({ closeAction }: Props) {
           onClick={closeAction}
           src="/icons/icon_cross.svg"
           alt=""
-          width={20}
-          className="cursor-pointer hover:brightness-150 duration-150 absolute top-6 right-6"
+          // width={20}
+          className="cursor-pointer hover:brightness-150 duration-150 absolute top-6 right-6 md:w-5 w-3"
         />
       </div>
     );
