@@ -126,3 +126,20 @@ hr {
 .complete-account-tab {
   min-width: 10rem;
 }
+
+.complete-account.close {
+  animation: slide-out 700ms ease-in-out forwards;
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  70% {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(300%);
+  }
+}

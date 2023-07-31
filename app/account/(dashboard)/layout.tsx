@@ -13,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <div>
-      <Dashboard children={children} className="flex bg-violet-900" />
+      <Dashboard
+        children={children}
+        className="flex bg-violet-900 overflow-x-hidden"
+      />
     </div>
   );
 }

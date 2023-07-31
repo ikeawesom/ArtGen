@@ -4,9 +4,13 @@ import { useState } from "react";
 
 export default function Page() {
   const [displayCompleteAccModal, setModalDisplay] = useState(true);
+  const [visible, setVisible] = useState(true);
 
   function handleModal() {
-    setModalDisplay(!displayCompleteAccModal);
+    setVisible(false);
+    setTimeout(() => {
+      setModalDisplay(!displayCompleteAccModal);
+    }, 700);
   }
 
   return (
@@ -14,7 +18,7 @@ export default function Page() {
       <h1 className="font-bold text-3xl">Dashboard</h1>
       <hr className="mb-6" />
       {displayCompleteAccModal && (
-        <CompleteAccount closeAction={() => handleModal()} />
+        <CompleteAccount visible={visible} closeAction={() => handleModal()} />
       )}
       <h1>Features</h1>
     </div>

@@ -4,9 +4,10 @@ import profilesDB from "@/supabase/database/handleProfiles";
 
 interface Props {
   closeAction: () => void;
+  visible: boolean;
 }
 
-export default function CompleteAccount({ closeAction }: Props) {
+export default function CompleteAccount({ closeAction, visible }: Props) {
   const [incompleteTasks, setIncompleteTasks] = useState<any[]>();
   const totalTasks = 4;
   const [percent, setPercent] = useState(0);
@@ -65,7 +66,11 @@ export default function CompleteAccount({ closeAction }: Props) {
 
   if (incompleteTasks)
     return (
-      <div className="border-2 border-violet-400 rounded-md md:p-8 p-5 md:pb-5 my-5 relative bg-violet-200 notice">
+      <div
+        className={`border-2 border-violet-400 rounded-md md:p-8 p-5 md:pb-5 my-5 relative bg-violet-200 notice complete-account ${
+          visible ? "" : "close"
+        }`}
+      >
         <div className="flex gap-2 items-center justify-start">
           <h1 className="font-bold text-indigo-900 text-xl">
             Spice up your account!
@@ -117,4 +122,5 @@ export default function CompleteAccount({ closeAction }: Props) {
         />
       </div>
     );
+  return <div></div>;
 }
