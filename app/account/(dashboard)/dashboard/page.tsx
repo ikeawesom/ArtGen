@@ -1,5 +1,6 @@
 "use client";
 import CompleteAccount from "@/components/account/CompleteAccount";
+import FeatureBox from "@/components/account/FeatureBox";
 import { useState } from "react";
 
 export default function Page() {
@@ -14,13 +15,11 @@ export default function Page() {
   }
 
   return (
-    <div>
-      <h1 className="font-bold text-3xl">Dashboard</h1>
-      <hr className="mb-6 bg-violet-200 h-[2px]" />
+    <div className="flex flex-col gap-5">
       {displayCompleteAccModal && (
         <CompleteAccount visible={visible} closeAction={() => handleModal()} />
       )}
-      <h1>Features</h1>
+      <FeatureBox />
     </div>
   );
 }
