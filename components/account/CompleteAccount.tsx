@@ -67,7 +67,7 @@ export default function CompleteAccount({ closeAction, visible }: Props) {
   if (incompleteTasks)
     return (
       <div
-        className={`border-2 border-violet-400 rounded-md md:p-8 p-4 pb-2 md:pb-5 my-5 relative bg-violet-200 notice complete-account ${
+        className={`border-2 border-violet-400 rounded-md md:p-8 p-4 pb-2 md:pb-5 relative bg-violet-200 notice complete-account ${
           visible ? "" : "close"
         }`}
       >

@@ -292,7 +292,7 @@ export function Dashboard({ children, className }: dashboardProps) {
           userObj={userObj}
           userProfile={userProfile}
         />
-        <div className="min-h-screen bg-violet-50 p-5">{children}</div>
+        <div className="bg-violet-50 p-5">{children}</div>
       </div>
     </div>
   );
