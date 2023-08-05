@@ -43,7 +43,7 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
           <a
             key={item.a}
             href={item.display === "Community" ? item.a : `/account/${item.a}`}
-            target={item.display === "community" ? "_blank" : ""}
+            target={item.display === "Community" ? "_blank" : ""}
           >
             <li className={curPage.includes(item.a) ? "bg-violet-500" : ""}>
               <span>
