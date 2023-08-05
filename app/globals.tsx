@@ -120,8 +120,8 @@ export const CONTACT_LINKS = [
 
 export const SIDEBAR_LINKS = [
   { a: "dashboard", img: "icon_dashboard.svg", display: "Dashboard" },
-  { a: "features", img: "icon_suitcase.svg", display: "Features" },
-  { a: "posts", img: "icon_camera.svg", display: "Posts" },
+  { a: "/features", img: "icon_suitcase.svg", display: "Features" },
+  { a: "shop", img: "icon_genchips.svg", display: "Shop" },
   {
     a: "https://github.com/ikeawesom/ArtGen/discussions",
     img: "icon_social.svg",
