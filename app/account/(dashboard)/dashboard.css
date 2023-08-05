@@ -46,7 +46,7 @@
   height: 30px;
 }
 
-.accountbar img:not(.logout) {
+.accountbar img.bar-icon {
   min-width: 20px;
   width: 25px;
   height: 25px;

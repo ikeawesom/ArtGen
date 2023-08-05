@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, use, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { SIDEBAR_LINKS } from "@/app/globals";
 
 interface sideBarProps {
@@ -15,7 +15,7 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
 
   return (
     <div
-      className={`xl:w-1/6 sm:w-1/12 flex-1 sm:sticky sm:self-start left-0 top-0 bottom-0 z-20 h-full min-h-screen bg-violet-900 fixed sm:p-5 duration-200 ease-in-out -translate-x-full ${
+      className={`xl:w-1/6 sm:w-1/6 flex-1 sm:sticky sm:self-start left-0 top-0 bottom-0 z-20 h-full min-h-screen bg-violet-900 fixed sm:p-5 duration-200 ease-in-out -translate-x-full ${
         state ? "translate-x-0 shadow-2xl" : ""
       } sm:translate-x-0 sidebar shadow-sm`}
     >
@@ -61,9 +61,11 @@ export function SideBar({ state, hideMenu }: sideBarProps) {
     </div>
   );
 }
+
 import { getUserDetails, handleSignOut } from "@/supabase/auth/handleAuth";
 import { Button } from "../Buttons";
 import { User } from "@supabase/supabase-js";
+import profilesDB from "@/supabase/database/handleProfiles";
 
 export function LogOutButton() {
   async function handleClick() {
@@ -84,31 +86,47 @@ export function LogOutButton() {
     >
       <span className="flex gap-2 items-center justify-center text-violet-50 font-medium">
         Sign Out
-        <img src="/icons/icon_power_bright.svg" className="logout" width={15} />
+        <img src="/icons/icon_power_bright.svg" width={15} />
       </span>
     </Button>
   );
 }
 
 interface accountModalProps {
-  userInfo: any;
   user: User | undefined;
+  profile: any;
 }
 
-function AccountModal({ userInfo, user }: accountModalProps) {
-  return (
-    <div className="modal account text-indigo-950">
-      <div className="text-container">
-        <h1 className="text-lg font-bold">
-          {`${
-            userInfo.first_name
-              ? `${userInfo.first_name} ${userInfo.last_name}`
-              : "..."
-          }`}
-        </h1>
-        <h4 className="text-sm text-violet-400">{user && user.email}</h4>
-      </div>
-      {/* <ul className="text-indigo-900 text-sm links">
+function AccountModal({ user, profile }: accountModalProps) {
+  if (user && profile)
+    return (
+      <div className="modal account text-indigo-950">
+        <div className="text-container">
+          <h1 className="text-lg font-bold">
+            {`${user.user_metadata.first_name} 
+                ${user.user_metadata.last_name}
+            `}
+          </h1>
+          <h4 className="text-sm text-violet-400">{user && user.email}</h4>
+        </div>
+
+        <div className="bg-violet-100 p-2 px-4 rounded-full my-4 overflow-hidden relative shadow-inner flex gap-2">
+          <img
+            src="/icons/icon_coin-group.svg"
+            alt=""
+            className="drop-shadow-2xl"
+            width={40}
+          />
+          <h4 className="text-violet-900 font-bold">{profile[0].genchips}</h4>
+          <a
+            href="/account/shop"
+            className="absolute right-0 top-0 h-full bg-violet-800 grid place-content-center text-2xl text-violet-50 p-2 hover:bg-violet-600"
+          >
+            <h3>+</h3>
+          </a>
+        </div>
+
+        {/* <ul className="text-indigo-900 text-sm links">
         <a href="/account/settings#profile">
           <li>Your profile</li>
         </a>
@@ -125,46 +143,46 @@ function AccountModal({ userInfo, user }: accountModalProps) {
           <li>Your submissions</li>
         </a>
       </ul> */}
-      <hr />
+        <hr />
 
-      <ul className="text-indigo-900 text-sm links">
-        <a href="/pricing">
-          <li>Upgrade plan</li>
-        </a>
-        <a href="/account/shop">
-          <li>Get more GenChips</li>
-        </a>
-        <a href="/help">
-          <li>Contact sales</li>
-        </a>
-      </ul>
-      <hr />
-      <ul className="text-indigo-900 text-sm links">
-        <a href="/">
-          <li>Homepage</li>
-        </a>
-        <a href="https://github.com/ikeawesom">
-          <li>Github</li>
-        </a>
-      </ul>
-      <hr />
-      <div className="text-container">
-        <LogOutButton />
+        <ul className="text-indigo-900 text-sm links">
+          <a href="/pricing">
+            <li>Upgrade plan</li>
+          </a>
+          <a href="/account/shop">
+            <li>Get more GenChips</li>
+          </a>
+          <a href="/help">
+            <li>Contact sales</li>
+          </a>
+        </ul>
+        <hr />
+        <ul className="text-indigo-900 text-sm links">
+          <a href="/">
+            <li>Homepage</li>
+          </a>
+          <a href="https://github.com/ikeawesom">
+            <li>Github</li>
+          </a>
+        </ul>
+        <hr />
+        <div className="text-container">
+          <LogOutButton />
+        </div>
       </div>
-    </div>
-  );
+    );
 }
 
 interface accountBarProps {
   displayMenu: () => void;
-  userInfo: any;
   userObj: any;
+  userProfile: any;
 }
 
 export function AccountBar({
   displayMenu,
-  userInfo,
   userObj,
+  userProfile,
 }: accountBarProps) {
   // Modals
   const [modal, setModal] = useState<string>();
@@ -211,7 +229,7 @@ export function AccountBar({
           state={modal === "user"}
         />
         {modal === "user" && (
-          <AccountModal user={userObj} userInfo={userInfo} />
+          <AccountModal user={userObj} profile={userProfile} />
         )}
       </div>
     </div>
@@ -234,7 +252,7 @@ function BarButton({ icon, onClick, state }: barButtonProps) {
         state && "bg-violet-100"
       }`}
     >
-      <img src={`/icons/icon_${icon}.svg`} alt={icon} />
+      <img src={`/icons/icon_${icon}.svg`} alt={icon} className="bar-icon" />
     </div>
   );
 }
@@ -246,16 +264,17 @@ interface dashboardProps {
 
 export function Dashboard({ children, className }: dashboardProps) {
   const [visible, setVisible] = useState(false);
-  const [userInfo, setUserInfo] = useState<any>({});
   const [userObj, setUserObj] = useState<User>();
+  const [userProfile, setUserProfile] = useState<any>();
 
   useEffect(() => {
     async function handleUserInfo() {
       const { user, error } = await getUserDetails();
       // console.log(user);
       if (user) {
-        setUserInfo(user.user_metadata);
         setUserObj(user);
+        const res = await profilesDB.getAll();
+        if (res) setUserProfile(res);
         // console.log("Metadata:", user.user_metadata);
       } else {
         window.location.href = "/";
@@ -270,8 +289,8 @@ export function Dashboard({ children, className }: dashboardProps) {
       <div className="xl:w-5/6 sm:w-11/12 w-full flex-5 bg-violet-50">
         <AccountBar
           displayMenu={() => setVisible(!visible)}
-          userInfo={userInfo}
           userObj={userObj}
+          userProfile={userProfile}
         />
         <div className="min-h-screen bg-violet-50 p-5">{children}</div>
       </div>
