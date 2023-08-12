@@ -6,62 +6,11 @@ import "./account.css";
 import profilesDB from "@/supabase/database/handleProfiles";
 import supabase from "@/supabase/config";
 
-interface FormRowProps {
-  label?: string;
-  type?: string;
-  placeholder?: string;
-  value?: string;
-  onChange?: (name: string) => void;
-  className?: string;
-}
-
-function FormRow({
-  label,
-  type,
-  placeholder,
-  value,
-  onChange,
-  className,
-}: FormRowProps) {
-  return (
-    <div className="flex gap-5 items-center justify-between my-2 w-full">
-      <label className="w-1/5" htmlFor={label}>
-        {label}
-      </label>
-
-      {onChange ? (
-        <input
-          className={`w-4/5 ${className}`}
-          type={type}
-          placeholder={placeholder}
-          name={label}
-          value={value ? value : ""}
-          onChange={(e) => onChange(e.target.value)}
-          min={type === "password" ? 6 : undefined}
-        />
-      ) : (
-        <input
-          className="w-4/5"
-          type={type}
-          placeholder={placeholder}
-          name={label}
-          value={value ? value : ""}
-          onChange={(e) => {
-            value = e.target.value;
-          }}
-          onClick={() => {
-            alert(`You cannot change your ${label}.`);
-          }}
-        />
-      )}
-    </div>
-  );
-}
-
 interface Props {
   userProfile: any;
+  className?: string;
 }
-export function Profile({ userProfile }: Props) {
+export function Profile({ userProfile, className }: Props) {
   const [username, setUsername] = useState<string | null>();
   const [newPass, setNewPass] = useState("");
   const [newCfmPass, setNewCfmPass] = useState("");
@@ -136,7 +85,7 @@ export function Profile({ userProfile }: Props) {
   }
 
   return (
-    <MainBox title="Profile" className="flex-1">
+    <MainBox title="Profile" className={className}>
       <form onSubmit={handleProfileSubmit}>
         <FormRow
           label="Name"
@@ -185,5 +134,57 @@ export function Profile({ userProfile }: Props) {
         </div>
       </form>
     </MainBox>
+  );
+}
+
+interface FormRowProps {
+  label?: string;
+  type?: string;
+  placeholder?: string;
+  value?: string;
+  onChange?: (name: string) => void;
+  className?: string;
+}
+
+function FormRow({
+  label,
+  type,
+  placeholder,
+  value,
+  onChange,
+  className,
+}: FormRowProps) {
+  return (
+    <div className="flex sm:gap-5 sm:items-center sm:justify-between sm:my-2 w-full sm:flex-row flex-col items-start justify-start gap-0 my-5">
+      <label className="sm:w-1/5 w-full" htmlFor={label}>
+        {label}
+      </label>
+
+      {onChange ? (
+        <input
+          className={`w-full sm:w-4/5 ${className}`}
+          type={type}
+          placeholder={placeholder}
+          name={label}
+          value={value ? value : ""}
+          onChange={(e) => onChange(e.target.value)}
+          min={type === "password" ? 6 : undefined}
+        />
+      ) : (
+        <input
+          className="w-full sm:w-4/5"
+          type={type}
+          placeholder={placeholder}
+          name={label}
+          value={value ? value : ""}
+          onChange={(e) => {
+            value = e.target.value;
+          }}
+          onClick={() => {
+            alert(`You cannot change your ${label}.`);
+          }}
+        />
+      )}
+    </div>
   );
 }
