@@ -3,7 +3,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import MainBox from "./MainBox";
 import "./account.css";
-import { getUserDetails } from "@/supabase/auth/handleAuth";
 import profilesDB from "@/supabase/database/handleProfiles";
 import supabase from "@/supabase/config";
 
@@ -59,34 +58,18 @@ function FormRow({
   );
 }
 
-export function Profile() {
-  const [userProfile, setUserProfile] = useState<any>();
+interface Props {
+  userProfile: any;
+}
+export function Profile({ userProfile }: Props) {
   const [username, setUsername] = useState<string | null>();
   const [newPass, setNewPass] = useState("");
   const [newCfmPass, setNewCfmPass] = useState("");
   const [edited, setEdited] = useState(false);
 
   useEffect(() => {
-    async function handleUserInfo() {
-      const { user, error } = await getUserDetails();
-      // console.log(user);
-      if (user) {
-        const res = await profilesDB.getAll();
-        if (res) {
-          setUserProfile(res);
-          if (res[0].display_name !== null) {
-            setUsername(res[0].display_name);
-          }
-        }
-
-        // console.log("Metadata:", user.user_metadata);
-      } else {
-        window.location.href = "/";
-      }
-      // console.log(res.user_metadata); // first_name, last_name
-    }
-    handleUserInfo();
-  }, []);
+    if (userProfile) setUsername(userProfile[0].display_name);
+  });
 
   function handleUsernameChange(name: string) {
     setUsername(name);
@@ -152,66 +135,55 @@ export function Profile() {
     }
   }
 
-  if (userProfile)
-    return (
-      <div>
-        <div className="flex gap-5">
-          <MainBox title="Profile" className="flex-1">
-            <form onSubmit={handleProfileSubmit}>
-              <FormRow
-                label="Name"
-                value={`${userProfile[0].first_name} ${userProfile[0].last_name}`}
-                type="text"
-              />
-              <FormRow
-                label="Email Address"
-                value={`${userProfile[0].email}`}
-                type="email"
-              />
+  return (
+    <MainBox title="Profile" className="flex-1">
+      <form onSubmit={handleProfileSubmit}>
+        <FormRow
+          label="Name"
+          value={`${userProfile[0].first_name} ${userProfile[0].last_name}`}
+          type="text"
+        />
+        <FormRow
+          label="Email Address"
+          value={`${userProfile[0].email}`}
+          type="email"
+        />
 
-              <FormRow
-                label="Username"
-                placeholder="Enter a username"
-                value={username ? username : ""}
-                onChange={handleUsernameChange}
-              />
+        <FormRow
+          label="Username"
+          placeholder="Enter a username"
+          value={username ? username : ""}
+          onChange={handleUsernameChange}
+        />
 
-              <hr className="my-6" />
+        <hr className="my-6" />
 
-              <FormRow
-                label="New Password"
-                placeholder="Enter a new password"
-                type="password"
-                value={newPass}
-                onChange={handleNewPassChange}
-              />
-              <FormRow
-                label="Confirm New Password"
-                placeholder="Enter your current password"
-                type="password"
-                value={newCfmPass}
-                onChange={handleCfmNewPassChange}
-              />
-              <div className="flex items-center justify-end mt-5">
-                <button
-                  disabled={!edited}
-                  type="submit"
-                  className={` text-violet-50 py-2 px-5 rounded-md duration-150 ${
-                    edited
-                      ? "hover:bg-violet-500 bg-violet-600"
-                      : "bg-violet-400"
-                  }`}
-                >
-                  Save Changes
-                </button>
-              </div>
-            </form>
-          </MainBox>
-          <MainBox title="Links" className="flex-1"></MainBox>
+        <FormRow
+          label="New Password"
+          placeholder="Enter a new password"
+          type="password"
+          value={newPass}
+          onChange={handleNewPassChange}
+        />
+        <FormRow
+          label="Confirm New Password"
+          placeholder="Enter your current password"
+          type="password"
+          value={newCfmPass}
+          onChange={handleCfmNewPassChange}
+        />
+        <div className="flex items-center justify-end mt-5">
+          <button
+            disabled={!edited}
+            type="submit"
+            className={` text-violet-50 py-2 px-5 rounded-md duration-150 ${
+              edited ? "hover:bg-violet-500 bg-violet-600" : "bg-violet-400"
+            }`}
+          >
+            Save Changes
+          </button>
         </div>
-        <MainBox title="Danger Zone" className="mt-5">
-          <h1>hello</h1>
-        </MainBox>
-      </div>
-    );
+      </form>
+    </MainBox>
+  );
 }
