@@ -14,31 +14,33 @@ export default function CompleteAccount({ closeAction, visible }: Props) {
 
   function handleTasks(userInformation: any) {
     var temp = [];
+    if (
+      userInformation.metadata === null ||
+      userInformation.metadata.features_used === null
+    )
+      temp.push({
+        a: "/features",
+        icon: "icon_suitcase.svg",
+        name: "Use a feature",
+      });
 
     if (userInformation.display_name === null)
       temp.push({
-        a: "/account",
-        icon: "icon_name.svg",
-        name: "Display Name",
-      });
-
-    if (userInformation.profile_picture === null)
-      temp.push({
         a: "/account/settings",
-        icon: "icon_avatar.svg",
-        name: "Profile Picture",
+        icon: "icon_name.svg",
+        name: "Add a username",
       });
 
     if (userInformation.github_url === null)
       temp.push({
-        a: "/account/settings/links",
+        a: "/account/settings",
         icon: "icon_github.svg",
         name: "Link your GitHub",
       });
 
     if (userInformation.linkedin_url === null)
       temp.push({
-        a: "/account/settings/links",
+        a: "/account/settings",
         icon: "icon_linkedin.svg",
         name: "Link your Linkedin",
       });
@@ -72,9 +74,7 @@ export default function CompleteAccount({ closeAction, visible }: Props) {
         }`}
       >
         <div className="flex gap-2 items-center justify-start">
-          <h1 className="font-bold text-indigo-900 text-xl">
-            Spice up your account!
-          </h1>
+          <h1 className="font-bold text-indigo-900 text-xl">Next steps!</h1>
           <h4 className="text-violet-600 text-md">{percent}%</h4>
         </div>
 
