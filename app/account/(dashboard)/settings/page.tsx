@@ -1,5 +1,6 @@
 "use client";
 
+import LoadingScreen from "@/components/Loading";
 import DangerZone from "@/components/account/DangerZone";
 import Links from "@/components/account/Links";
 import { Profile } from "@/components/account/Settings";
@@ -31,11 +32,12 @@ export default function Page() {
   if (userProfile)
     return (
       <div>
-        <div className="flex gap-5">
-          <Profile userProfile={userProfile} />
-          <Links userProfile={userProfile} />
+        <div className="flex gap-5 flex-wrap">
+          <Profile userProfile={userProfile} className="lg:flex-1 w-full" />
+          <Links userProfile={userProfile} className="lg:flex-1 w-full" />
         </div>
         <DangerZone userProfile={userProfile} />
       </div>
     );
+  return <LoadingScreen text="Preparing your information..." />;
 }
