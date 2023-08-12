@@ -16,9 +16,6 @@ import { FrameworkHeading, FrameworkList } from "@/components/Frameworks";
 import { Winner } from "@/components/Winner";
 import ContactLinks from "@/components/ContactLinks";
 import Footer from "@/components/Footer";
-import { useEffect, useState } from "react";
-import supabase from "@/supabase/config";
-import LoadingScreen from "@/components/Loading";
 
 export default function Home() {
   return (
