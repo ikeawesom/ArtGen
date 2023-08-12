@@ -1,5 +1,6 @@
 import profilesDB from "@/supabase/database/handleProfiles";
 import { useEffect, useState } from "react";
+import MainBox from "./MainBox";
 
 export default function FeatureBox() {
   const [metadata, setMetadata] = useState<any>();
@@ -16,8 +17,7 @@ export default function FeatureBox() {
   }, []);
 
   return (
-    <div className="bg-white p-6 shadow-md rounded-md relative">
-      <h1 className="font-bold text-xl text-violet-950">My Features</h1>
+    <MainBox title="My Features">
       <ul
         className={`min-h-[200px]  ${
           metadata ? "" : "grid place-items-center p-10"
@@ -25,9 +25,9 @@ export default function FeatureBox() {
       >
         {metadata && metadata.map((item: any) => <li>item.name</li>)}
         {!metadata && (
-          <div className="flex flex-col gap-5 items-center justify-center text-violet-600">
+          <div className="flex flex-col gap-5 items-center justify-center text-violet-600 text-center">
             <img src="/dashboard/no_features.svg" alt="" width={300} />
-            <h1>You currently have not used any features.</h1>
+            <h1>You have not used any features.</h1>
           </div>
         )}
       </ul>
@@ -41,6 +41,6 @@ export default function FeatureBox() {
           <h1>View all features</h1>
         </a>
       </div>
-    </div>
+    </MainBox>
   );
 }
