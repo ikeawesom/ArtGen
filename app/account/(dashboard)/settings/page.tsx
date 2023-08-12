@@ -1,3 +1,5 @@
+import { Profile } from "@/components/account/Settings";
+
 export default function Page() {
-  return <h1>Settings</h1>;
+  return <Profile />;
 }
