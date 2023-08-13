@@ -274,7 +274,19 @@ export function Dashboard({ children, className }: dashboardProps) {
       if (user) {
         setUserObj(user);
         const res = await profilesDB.getAll();
-        if (res) setUserProfile(res);
+        if (res) {
+          setUserProfile(res);
+          if (res[0].first_name === "") {
+            const resA = await profilesDB.setName(
+              user.user_metadata.first_name,
+              user.user_metadata.last_name,
+              user.id
+            );
+          }
+
+          // const resA = await profilesDB.setName()
+        }
+
         // console.log("Metadata:", user.user_metadata);
       } else {
         window.location.href = "/";

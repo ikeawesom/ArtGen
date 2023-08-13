@@ -16,6 +16,16 @@ class mainProfilesDB extends mainDBClass {
     if (error) return error;
     return "success";
   }
+
+  async setName(f_name, l_name, id) {
+    const { error } = await supabase
+      .from(this.table_name)
+      .update({ first_name: f_name, last_name: l_name })
+      .eq("id", id);
+
+    if (error) return error;
+    return "success";
+  }
 }
 const profilesDB = new mainProfilesDB("profiles");
 
