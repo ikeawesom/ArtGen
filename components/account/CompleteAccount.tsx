@@ -31,14 +31,14 @@ export default function CompleteAccount({ closeAction, visible }: Props) {
         name: "Add a Display Name",
       });
 
-    if (userInformation.github_url === null)
+    if (userInformation.github_url === "")
       temp.push({
         a: "/account/settings",
         icon: "icon_github.svg",
         name: "Link your GitHub",
       });
 
-    if (userInformation.linkedin_url === null)
+    if (userInformation.linkedin_url === "")
       temp.push({
         a: "/account/settings",
         icon: "icon_linkedin.svg",
