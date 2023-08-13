@@ -24,11 +24,11 @@ export default function CompleteAccount({ closeAction, visible }: Props) {
         name: "Use a feature",
       });
 
-    if (userInformation.display_name === null)
+    if (userInformation.display_name === "")
       temp.push({
         a: "/account/settings",
         icon: "icon_name.svg",
-        name: "Add a username",
+        name: "Add a Display Name",
       });
 
     if (userInformation.github_url === null)
