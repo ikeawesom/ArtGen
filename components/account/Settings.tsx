@@ -11,21 +11,14 @@ interface Props {
   className?: string;
 }
 export function Profile({ userProfile, className }: Props) {
-  const [username, setUsername] = useState<string | null>();
+  const [username, setUsername] = useState("");
   const [newPass, setNewPass] = useState("");
   const [newCfmPass, setNewCfmPass] = useState("");
   const [edited, setEdited] = useState(false);
 
   useEffect(() => {
     if (userProfile) setUsername(userProfile[0].display_name);
-  });
-
-  function handleUsernameChange(name: string) {
-    setUsername(name);
-    if (name === "") {
-      setUsername(null);
-    }
-  }
+  }, []);
 
   useEffect(() => {
     if (userProfile) {
@@ -41,6 +34,9 @@ export function Profile({ userProfile, className }: Props) {
     }
   }, [newPass, newCfmPass, username]);
 
+  function handleUsernameChange(name: string) {
+    setUsername(name);
+  }
   function handleNewPassChange(newPass: string) {
     setNewPass(newPass);
   }
@@ -57,15 +53,15 @@ export function Profile({ userProfile, className }: Props) {
       // edit username
       const res = await profilesDB.setUsername(username, userProfile[0].id);
       if (res === "success") {
-        alert("Username updated!");
+        alert("Display name updated!");
         var success = true;
       } else alert("An error has occured. Please try again later.");
     }
 
+    // Change passwords
     if (newPass !== newCfmPass) {
-      // Change passwords
       alert("Passwords do not match!");
-    } else {
+    } else if (newPass !== "" && newCfmPass !== "") {
       const { data, error } = await supabase.auth.updateUser({
         password: newCfmPass,
       });
@@ -99,9 +95,10 @@ export function Profile({ userProfile, className }: Props) {
         />
 
         <FormRow
-          label="Username"
-          placeholder="Enter a username"
-          value={username ? username : ""}
+          label="Display Name"
+          placeholder="Enter a display name"
+          type="text"
+          value={username}
           onChange={handleUsernameChange}
         />
 
