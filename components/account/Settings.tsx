@@ -6,11 +6,11 @@ import "./account.css";
 import profilesDB from "@/supabase/database/handleProfiles";
 import supabase from "@/supabase/config";
 
-interface Props {
+interface ProfileProps {
   userProfile: any;
   className?: string;
 }
-export function Profile({ userProfile, className }: Props) {
+export function Profile({ userProfile, className }: ProfileProps) {
   const [username, setUsername] = useState("");
   const [newPass, setNewPass] = useState("");
   const [newCfmPass, setNewCfmPass] = useState("");
@@ -130,6 +130,30 @@ export function Profile({ userProfile, className }: Props) {
           </button>
         </div>
       </form>
+    </MainBox>
+  );
+}
+
+interface LinksProps {
+  userProfile: any;
+  className?: string;
+}
+
+export function Links({ userProfile, className }: LinksProps) {
+  const [git, setGit] = useState("");
+  const [linked, setLinked] = useState("");
+  return <MainBox title="Links" className={className}></MainBox>;
+}
+
+interface DZProps {
+  userProfile: any;
+  className?: string;
+}
+
+export function DangerZone({ userProfile, className }: DZProps) {
+  return (
+    <MainBox title="Danger Zone" className="mt-5">
+      <h1>hello</h1>
     </MainBox>
   );
 }

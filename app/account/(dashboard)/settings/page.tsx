@@ -1,9 +1,7 @@
 "use client";
 
 import LoadingScreen from "@/components/Loading";
-import DangerZone from "@/components/account/DangerZone";
-import Links from "@/components/account/Links";
-import { Profile } from "@/components/account/Settings";
+import { Profile, Links, DangerZone } from "@/components/account/Settings";
 import { getUserDetails } from "@/supabase/auth/handleAuth";
 import profilesDB from "@/supabase/database/handleProfiles";
 import { useEffect, useState } from "react";
