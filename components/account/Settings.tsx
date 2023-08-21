@@ -142,7 +142,99 @@ interface LinksProps {
 export function Links({ userProfile, className }: LinksProps) {
   const [git, setGit] = useState("");
   const [linked, setLinked] = useState("");
-  return <MainBox title="Links" className={className}></MainBox>;
+  const [edited, setEdited] = useState(false);
+
+  useEffect(() => {
+    if (userProfile) {
+      if (
+        git === userProfile[0].github_url &&
+        linked === userProfile[0].linkedin_url
+      ) {
+        setEdited(false);
+      } else {
+        setEdited(true);
+      }
+    }
+  }, [git, linked]);
+
+  useEffect(() => {
+    if (userProfile) {
+      setGit(userProfile[0].github_url);
+      setLinked(userProfile[0].linkedin_url);
+    }
+  }, []);
+
+  function handleGitChange(url: string) {
+    setGit(url);
+  }
+
+  function handleLinkedChange(url: string) {
+    setLinked(url);
+  }
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    var success = false;
+
+    const gitRes = await profilesDB.setGit(git, userProfile[0].id);
+    const linkedRes = await profilesDB.setLinked(linked, userProfile[0].id);
+
+    if (gitRes === "success" && linkedRes === "success") {
+      alert("Links updated successfully!");
+      success = true;
+    } else if (gitRes !== "success" && linkedRes === "success") {
+      const error_lst = gitRes.toString().split(": ");
+      alert(`ERROR: ${error_lst[1]}`);
+      console.log(`[CLIENT] ${gitRes}`);
+      success = true;
+    } else if (linkedRes !== "success" && gitRes === "success") {
+      const error_lst = linkedRes.toString().split(": ");
+      alert(`ERROR: ${error_lst[1]}`);
+      console.log(`[CLIENT] ${linkedRes}`);
+      success = true;
+    } else {
+      const error_lstA = gitRes.toString().split(": ");
+      const error_lstB = linkedRes.toString().split(": ");
+      alert(`ERROR: ${error_lstA[1]} | ${error_lstB[1]}`);
+      console.log(`[CLIENT] ${gitRes} | ${linkedRes}`);
+      success = true;
+    }
+
+    if (success) window.location.reload();
+  }
+  return (
+    <MainBox title="Links" className={className}>
+      <form onSubmit={handleSubmit}>
+        <FormRow
+          label="GitHub"
+          type="URL"
+          placeholder="Enter the link to your GitHub profile"
+          value={git}
+          onChange={handleGitChange}
+        />
+
+        <FormRow
+          label="LinkedIn"
+          type="URL"
+          placeholder="Enter the link your LinkedIn profile"
+          value={linked}
+          onChange={handleLinkedChange}
+        />
+
+        <div className="flex items-center justify-end mt-5">
+          <button
+            disabled={!edited}
+            type="submit"
+            className={` text-violet-50 py-2 px-5 rounded-md duration-150 ${
+              edited ? "hover:bg-violet-500 bg-violet-600" : "bg-violet-400"
+            }`}
+          >
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </MainBox>
+  );
 }
 
 interface DZProps {
