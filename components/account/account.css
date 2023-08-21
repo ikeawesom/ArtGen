@@ -53,3 +53,9 @@ p {
     padding: 5px 10px;
   } */
 }
+
+.del-list li {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
