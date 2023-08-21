@@ -5,6 +5,7 @@ import MainBox from "./MainBox";
 import "./account.css";
 import profilesDB from "@/supabase/database/handleProfiles";
 import supabase from "@/supabase/config";
+import { handleDeleteUser, handleSignOut } from "@/supabase/auth/handleAuth";
 
 interface ProfileProps {
   userProfile: any;
@@ -240,12 +241,29 @@ export function Links({ userProfile, className }: LinksProps) {
 interface DZProps {
   userProfile: any;
   className?: string;
+  showModal: () => void;
 }
 
-export function DangerZone({ userProfile, className }: DZProps) {
+export function DangerZone({ userProfile, className, showModal }: DZProps) {
   return (
-    <MainBox title="Danger Zone" className="mt-5">
-      <h1>hello</h1>
+    <MainBox title="Danger Zone" className="mt-5 ">
+      <div className="border-red-600 border-[1px] p-5 rounded-md flex sm:gap-5 sm:items-center sm:justify-between sm:my-2 w-full sm:flex-row flex-col items-start justify-start gap-3 my-5">
+        <label htmlFor="delete_account">
+          <h1 className="font-semibold">Delete Account</h1>
+          <p className="text-md">
+            Once you delete your account, there is no going back. Please be
+            certain.
+          </p>
+        </label>
+
+        <button
+          className={`${className} border-red-600 border-2 py-2 px-5 rounded-md duration-150 font-semibold text-red-600 hover:bg-red-600 hover:text-white`}
+          name="delete_account"
+          onClick={() => showModal()}
+        >
+          Delete Account
+        </button>
+      </div>
     </MainBox>
   );
 }
@@ -300,4 +318,123 @@ function FormRow({
       )}
     </div>
   );
+}
+
+interface DeleteAccModalProps {
+  visible: boolean;
+  userProfile: any;
+  exitModal: () => void;
+}
+
+export function DeleteAccModal({
+  visible,
+  userProfile,
+  exitModal,
+}: DeleteAccModalProps) {
+  var verify = "";
+  if (userProfile) {
+    verify = `${userProfile[0].email}/${userProfile[0].first_name}-${userProfile[0].last_name}`;
+  }
+
+  const [userVerify, setUserVerify] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleDeletion(e: FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+
+    const id = userProfile[0].id;
+
+    const res = await handleSignOut();
+    if (res === "success") {
+      const { data, error } = await handleDeleteUser(id);
+      if (!error) {
+        window.location.href = "/";
+      } else {
+        console.log(error);
+      }
+    } else {
+      console.log(res);
+    }
+  }
+
+  if (visible && userProfile)
+    return (
+      <div className="grid place-items-center w-screen h-screen min-h-screen min-w-full fixed top-0 left-0 bg-slate-800/50 z-20 px-5">
+        <div className="bg-white shadow-lg p-4 relative sm:w-96 rounded-md text-violet-900">
+          <div className="flex justify-between items-center gap-2">
+            <h1 className="font-semibold text-lg">Delete Account</h1>
+            <img
+              onClick={() => {
+                if (!loading) {
+                  setUserVerify("");
+                  setLoading(false);
+                  exitModal();
+                }
+              }}
+              src="/icons/icon_cross.svg"
+              alt=""
+              className={`${
+                loading
+                  ? "cursor-not-allowed"
+                  : "cursor-pointer hover:brightness-150"
+              } duration-150 w-3`}
+            />
+          </div>
+          <hr className="border-violet-300 w-full mx-0" />
+
+          <div>
+            <h2>You will be forfeiting:</h2>
+            <ul className="list-disc del-list">
+              <li>Premium features</li>
+              <li>GenComps opportunities</li>
+              <li>Contribution opportunities</li>
+              <li>
+                <span className="font-bold">All</span> available GenChips in
+                your account
+              </li>
+            </ul>
+          </div>
+
+          <hr className="border-violet-300 w-full mx-0" />
+
+          <h3 className="text-sm">
+            To confirm, type in <span className="font-bold">"{verify}"</span> in
+            the box below. This cannot be undone!
+          </h3>
+          <form onSubmit={handleDeletion}>
+            <input
+              className={`w-full my-5`}
+              type={"text"}
+              placeholder={verify}
+              name={"verify"}
+              value={userVerify}
+              onChange={(e) => setUserVerify(e.target.value)}
+            />
+
+            <button
+              className={`grid place-items-center w-full border-red-600 border-2 py-2 px-5 rounded-md duration-150 font-semibold text-red-600 ${
+                userVerify !== verify || loading
+                  ? "cursor-not-allowed opacity-30"
+                  : "hover:bg-red-600 hover:text-white"
+              }`}
+              name="delete_account"
+              type="submit"
+              disabled={userVerify !== verify || loading}
+            >
+              {loading ? (
+                <img
+                  src="/icons/icon_spinner.svg"
+                  alt="Loading Info..."
+                  className="spinner"
+                  width={20}
+                />
+              ) : (
+                "Confirm Deletion"
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
 }

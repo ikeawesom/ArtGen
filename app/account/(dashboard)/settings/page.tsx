@@ -1,13 +1,19 @@
 "use client";
 
 import LoadingScreen from "@/components/Loading";
-import { Profile, Links, DangerZone } from "@/components/account/Settings";
+import {
+  Profile,
+  Links,
+  DangerZone,
+  DeleteAccModal,
+} from "@/components/account/Settings";
 import { getUserDetails } from "@/supabase/auth/handleAuth";
 import profilesDB from "@/supabase/database/handleProfiles";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const [userProfile, setUserProfile] = useState<any>();
+  const [delAcc, setDelAcc] = useState(false);
 
   useEffect(() => {
     async function handleUserInfo() {
@@ -27,6 +33,7 @@ export default function Page() {
     }
     handleUserInfo();
   }, []);
+
   if (userProfile)
     return (
       <div>
@@ -34,7 +41,15 @@ export default function Page() {
           <Profile userProfile={userProfile} className="lg:flex-1 w-full" />
           <Links userProfile={userProfile} className="lg:flex-1 w-full" />
         </div>
-        <DangerZone userProfile={userProfile} />
+        <DangerZone
+          userProfile={userProfile}
+          showModal={() => setDelAcc(true)}
+        />
+        <DeleteAccModal
+          visible={delAcc}
+          userProfile={userProfile}
+          exitModal={() => setDelAcc(false)}
+        />
       </div>
     );
   return <LoadingScreen text="Preparing your information..." />;
