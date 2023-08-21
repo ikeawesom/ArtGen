@@ -1,4 +1,4 @@
-import supabase from "../config";
+import supabase, { supabaseAdmin } from "../config";
 import { DEFAULT_URL } from "@/app/globals";
 
 export async function handleSignUp(user, password, f_name, l_name) {
@@ -47,5 +47,10 @@ export async function handleSendPasswordResetEmail(email) {
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${DEFAULT_URL}/account/forgot_password`,
   });
+  return { data, error };
+}
+
+export async function handleDeleteUser(id) {
+  const { data, error } = await supabaseAdmin.deleteUser(id);
   return { data, error };
 }
