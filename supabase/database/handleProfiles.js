@@ -26,6 +26,26 @@ class mainProfilesDB extends mainDBClass {
     if (error) return error;
     return "success";
   }
+
+  async setGit(url, id) {
+    const { error } = await supabase
+      .from(this.table_name)
+      .update({ github_url: url })
+      .eq("id", id);
+
+    if (error) return error;
+    return "success";
+  }
+
+  async setLinked(url, id) {
+    const { error } = await supabase
+      .from(this.table_name)
+      .update({ linkedin_url: url })
+      .eq("id", id);
+
+    if (error) return error;
+    return "success";
+  }
 }
 const profilesDB = new mainProfilesDB("profiles");
 
