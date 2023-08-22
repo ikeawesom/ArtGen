@@ -20,7 +20,14 @@ export default function FeatureList({ page, className, cat, query }: Props) {
     async function getFeatures() {
       const res = await FeatureDB.getAll();
       if (res) {
-        var cat_list = res.filter((item) => item.category.includes(cat));
+        var sorted_list = res.sort((item1, item2) =>
+          item1.name > item2.name ? 1 : item1.name < item2.name ? -1 : 0
+        );
+
+        var cat_list = sorted_list.filter((item) =>
+          item.category.includes(cat)
+        );
+
         var new_cat_list = [];
         if (query !== "") {
           for (var i = 0; i < cat_list.length; i++) {
@@ -85,6 +92,7 @@ export default function FeatureList({ page, className, cat, query }: Props) {
               desc={item.desc}
               icon={item.icon}
               link={item.link}
+              tags={item.tags}
             />
           ))}
         </ul>
